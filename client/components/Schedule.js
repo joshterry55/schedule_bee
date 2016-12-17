@@ -37,9 +37,9 @@ class Schedule extends Component {
 	render() {
 		return(
 			<div style={styles.scheduleBox} className="row">
-				<button type='button' className='btn' onClick={this.setWeek}>back</button>
+				<button type='button' className='btn' onClick={this.setWeek}>&lt;&lt;</button>
 				<button type='button' className='btn' onClick={this.setCurrent}>Current</button>
-				<button type='button' className='btn' onClick={this.setWeekForward}>forward</button>
+				<button type='button' className='btn' onClick={this.setWeekForward}>&gt;&gt;</button>
 				<div style={styles.employeeColumn} className="col s3 m2"></div>
 				<div style={styles.calendarWindow} className="col s9 m10">
 					<div style={styles.calendar}>
