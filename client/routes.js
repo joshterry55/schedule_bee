@@ -8,6 +8,7 @@ import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import AuthenticatedRoutes from './components/AuthenticatedRoutes';
 import Dashboard from './components/Dashboard';
+import ScheduleView from './components/ScheduleView';
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -25,6 +26,7 @@ export default (
       <Route path='/signin' component={SignIn} />
       <Route component={AuthenticatedRoutes}>
         <Route path='/dashboard' component={Dashboard} />
+        <Route path='/schedule' component={ScheduleView} />
         <Route component={AdminRoutes}>
           <Route path='/admin' component={Admin} />
         </Route>
