@@ -28,8 +28,10 @@ class DayColumn extends Component {
 		let myDay = this.myDate();
 		return (
 			<div>
+				<div style={styles.dateFloat}>
 				<div id='boxstyle' style={styles.dateBox}>{myDay}</div>
-
+				<div id='boxstyle' style={styles.dateBox}>test</div>
+				</div>
 			</div>
 		);
 	}
@@ -48,8 +50,11 @@ const styles = {
 		lineHeight: "38px",
 		border: "1px solid blue",
 		backgroundColor: 'lightblue',
+	},
+	dateFloat: {
 		float: 'left'
 	}
 }
+
 
 export default connect(mapStateToProps)(DayColumn);
