@@ -6,6 +6,13 @@ class Admin extends React.Component {
 
   }
 
+  cael() {
+    let d = new Date()
+    return(
+      d.getDay()
+    )
+  }
+
   render() {
     return(
       <div>
@@ -19,6 +26,7 @@ class Admin extends React.Component {
           </div>
         </div>
         I am on Admin
+        {this.cael()}
 
       </div>
     )
