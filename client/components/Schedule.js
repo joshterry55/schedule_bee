@@ -1,21 +1,45 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import setdate from '../actions/setdate';
+import setweek from '../actions/setweek';
 import DayColumn from './DayColumn';
+let initial = 0
 
 class Schedule extends Component {
 	constructor(props) {
 		super(props);
-		
+
+		this.setWeek = this.setWeek.bind(this)
+		this.setCurrent = this.setCurrent.bind(this)
+		this.setWeekForward = this.setWeekForward.bind(this)
 	}
 
 	componentDidMount() {
 		this.props.dispatch(setdate());
 	}
 
+	setWeek() {
+		initial += 1
+		this.props.dispatch(setweek(initial));
+
+	}
+
+	setCurrent() {
+		initial = 0
+		this.props.dispatch(setweek(initial));
+	}
+
+	setWeekForward() {
+		initial -= 1
+		this.props.dispatch(setweek(initial));
+	}
+
 	render() {
 		return(
 			<div style={styles.scheduleBox} className="row">
+				<button type='button' className='btn' onClick={this.setWeek}>back</button>
+				<button type='button' className='btn' onClick={this.setCurrent}>Current</button>
+				<button type='button' className='btn' onClick={this.setWeekForward}>forward</button>
 				<div style={styles.employeeColumn} className="col s3 m2"></div>
 				<div style={styles.calendarWindow} className="col s9 m10">
 					<div style={styles.calendar}>
