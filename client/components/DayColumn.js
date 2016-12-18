@@ -1,5 +1,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
+// this is just a simulation of employees in the state
+let employee = [1,2,3,4,5]
 
 class DayColumn extends Component {
 
@@ -12,7 +14,7 @@ class DayColumn extends Component {
 		let myDay = fullDate.toDateString().substr(0, dateLength.length - 5)
 		// let myDay = (fullDate.getMonth() + 1) + "/" + fullDate.getDate() + "/" + fullDate.getFullYear()
 
-
+		// THIS IS JUST STARTER CODE FOR HIGHLIGHTING CURRENT DAY
 		// if(dayOffset === 0) {
 		// 	debugger
 		// 	$('#boxstyle').css('backgroundColor', 'red')
@@ -23,6 +25,16 @@ class DayColumn extends Component {
 		return myDay
 	}
 
+	addEmployeeRow() {
+		// THIS IS JUST SIMULATION SHOWING THAT WE CAN DYNAMICALLY ADD A ROW UNDER EVERY COLUMN
+		// FOR WHATEVER THE EMPLOYEE STATE IS SET TOO. WE NEED TO FIGURE OUT ADDING EMPLOYEES
+		if(employee != 0) {
+      return employee.map( e => {
+        return(<div id='boxstyle' style={styles.dateBox}>{e}</div>)
+			})
+		}
+	}
+
 
 	render() {
 		let myDay = this.myDate();
@@ -30,7 +42,7 @@ class DayColumn extends Component {
 			<div>
 				<div style={styles.dateFloat}>
 				<div id='boxstyle' style={styles.dateBox}>{myDay}</div>
-				<div id='boxstyle' style={styles.dateBox}>test</div>
+				{this.addEmployeeRow()}
 				</div>
 			</div>
 		);
