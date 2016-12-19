@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import setdate from '../actions/setdate';
 import setweek from '../actions/setweek';
 import DayColumn from './DayColumn';
-let initial = 0
+let weekOffset = 0
 
 class Schedule extends Component {
 	constructor(props) {
@@ -19,19 +19,19 @@ class Schedule extends Component {
 	}
 
 	setWeekBack() {
-		initial += 1
-		this.props.dispatch(setweek(initial));
+		weekOffset += 1
+		this.props.dispatch(setweek(weekOffset));
 
 	}
 
 	setCurrent() {
-		initial = 0
-		this.props.dispatch(setweek(initial));
+		weekOffset = 0
+		this.props.dispatch(setweek(weekOffset));
 	}
 
 	setWeekForward() {
-		initial -= 1
-		this.props.dispatch(setweek(initial));
+		weekOffset -= 1
+		this.props.dispatch(setweek(weekOffset));
 	}
 
 	render() {

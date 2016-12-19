@@ -9,6 +9,8 @@ import SignIn from './components/SignIn';
 import AuthenticatedRoutes from './components/AuthenticatedRoutes';
 import Dashboard from './components/Dashboard';
 import ScheduleView from './components/ScheduleView';
+import Settings from './components/Settings';
+import Employees from './components/Employees';
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -29,6 +31,8 @@ export default (
         <Route path='/schedule' component={ScheduleView} />
         <Route component={AdminRoutes}>
           <Route path='/admin' component={Admin} />
+          <Route path='/employees' component={Employees} />
+          <Route path='/settings' component={Settings} />
         </Route>
       </Route>
       <Route path="*" status={404} component={NoMatch}/>
