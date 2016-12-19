@@ -1,12 +1,11 @@
 const setdate = (state = {}, action) => {
+	let today = new Date()
 	switch(action.type) {
 		case "SET_DATE":
-			let today = new Date()
 			let numberOfDay = today.getDay();
 			return numberOfDay;
 		case "SET_WEEK":
-				let today2 = new Date()
-				let number2 = today2.getDay();
+				let number2 = today.getDay();
 				let numberOfDay2 = (number2 + (7 * action.initial))
 				return numberOfDay2;
 		default:

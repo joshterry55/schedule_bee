@@ -9,7 +9,7 @@ class Schedule extends Component {
 	constructor(props) {
 		super(props);
 
-		this.setWeek = this.setWeek.bind(this)
+		this.setWeekBack = this.setWeekBack.bind(this)
 		this.setCurrent = this.setCurrent.bind(this)
 		this.setWeekForward = this.setWeekForward.bind(this)
 	}
@@ -18,7 +18,7 @@ class Schedule extends Component {
 		this.props.dispatch(setdate());
 	}
 
-	setWeek() {
+	setWeekBack() {
 		initial += 1
 		this.props.dispatch(setweek(initial));
 
@@ -37,9 +37,9 @@ class Schedule extends Component {
 	render() {
 		return(
 			<div style={styles.scheduleBox} className="row">
-				<button type='button' className='btn' onClick={this.setWeek}>&lt;&lt;</button>
-				<button type='button' className='btn' onClick={this.setCurrent}>Current</button>
-				<button type='button' className='btn' onClick={this.setWeekForward}>&gt;&gt;</button>
+				<button type='button' className='btn grey darken-1' onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
+				<button type='button' className='btn grey darken-1' onClick={this.setCurrent}>Current</button>&nbsp;
+				<button type='button' className='btn grey darken-1' onClick={this.setWeekForward}>&gt;&gt;</button>
 				<div style={styles.employeeColumn} className="col s3 m2"></div>
 				<div style={styles.calendarWindow} className="col s9 m10">
 					<div style={styles.calendar}>
@@ -61,18 +61,18 @@ const styles = {
 	scheduleBox: {
 		width: '100%',
 		height: '500px',
-		backgroundColor: 'grey'
+		backgroundColor: '#aaa'
 	},
 	employeeColumn: {
-		backgroundColor: "grey",
-		height: '100%'
+		backgroundColor: "#aaa",
+		height: '100%',
 	},
 	calendarWindow: {
 		height: '100%',
 		overflow: 'scroll'
 	},
 	calendar: {
-		width: '1750px',
+		width: '1585px',
 		height: '100%'
 	}
 }
