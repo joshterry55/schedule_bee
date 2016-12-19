@@ -14,7 +14,7 @@ class Api::InvitationsController < Devise::InvitationsController
     raw_invitation_token = update_resource_params[:invitation_token]
     resource = accept_resource
     sign_in(resource_name, resource)
-    redirect_to '/dashboard'
+    redirect_to '/schedule'
   end
 
   private
@@ -22,4 +22,3 @@ class Api::InvitationsController < Devise::InvitationsController
       params.require(:user).permit(:email, :first_name, :last_name)
     end
 end
-

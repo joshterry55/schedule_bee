@@ -5,8 +5,8 @@ import AdminNav from './AdminNav'
 class Employees extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = { companies: [{id: 1, name: 'Snoshak'}, {id: 2, name: 'Cheese Time'}, {id: 3, name: 'Mall Shop'}] };
-    this.state = { companies: [] }
+    this.state = { companies: [{id: 1, name: 'Snoshak'}, {id: 2, name: 'Cheese Time'}, {id: 3, name: 'Mall Shop'}] };
+    // this.state = { companies: [] }
 
     this.inviteEmployee = this.inviteEmployee.bind(this);
     this.companiesOptions = this.companiesOptions.bind(this);
@@ -16,6 +16,7 @@ class Employees extends React.Component {
     // do the ajax call to grab all the companies that this admin owns
     // set state of the companies
     // use the companies state to loop over and create the options in the select
+    $('select').material_select();
     $.ajax({
       url: '/api/companies',
       type: 'GET',
@@ -25,6 +26,7 @@ class Employees extends React.Component {
     }).fail( data => {
       console.log(data);
     });
+
   }
 
   componentDidUpdate() {

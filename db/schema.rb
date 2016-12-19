@@ -86,5 +86,3 @@ ActiveRecord::Schema.define(version: 20161216220244) do
   add_foreign_key "shifts", "schedule_templates", column: "schedule_templates_id"
   add_foreign_key "users", "companies"
 end
-
-
