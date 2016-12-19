@@ -68,9 +68,9 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <nav className='purple'>
+        <nav className='yellow darken-2'>
           <div className='nav-wrapper'>
-            <Link to='/' className='brand-logo'>My Logo</Link>
+            <Link to='/' className='brand-logo'>ScheduleBee</Link>
             <a href='#' data-activates='mobile' className='button-collapse'>
               <i className='fa fa-bars'></i>
             </a>

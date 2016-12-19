@@ -29,7 +29,6 @@ class SignUp extends React.Component {
       this.props.dispatch(login(user))
       this.props.history.push('/dashboard')
     }).fail( err => {
-      debugger
     })
   }
 
@@ -45,6 +44,7 @@ class SignUp extends React.Component {
           <input type='password' placeholder='password' ref='password' required={true} />
           <input type='password' placeholder='password confirmation' ref='password_confirmation' required={true} />
           <input type='hidden' ref='role' value='admin' />
+
           <button className='btn'>Sign Up</button>
         </form>
       </div>

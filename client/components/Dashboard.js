@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const Dashboard = ({user}) => (
   <div>
-    {`${user.first_name}, Welcome`}
+    {`Welcome, ${user.first_name}.  Would you like to make a schedule?`}
   </div>
 )
 
