@@ -1,7 +1,8 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-// this is just a simulation of employees in the state
+// this is just a simulation of employees.length in the state
 let employee = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+
 
 class DayColumn extends Component {
 
@@ -27,11 +28,8 @@ class DayColumn extends Component {
 	}
 
 	highlightToday() {
-		// TODO: figure out a way to get the week offset value here
-		// so that it doesn't highlight when it's not the current week.
-		let date = new Date();
-		let today = date.getDay().toString();
-		if(this.props.day === today) {
+		let dayOffset = this.props.setdate - this.props.day;
+		if(dayOffset === 0) {
 			return styles.dateBoxToday
 		} else {
 			return styles.dateBox
@@ -43,7 +41,7 @@ class DayColumn extends Component {
 		// FOR WHATEVER THE EMPLOYEE STATE IS SET TO. WE NEED TO FIGURE OUT ADDING EMPLOYEES
 		if(employee != 0) {
       return employee.map( e => {
-        return(<div id='boxstyle' style={styles.shiftBox}></div>)
+        return(<div style={styles.shiftBox}></div>)
 			})
 		}
 	}
@@ -54,7 +52,7 @@ class DayColumn extends Component {
 		return (
 
 			<div style={styles.leftFloat}>
-				<div id='boxstyle' style={this.highlightToday()}>
+				<div style={this.highlightToday()}>
 					<span style={styles.dayText}> {myDate[0]} </span>
 					<span style={styles.dateText}> {myDate[1]} </span>
 					<span style={styles.yearText}> {myDate[2]} </span>

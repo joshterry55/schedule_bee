@@ -1,6 +1,6 @@
-const setweek = (initial) => {
+const setweek = (weekOffset) => {
 
-	return { type: 'SET_WEEK', initial }
+	return { type: 'SET_WEEK', weekOffset }
 }
 
 export default setweek;
