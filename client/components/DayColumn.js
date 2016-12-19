@@ -123,5 +123,4 @@ const styles = {
 	}
 }
 
-
 export default connect(mapStateToProps)(DayColumn);

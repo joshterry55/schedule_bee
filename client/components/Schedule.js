@@ -37,19 +37,25 @@ class Schedule extends Component {
 	render() {
 		return(
 			<div style={styles.scheduleBox} className="row">
-				<button type='button' className='btn grey darken-1' onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
-				<button type='button' className='btn grey darken-1' onClick={this.setCurrent}>Current</button>&nbsp;
-				<button type='button' className='btn grey darken-1' onClick={this.setWeekForward}>&gt;&gt;</button>
 				<div style={styles.employeeColumn} className="col s3 m2"></div>
-				<div style={styles.calendarWindow} className="col s9 m10">
-					<div style={styles.calendar}>
-						<DayColumn day="0" />
-						<DayColumn day="1" />
-						<DayColumn day="2" />
-						<DayColumn day="3" />
-						<DayColumn day="4" />
-						<DayColumn day="5" />
-						<DayColumn day="6" />
+				<div className="col s9 m10">
+					<div className="col s12 center">
+						<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
+						<button type='button' style={styles.buttonCurrent} onClick={this.setCurrent}>Current</button>&nbsp;
+						<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
+					</div>
+					<div className="col s12">
+						<div style={styles.calendarWindow}>
+							<div style={styles.calendar}>
+								<DayColumn day="0" />
+								<DayColumn day="1" />
+								<DayColumn day="2" />
+								<DayColumn day="3" />
+								<DayColumn day="4" />
+								<DayColumn day="5" />
+								<DayColumn day="6" />
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -68,12 +74,42 @@ const styles = {
 		height: '100%',
 	},
 	calendarWindow: {
-		height: '100%',
+		height: '430px',
+		width: '100%',
+		padding: "3px",
+		backgroundColor: "#ccc",
+		border: "1px solid black",
 		overflow: 'scroll'
 	},
 	calendar: {
-		width: '1585px',
+		width: '1579px',
 		height: '100%'
+	},
+	button: {
+		height: '30px',
+		padding: '0 15px',
+		margin: '5px',
+		borderRadius: '5px',
+		border: '1px solid #666',
+		background: "linear-gradient(#bbb, #999)",
+		boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.35)",
+		fontSize: '20px',
+		lineHeight: '20px',
+		color: '#333',
+		textShadow: '0 1px #ddd'
+	},
+	buttonCurrent: {
+		height: '30px',
+		padding: '0 15px',
+		margin: '5px',
+		borderRadius: '5px',
+		border: '1px solid #666',
+		background: "linear-gradient(#99f, #66f)",
+		boxShadow: "inset 0 1px 0px  #ddf, 0 0 5px rgba(0,0,0,0.35)",
+		fontSize: '20px',
+		lineHeight: '20px',
+		color: '#229',
+		textShadow: '0 1px #bbd'
 	}
 }
 
