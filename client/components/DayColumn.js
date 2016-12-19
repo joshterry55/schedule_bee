@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 // this is just a simulation of employees in the state
-let employee = [1,2,3,4,5]
+let employee = [1,2,3,4,5,6,7,8,9,10,11,12,13]
 
 class DayColumn extends Component {
 
@@ -52,6 +52,7 @@ class DayColumn extends Component {
 	render() {
 		let myDate = this.myDate();
 		return (
+
 			<div style={styles.leftFloat}>
 				<div id='boxstyle' style={this.highlightToday()}>
 					<span style={styles.dayText}> {myDate[0]} </span>
