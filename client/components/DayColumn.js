@@ -30,18 +30,20 @@ class DayColumn extends Component {
 	highlightToday() {
 		let dayOffset = this.props.setdate - this.props.day;
 		if(dayOffset === 0) {
-			return styles.dateBoxToday
+			return {...styles.dateBox, ...styles.dateBoxToday}
 		} else {
 			return styles.dateBox
 		}
 	}
 
-	addEmployeeRow() {
+	addEmployeeRow(myDate) {
 		// THIS IS JUST SIMULATION SHOWING THAT WE CAN DYNAMICALLY ADD A ROW UNDER EVERY COLUMN
 		// FOR WHATEVER THE EMPLOYEE STATE IS SET TO. WE NEED TO FIGURE OUT ADDING EMPLOYEES
 		if(employee != 0) {
       return employee.map( e => {
-        return(<div style={styles.shiftBox}></div>)
+        return(<div style={styles.shiftBox}>
+        				 <span style={styles.shiftDayText}>{myDate[0]}</span>
+        			 </div>)
 			})
 		}
 	}
@@ -57,7 +59,7 @@ class DayColumn extends Component {
 					<span style={styles.dateText}> {myDate[1]} </span>
 					<span style={styles.yearText}> {myDate[2]} </span>
 				</div>
-				{ this.addEmployeeRow() }
+				{ this.addEmployeeRow(myDate) }
 			</div>
 		);
 	}
@@ -77,12 +79,8 @@ const styles = {
 		position: "relative"
 	},
 	dateBoxToday: {
-		width: "225px",
-		height: "40px",
-		border: "1px solid #333",
-		backgroundColor: "#666",
+		backgroundColor: "#66f",
 		background: "linear-gradient(#99f, #66f)",
-		position: "relative"
 	},
 	dayText: {
 		fontWeight: "bold",
@@ -109,6 +107,15 @@ const styles = {
 		opacity: "0.15",
 		position: "absolute",
 		top: "-7px",
+		right: "0"
+	},
+	shiftDayText: {
+		fontWeight: "bold",
+		fontSize: "20px",
+		color: "#000",
+		opacity: "0.10",
+		position: "absolute",
+		bottom: "-7px",
 		right: "0"
 	},
 		leftFloat: {
