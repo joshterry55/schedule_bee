@@ -40,9 +40,9 @@ class Companies extends React.Component {
       <div>
 
         Companies
-        <form ref='companyForm' onSubmit={this.addCompany}>
+        <form ref='companyForm' className="container" onSubmit={this.addCompany}>
           <input ref='companyName' type='text' />
-          <input type="submit" value='Add Company' />
+          <input type="submit" className='btn blue darken-3' value='Add Company' />
         </form>
       </div>
     );

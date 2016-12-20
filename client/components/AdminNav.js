@@ -7,14 +7,29 @@ class AdminNav extends React.Component {
     return(
       <div className="row">
         <div className="col s12">
-          <ul className="tabs tabs-fixed-width">
-            <li className="tab col s3"><Link to='/employees'>Employees</Link></li>
-            <li className="tab col s3"><Link to='/settings'>Settings</Link></li>
-            <li className="tab col s3"><Link to='/companies'>Companies</Link></li>
+          <ul className="tabs tabs-fixed-width" style={styles.topMargin}>
+            <li style={styles.adminTab} className="tab col s3 admin-tabs"><Link style={styles.tabText} className="white-text" to='/employees'>Employees</Link></li>
+            <li style={styles.adminTab} className="tab col s3 admin-tabs"><Link style={styles.tabText} className="white-text" to='/settings'>Settings</Link></li>
+            <li style={styles.adminTab} className="tab col s3 admin-tabs"><Link style={styles.tabText} className="white-text" to='/companies'>Companies</Link></li>
           </ul>
         </div>
       </div>
     )
+  }
+}
+
+const styles = {
+  adminTab: {
+    background: "linear-gradient(#999, #666)",
+    margin: '5px',
+    lineHeight: '42px'
+  },
+  tabText: {
+    textShadow: "0 0 10px rgba(0,0,0,0.75)",
+    fontSize: '18px'
+  },
+  topMargin: {
+    marginTop: '5px'
   }
 }
 

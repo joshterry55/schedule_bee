@@ -41,3 +41,11 @@
   padding-left: 25px;
   text-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
+
+.admin-tabs:hover {
+  background: linear-gradient(#bbb, #888) !important;
+}
+
+.ul.dropdown-content.select-dropdown.active li span  {
+  color: #1565C0 !important;
+}

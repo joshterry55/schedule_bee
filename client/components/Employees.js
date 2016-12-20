@@ -64,7 +64,7 @@ class Employees extends React.Component {
   display() {
     if(this.props.assigned.length) {
       return(
-        <form onSubmit={this.inviteEmployee}>
+        <form className='container' onSubmit={this.inviteEmployee}>
           <label>Select A Company</label>
           <select ref='company'>
             { this.companiesOptions() }
@@ -72,7 +72,7 @@ class Employees extends React.Component {
           <input ref='firstName' type='text' required placeholder='Employee First Name' />
           <input ref='lastName' type='text' required placeholder='Employee Last Name' />
           <input ref='email' type='email' required placeholder='Employee Email' />
-          <input className='btn' type='submit' />
+          <input className='btn blue darken-3' type='submit' />
         </form>
       );
     } else {

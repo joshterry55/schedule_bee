@@ -39,15 +39,15 @@ class SignUp extends React.Component {
     return(
       <div>
         <h2 className='center'>Sign Up</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input placeholder='first name' ref='first_name' required={true} />
-          <input placeholder='last name' ref='last_name' required={true} />
-          <input type='email' placeholder='email' ref='email' required={true} />
-          <input type='password' placeholder='password' ref='password' required={true} />
-          <input type='password' placeholder='password confirmation' ref='password_confirmation' required={true} />
+        <form className='container' onSubmit={this.handleSubmit}>
+          <input placeholder='First Name' ref='first_name' required={true} />
+          <input placeholder='Last Name' ref='last_name' required={true} />
+          <input type='email' placeholder='Email' ref='email' required={true} />
+          <input type='password' placeholder='Password' ref='password' required={true} />
+          <input type='password' placeholder='Password Confirmation' ref='password_confirmation' required={true} />
           <input type='hidden' ref='role' value='admin' />
 
-          <button className='btn'>Sign Up</button>
+          <button className='btn blue darken-3'>Sign Up</button>
         </form>
       </div>
     )

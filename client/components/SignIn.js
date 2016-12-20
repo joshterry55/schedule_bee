@@ -37,10 +37,10 @@ class SignIn extends React.Component {
     return(
       <div>
         <h3 className='center'>Sign In</h3>
-        <form onSubmit={this.handleSubmit}>
-          <input type="email" required={true} ref='email' placeholder='email' />
-          <input type='password' required={true} ref='password' placeholder='password' />
-          <button className='btn'>Sign In</button>
+        <form className='container' onSubmit={this.handleSubmit}>
+          <input type="email" required={true} ref='email' placeholder='Email' />
+          <input type='password' required={true} ref='password' placeholder='Password' />
+          <button className='btn blue darken-3'>Sign In</button>
         </form>
       </div>
     )
