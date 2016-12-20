@@ -18,3 +18,4 @@
 /node_modules
 /public/webpack
 npm-debug.log
+config/mail.yml
