@@ -11,6 +11,7 @@ import Dashboard from './components/Dashboard';
 import ScheduleView from './components/ScheduleView';
 import Settings from './components/Settings';
 import Employees from './components/Employees';
+import Companies from './components/Companies';
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -31,6 +32,7 @@ export default (
         <Route path='/schedule' component={ScheduleView} />
         <Route component={AdminRoutes}>
           <Route path='/admin' component={Admin} />
+          <Route path='/companies' component={Companies} />
           <Route path='/employees' component={Employees} />
           <Route path='/settings' component={Settings} />
         </Route>

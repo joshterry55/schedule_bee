@@ -1,11 +1,11 @@
 import React from 'react';
 import AdminNav from './AdminNav'
+import { connect } from 'react-redux';
 
 
 class Employees extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { companies: [{id: 1, name: 'Snoshak'}, {id: 2, name: 'Cheese Time'}, {id: 3, name: 'Mall Shop'}] };
     // this.state = { companies: [] }
 
     this.inviteEmployee = this.inviteEmployee.bind(this);
@@ -17,12 +17,13 @@ class Employees extends React.Component {
     // set state of the companies
     // use the companies state to loop over and create the options in the select
     $('select').material_select();
+
     $.ajax({
       url: '/api/companies',
       type: 'GET',
       dataType: 'JSON'
     }).done( companies => {
-      this.setState({ companies });
+      this.props.dispatch({ type: 'ASSIGNED', companies })
     }).fail( data => {
       console.log(data);
     });
@@ -34,7 +35,7 @@ class Employees extends React.Component {
   }
 
   companiesOptions() {
-    return this.state.companies.map( company => {
+    return this.props.assigned.map( company => {
       return(<option key={company.id} value={company.id}>{company.name}</option>);
     });
   }
@@ -61,7 +62,7 @@ class Employees extends React.Component {
   }
 
   display() {
-    if(this.state.companies.length) {
+    if(this.props.assigned.length) {
       return(
         <form onSubmit={this.inviteEmployee}>
           <label>Select A Company</label>
@@ -90,4 +91,9 @@ class Employees extends React.Component {
   }
 }
 
-export default Employees
+const mapStateToProps = (state) => {
+  let { user, assigned } = state;
+  return { user, assigned }
+}
+
+export default connect(mapStateToProps)(Employees)

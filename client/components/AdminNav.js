@@ -10,7 +10,7 @@ class AdminNav extends React.Component {
           <ul className="tabs tabs-fixed-width">
             <li className="tab col s3"><Link to='/employees'>Employees</Link></li>
             <li className="tab col s3"><Link to='/settings'>Settings</Link></li>
-            <li className="tab col s3"><Link to='/admin'>Account</Link></li>
+            <li className="tab col s3"><Link to='/companies'>Companies</Link></li>
           </ul>
         </div>
       </div>

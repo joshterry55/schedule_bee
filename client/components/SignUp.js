@@ -11,7 +11,7 @@ class SignUp extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    let { first_name, last_name, email, password, password_confirmation, role} = this.refs;
+    let { first_name, last_name, email, password, password_confirmation, role } = this.refs;
     let user = { user: {
       first_name: first_name.value,
       last_name: last_name.value,
