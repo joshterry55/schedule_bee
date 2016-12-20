@@ -12,13 +12,15 @@ class SignUp extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     let { first_name, last_name, email, password, password_confirmation, role } = this.refs;
+    let company_id = 1
     let user = { user: {
       first_name: first_name.value,
       last_name: last_name.value,
       email: email.value,
       password: password.value,
       password_confirmation: password_confirmation.value,
-      role: role.value
+      role: role.value,
+      company_id
     }}
     $.ajax({
       url: '/users',

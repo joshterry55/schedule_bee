@@ -6,6 +6,11 @@ class Api::CompaniesController < ApplicationController
     @companies = current_user.assigned_companies
   end
 
+  def show
+    @company = Company.find(params[:id])
+    @employees = @company.users
+  end
+
   def destroy
     @company.destroy
   end

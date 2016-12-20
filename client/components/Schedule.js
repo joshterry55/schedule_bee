@@ -12,10 +12,28 @@ class Schedule extends Component {
 		this.setWeekBack = this.setWeekBack.bind(this)
 		this.setCurrent = this.setCurrent.bind(this)
 		this.setWeekForward = this.setWeekForward.bind(this)
+		this.companiesOptions = this.companiesOptions.bind(this);
+		this.displayEmployees = this.displayEmployees.bind(this)
 	}
 
 	componentDidMount() {
 		this.props.dispatch(setdate());
+
+		$('select').material_select();
+
+		$.ajax({
+			url: '/api/companies',
+			type: 'GET',
+			dataType: 'JSON'
+		}).done( companies => {
+			this.props.dispatch({ type: 'ASSIGNED', companies })
+		}).fail( data => {
+			console.log(data);
+		});
+	}
+
+	componentDidUpdate() {
+		$('select').material_select();
 	}
 
 	setWeekBack() {
@@ -34,10 +52,49 @@ class Schedule extends Component {
 		this.props.dispatch(setweek(weekOffset));
 	}
 
+	companiesOptions() {
+		return this.props.assigned.map( company => {
+			return(<option key={company.id} value={company.id}>{company.name}</option>);
+		});
+	}
+
+	displayEmployees(e) {
+		e.preventDefault()
+		let companyId = this.refs.companies.value
+		debugger
+		$.ajax({
+			url: `/api/companies/${companyId}`,
+			type: 'GET',
+			dataType: 'JSON'
+		}).done( companies => {
+			debugger
+		}).fail( data => {
+			console.log(data);
+		});
+	}
+
+	display() {
+		if(this.props.assigned.length) {
+			return(
+				<form onSubmit={this.displayEmployees}>
+					<label>Select A Company</label>
+					<select ref='companies'>
+						{ this.companiesOptions() }
+					</select>
+					<input className='btn' type='submit' />
+				</form>
+			);
+		} else {
+			return(<h5>No Companies</h5>);
+		}
+	}
+
 	render() {
 		return(
 			<div style={styles.scheduleBox} className="row">
-				<div style={styles.employeeColumn} className="col s3 m2"></div>
+				<div style={styles.employeeColumn} className="col s3 m2">
+					{ this.display() }
+				</div>
 				<div className="col s9 m10">
 					<div className="col s12 center">
 						<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
@@ -106,4 +163,9 @@ const styles = {
 	}
 }
 
-export default connect()(Schedule);
+const mapStateToProps = (state) => {
+  let { user, assigned } = state;
+  return { user, assigned }
+}
+
+export default connect(mapStateToProps)(Schedule);

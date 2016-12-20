@@ -8,7 +8,7 @@ class Api::RegistrationsController < Devise::RegistrationsController
   def sign_up_params
     params.require(:user).permit(
       :first_name, :last_name, :role,
-      :email, :verify_email, :password, :password_confirmation, :assigned_companies
+      :email, :verify_email, :password, :password_confirmation, :assigned_companies, :company_id
     )
   end
 
@@ -16,7 +16,7 @@ class Api::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(
       :first_name, :last_name, :role,
       :email, :verify_email, :password, :password_confirmation,
-      :current_password, :assigned_companies
+      :current_password, :assigned_companies, :company_id
     )
   end
 
