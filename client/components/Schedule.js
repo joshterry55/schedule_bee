@@ -92,8 +92,9 @@ const styles = {
 		borderRadius: '5px',
 		border: '1px solid #666',
 		background: "linear-gradient(#bbb, #999)",
-		boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.35)",
+		boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.25)",
 		fontSize: '20px',
+		fontWeight: 'bold',
 		lineHeight: '20px',
 		color: '#333',
 		textShadow: '0 1px #ddd'
@@ -105,8 +106,9 @@ const styles = {
 		borderRadius: '5px',
 		border: '1px solid #666',
 		background: "linear-gradient(#99f, #66f)",
-		boxShadow: "inset 0 1px 0px  #ddf, 0 0 5px rgba(0,0,0,0.35)",
+		boxShadow: "inset 0 1px 0px  #ddf, 0 0 5px rgba(0,0,0,0.25)",
 		fontSize: '20px',
+		fontWeight: 'bold',
 		lineHeight: '20px',
 		color: '#229',
 		textShadow: '0 1px #bbd'
