@@ -75,12 +75,12 @@ const styles = {
 		height: "40px",
 		border: "1px solid #333",
 		backgroundColor: "#666",
-		background: "linear-gradient(#999, #666)",
+		background: "linear-gradient(#999, #333)",
 		position: "relative"
 	},
 	dateBoxToday: {
 		backgroundColor: "#66f",
-		background: "linear-gradient(#99f, #66f)",
+		background: "linear-gradient(#1b7ff2, #1257a6)",
 	},
 	dayText: {
 		fontWeight: "bold",
@@ -111,12 +111,13 @@ const styles = {
 	},
 	shiftDayText: {
 		fontWeight: "bold",
-		fontSize: "20px",
+		fontSize: "18px",
 		color: "#000",
 		opacity: "0.10",
 		position: "absolute",
-		bottom: "-7px",
-		right: "0"
+		bottom: "0px",
+		right: "2px",
+		transform: "rotate(-35deg)"
 	},
 		leftFloat: {
 			float: 'left'

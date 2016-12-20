@@ -100,8 +100,9 @@ const styles = {
 		textShadow: '0 1px #ddd'
 	},
 	buttonCurrent: {
-		background: "linear-gradient(#99f, #66f)",
-		color: '#229'
+		background: "linear-gradient(#1c86ff, #1257a6)",
+		color: '#0d3c73',
+		textShadow: '0 1px #8cb7e8'
 	}
 }
 
