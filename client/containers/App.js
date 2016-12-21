@@ -70,7 +70,7 @@ class App extends React.Component {
       <div>
         <nav className='blue darken-3' id='top-nav'>
           <div className='nav-wrapper'>
-            <Link to='/' className='brand-logo'><span className="logo-text">ScheduleBee</span></Link>
+            <Link to='/' className='brand-logo'><span className="logo-text">ScheduleBee</span> <span className="little-bee"></span></Link>
             <a href='#' data-activates='mobile' className='button-collapse'>
               <i className='fa fa-bars'></i>
             </a>
