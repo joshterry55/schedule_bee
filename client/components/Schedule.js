@@ -131,7 +131,7 @@ const styles = {
 		height: '100%',
 	},
 	calendarWindow: {
-		height: '430px',
+		height: '444px',
 		width: '100%',
 		padding: "3px",
 		backgroundColor: "#ccc",
@@ -159,7 +159,7 @@ const styles = {
 	buttonCurrent: {
 		background: "linear-gradient(#1c86ff, #1257a6)",
 		color: '#0d3c73',
-		textShadow: '0 1px #8cb7e8'
+		textShadow: '0 0 10px rgba(255,255,255,0.5), 0 1px #8cb7e8'
 	}
 }
 
