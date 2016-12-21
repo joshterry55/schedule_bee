@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addassigned } from '../actions/addassigned';
-import AdminNav from './AdminNav'
+import AdminNav from './AdminNav';
+import { Link } from 'react-router'
 
 
 class Companies extends React.Component {
@@ -57,7 +58,8 @@ class Companies extends React.Component {
   displayCompanies() {
     return this.props.assigned.map( company => {
       return(
-        <a href="#!" className="collection-item" key={company.id}>{company.name}</a>
+        <div className="collection-item" key={company.id}><Link to={`/company/${company.id}`}>{company.name}</Link></div>
+
       );
     });
   }
