@@ -7,4 +7,12 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def index
+    @company = Company.find(params[:id])
+    @employees = @company.users
+    render json: @employees
+  end
+
+
+
 end

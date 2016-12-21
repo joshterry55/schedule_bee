@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   namespace :api do
     # ajax calls go here
     get 'users/info'
-    resources :companies 
+    get 'companies/:id/users', as: 'companies/users', :to => 'users#index'
+    resources :companies
   end
 
 

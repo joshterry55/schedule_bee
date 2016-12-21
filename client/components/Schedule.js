@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import setdate from '../actions/setdate';
 import setweek from '../actions/setweek';
 import DayColumn from './DayColumn';
+import { setemployee } from '../actions/setemployee';
+import SideEmployees from './SideEmployees'
 let weekOffset = 0
 
 class Schedule extends Component {
@@ -61,14 +63,16 @@ class Schedule extends Component {
 	displayEmployees(e) {
 		e.preventDefault()
 		let companyId = this.refs.companies.value
-		debugger
+
 		$.ajax({
-			url: `/api/companies/${companyId}`,
+			url: `/api/companies/${companyId}/users`,
 			type: 'GET',
 			dataType: 'JSON'
 		}).done( companies => {
-			debugger
+			this.props.dispatch(setemployee(companies));
+			
 		}).fail( data => {
+			debugger
 			console.log(data);
 		});
 	}
@@ -94,6 +98,7 @@ class Schedule extends Component {
 			<div style={styles.scheduleBox} className="row">
 				<div style={styles.employeeColumn} className="col s3 m2">
 					{ this.display() }
+					<SideEmployees />
 				</div>
 				<div className="col s9 m10">
 					<div className="col s12 center">
