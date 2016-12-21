@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addassigned } from '../actions/addassigned';
+import AdminNav from './AdminNav'
 
 
 class Companies extends React.Component {
@@ -16,7 +17,6 @@ class Companies extends React.Component {
     e.preventDefault();
     let newCompany = this.refs.companyName.value
     let assigned_companies = this.props.user.assigned_companies
-    debugger
     $.ajax({
       type: "POST",
       url: '/api/companies',
@@ -28,9 +28,9 @@ class Companies extends React.Component {
       // assigned_companies.push(data.id)
       debugger
       this.props.dispatch(addassigned(company))
-
+      this.refs.companyForm.reset()
     }).fail( data => {
-      debugger
+      
       console.log(data)
     })
   }
@@ -38,7 +38,7 @@ class Companies extends React.Component {
   render() {
     return(
       <div>
-
+        <AdminNav />
         Companies
         <form ref='companyForm' className="container" onSubmit={this.addCompany}>
           <input ref='companyName' type='text' />
