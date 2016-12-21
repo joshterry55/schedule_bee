@@ -56,9 +56,13 @@ class Companies extends React.Component {
 
   displayCompanies() {
     return this.props.assigned.map( company => {
-      return(<div key={company.id}>{company.name}</div>);
+      return(
+        <a href="#!" className="collection-item" key={company.id}>{company.name}</a>
+      );
     });
   }
+
+  // <div key={company.id}>{company.name}</div>
 
   render() {
     return(
@@ -70,9 +74,10 @@ class Companies extends React.Component {
           <input type="submit" className='btn blue darken-3' value='Add Company'/>
         </form>
         <br />
-        <div className='container row'>
+        <div className='container row collection'>
           {this.displayCompanies()}
         </div>
+
       </div>
     );
   }
