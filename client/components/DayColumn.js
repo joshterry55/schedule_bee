@@ -39,8 +39,16 @@ class DayColumn extends Component {
 	addEmployeeRow(myDate) {
 		// THIS IS JUST SIMULATION SHOWING THAT WE CAN DYNAMICALLY ADD A ROW UNDER EVERY COLUMN
 		// FOR WHATEVER THE EMPLOYEE STATE IS SET TO. WE NEED TO FIGURE OUT ADDING EMPLOYEES
-		if(employee != 0) {
-      return employee.map( e => {
+		// if(employee != 0) {
+    //   return employee.map( e => {
+    //     return(<div style={styles.shiftBox}>
+    //     				 <span style={styles.shiftDayText}>{myDate[0]}</span>
+    //     			 </div>)
+		// 	})
+		// }
+		let employees = this.props.setemployee
+		if(employees.length != 0) {
+      return employees.map( e => {
         return(<div style={styles.shiftBox}>
         				 <span style={styles.shiftDayText}>{myDate[0]}</span>
         			 </div>)
@@ -66,7 +74,9 @@ class DayColumn extends Component {
 }
 
 const mapStateToProps = (state) => {
-	return { setdate: state.setdate }
+	// return { setdate: state.setdate }
+	let { setdate, setemployee } = state;
+  return { setdate, setemployee }
 }
 
 const styles = {

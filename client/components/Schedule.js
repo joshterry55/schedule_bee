@@ -70,7 +70,7 @@ class Schedule extends Component {
 			dataType: 'JSON'
 		}).done( companies => {
 			this.props.dispatch(setemployee(companies));
-			
+
 		}).fail( data => {
 			debugger
 			console.log(data);
@@ -92,6 +92,9 @@ class Schedule extends Component {
 			return(<h5>No Companies</h5>);
 		}
 	}
+
+	//  <input className='btn' type='submit' />
+
 
 	render() {
 		return(

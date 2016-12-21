@@ -10,7 +10,7 @@ class SideEmployees extends React.Component {
 
   employees() {
 		return this.props.setemployee.map( employee => {
-			return(<div key={employee.id}>{employee.first_name} {employee.last_name}</div>);
+			return(<div key={employee.id} style={styles.shiftBox}>{employee.first_name} {employee.last_name}</div>);
 		});
 	}
 
@@ -21,6 +21,16 @@ class SideEmployees extends React.Component {
       </div>
     )
   }
+}
+
+const styles = {
+	shiftBox: {
+		width: "225px",
+		height: "40px",
+		border: "1px solid #666",
+		backgroundColor: "#999",
+		position: "relative"
+	}
 }
 
 const mapStateToProps = (state) => {
