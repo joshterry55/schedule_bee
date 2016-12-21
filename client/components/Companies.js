@@ -26,11 +26,11 @@ class Companies extends React.Component {
       }}
     }).done( company => {
       // assigned_companies.push(data.id)
-      debugger
+
       this.props.dispatch(addassigned(company))
       this.refs.companyForm.reset()
     }).fail( data => {
-      
+
       console.log(data)
     })
   }
@@ -41,8 +41,8 @@ class Companies extends React.Component {
         <AdminNav />
         Companies
         <form ref='companyForm' className="container" onSubmit={this.addCompany}>
-          <input ref='companyName' type='text' />
-          <input type="submit" className='btn blue darken-3' value='Add Company' />
+          <input ref='companyName' type='text' placeholder='Company Name' />
+          <input type="submit" className='btn blue darken-3' value='Add Company'/>
         </form>
       </div>
     );
