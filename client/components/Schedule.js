@@ -2,8 +2,8 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import setdate from '../actions/setdate';
 import setweek from '../actions/setweek';
+import { getcompanies } from '../actions/companies';
 import DayColumn from './DayColumn';
-import { setemployee } from '../actions/setemployee';
 import SideEmployees from './SideEmployees'
 let weekOffset = 0
 
@@ -14,28 +14,11 @@ class Schedule extends Component {
 		this.setWeekBack = this.setWeekBack.bind(this)
 		this.setCurrent = this.setCurrent.bind(this)
 		this.setWeekForward = this.setWeekForward.bind(this)
-		this.companiesOptions = this.companiesOptions.bind(this);
-		this.displayEmployees = this.displayEmployees.bind(this)
 	}
 
 	componentDidMount() {
 		this.props.dispatch(setdate());
-
-		$('select').material_select();
-
-		$.ajax({
-			url: '/api/companies',
-			type: 'GET',
-			dataType: 'JSON'
-		}).done( companies => {
-			this.props.dispatch({ type: 'ASSIGNED', companies })
-		}).fail( data => {
-			console.log(data);
-		});
-	}
-
-	componentDidUpdate() {
-		$('select').material_select();
+		this.props.dispatch(getcompanies());
 	}
 
 	setWeekBack() {
@@ -54,72 +37,24 @@ class Schedule extends Component {
 		this.props.dispatch(setweek(weekOffset));
 	}
 
-	companiesOptions() {
-		return this.props.assigned.map( company => {
-			return(<option key={company.id} value={company.id}>{company.name}</option>);
-		});
-	}
-
-	displayEmployees(e) {
-		e.preventDefault()
-		let companyId = this.refs.companies.value
-
-		$.ajax({
-			url: `/api/companies/${companyId}/users`,
-			type: 'GET',
-			dataType: 'JSON'
-		}).done( companies => {
-			this.props.dispatch(setemployee(companies));
-
-		}).fail( data => {
-			debugger
-			console.log(data);
-		});
-	}
-
-	display() {
-		if(this.props.assigned.length) {
-			return(
-				<form onSubmit={this.displayEmployees}>
-					<label>Select A Company</label>
-					<select ref='companies'>
-						{ this.companiesOptions() }
-					</select>
-					<input className='btn' type='submit' />
-				</form>
-			);
-		} else {
-			return(<h5>No Companies</h5>);
-		}
-	}
-
-	//  <input className='btn' type='submit' />
-
-
 	render() {
 		return(
-			<div style={styles.scheduleBox} className="row">
-				<div style={styles.employeeColumn} className="col s3 m2">
-					{ this.display() }
-					<SideEmployees />
+			<div>
+				<div className="col s12 center">
+					<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
+					<button type='button' style={{...styles.button, ...styles.buttonCurrent}} onClick={this.setCurrent}>Current</button>&nbsp;
+					<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
 				</div>
-				<div className="col s9 m10">
-					<div className="col s12 center">
-						<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
-						<button type='button' style={{...styles.button, ...styles.buttonCurrent}} onClick={this.setCurrent}>Current</button>&nbsp;
-						<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
-					</div>
-					<div className="col s12">
-						<div style={styles.calendarWindow}>
-							<div style={styles.calendar}>
-								<DayColumn day="0" />
-								<DayColumn day="1" />
-								<DayColumn day="2" />
-								<DayColumn day="3" />
-								<DayColumn day="4" />
-								<DayColumn day="5" />
-								<DayColumn day="6" />
-							</div>
+				<div className="col s12">
+					<div style={styles.calendarWindow}>
+						<div style={styles.calendar}>
+							<DayColumn day="0" />
+							<DayColumn day="1" />
+							<DayColumn day="2" />
+							<DayColumn day="3" />
+							<DayColumn day="4" />
+							<DayColumn day="5" />
+							<DayColumn day="6" />
 						</div>
 					</div>
 				</div>
@@ -129,15 +64,6 @@ class Schedule extends Component {
 }
 
 const styles = {
-	scheduleBox: {
-		width: '100%',
-		height: '500px',
-		backgroundColor: '#aaa'
-	},
-	employeeColumn: {
-		backgroundColor: "#aaa",
-		height: '100%',
-	},
 	calendarWindow: {
 		height: '444px',
 		width: '100%',
