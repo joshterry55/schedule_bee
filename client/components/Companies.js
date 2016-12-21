@@ -12,6 +12,25 @@ class Companies extends React.Component {
     this.addCompany = this.addCompany.bind(this)
   }
 
+  componentDidMount() {
+    // do the ajax call to grab all the companies that this admin owns
+    // set state of the companies
+    // use the companies state to loop over and create the options in the select
+    $('select').material_select();
+
+    $.ajax({
+      url: '/api/companies',
+      type: 'GET',
+      dataType: 'JSON'
+    }).done( companies => {
+      this.props.dispatch({ type: 'ASSIGNED', companies })
+    }).fail( data => {
+      console.log(data);
+    });
+
+  }
+
+
 
   addCompany(e) {
     e.preventDefault();
@@ -35,6 +54,12 @@ class Companies extends React.Component {
     })
   }
 
+  displayCompanies() {
+    return this.props.assigned.map( company => {
+      return(<div key={company.id}>{company.name}</div>);
+    });
+  }
+
   render() {
     return(
       <div>
@@ -44,13 +69,18 @@ class Companies extends React.Component {
           <input ref='companyName' type='text' placeholder='Company Name' />
           <input type="submit" className='btn blue darken-3' value='Add Company'/>
         </form>
+        <br />
+        <div className='container row'>
+          {this.displayCompanies()}
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.user }
+  let { user, assigned } = state;
+  return { user, assigned }
 }
 
 
