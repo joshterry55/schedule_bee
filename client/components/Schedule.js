@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router'
 import setdate from '../actions/setdate';
 import setweek from '../actions/setweek';
 import { getcompanies } from '../actions/companies';
@@ -40,10 +41,19 @@ class Schedule extends Component {
 	render() {
 		return(
 			<div>
-				<div className="col s12 center">
+				<div className="col s6 offset-s3 center">
 					<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
 					<button type='button' style={{...styles.button, ...styles.buttonCurrent}} onClick={this.setCurrent}>Current</button>&nbsp;
 					<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
+				</div>
+				<div className="col s3">
+					<div className="col s12 center grey-text text-darken-3">
+					View Schedule By:
+					</div>
+					<div className="col s12 center">
+						<Link style={styles.viewButton} to='/schedule'>Employees</Link> &ensp;
+						<Link style={styles.viewButton} to='/shiftschedule'>Shifts</Link>
+					</div>
 				</div>
 				<div className="col s12" style={styles.noPadding}>
 					<div style={styles.calendarWindow}>
@@ -95,6 +105,21 @@ const styles = {
 		color: '#0d3c73',
 		textShadow: '0 0 10px rgba(255,255,255,0.5), 0 1px #8cb7e8'
 	},
+	viewButton: {
+    height: '21px',
+    padding: '0 15px',
+    borderRadius: '5px',
+    border: '1px solid #666',
+    background: "linear-gradient(#bbb, #999)",
+    boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.25)",
+    fontSize: '11px',
+    fontWeight: 'bold',
+    lineHeight: '20px',
+    color: '#333',
+    textShadow: '0 1px #ddd',
+    position: 'relative',
+    top: '-1px'
+  },
 	noPadding: {
 		paddingLeft: '0px'
 	}

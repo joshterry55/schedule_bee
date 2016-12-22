@@ -9,6 +9,7 @@ import SignIn from './components/SignIn';
 import AuthenticatedRoutes from './components/AuthenticatedRoutes';
 import Dashboard from './components/Dashboard';
 import ScheduleView from './components/ScheduleView';
+import ShiftScheduleView from './components/ShiftScheduleView';
 import Settings from './components/Settings';
 import Employees from './components/Employees';
 import Companies from './components/Companies';
@@ -31,6 +32,7 @@ export default (
       <Route component={AuthenticatedRoutes}>
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/schedule' component={ScheduleView} />
+        <Route path='/shiftschedule' component={ShiftScheduleView} />
         <Route component={AdminRoutes}>
           <Route path='/admin' component={Admin} />
           <Route path='/companies' component={Companies} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { setemployee } from '../actions/setemployee';
+import { setcompany } from '../actions/setcompany';
 
 class SideEmployees extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class SideEmployees extends React.Component {
     if(this.props.assigned.length) {
       return(
         <form onSubmit={this.displayEmployees}>
-          <select ref='companies'>
+          <select ref='companies' defaultValue={this.props.setcompany.id}>
             { this.companiesList() }
           </select>
           <input style={styles.button} type='submit' value='Show Employees' />
@@ -51,16 +52,13 @@ class SideEmployees extends React.Component {
       type: 'GET',
       dataType: 'JSON'
     }).done( companies => {
-      this.props.dispatch(setemployee(companies));
+      this.props.dispatch(setemployee(companies))
+      this.props.dispatch(setcompany(companyId))
 
     }).fail( data => {
       debugger
       console.log(data);
     });
-  }
-
-  testChange() {
-    console.log("hello")
   }
 
   render() {
@@ -83,7 +81,8 @@ const styles = {
   companySelectBox: {
     textAlign: 'center',
     height: '89px',
-    padding: '0 5px'
+    padding: '0 5px',
+    backgroundColor: '#888'
   },
 	employeeSideBox: {
 		width: "100%",
@@ -117,8 +116,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assigned, setemployee } = state;
-  return { user, assigned, setemployee }
+  let { user, assigned, setemployee, setcompany } = state;
+  return { user, assigned, setemployee, setcompany }
 }
 
 export default connect(mapStateToProps)(SideEmployees)
