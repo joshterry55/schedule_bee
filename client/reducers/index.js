@@ -7,6 +7,7 @@ import flash from './flash'
 import setemployee from './setemployee'
 import setcompany from './setcompany'
 import currentemployee from './currentemployee'
+import editcompany from './editcompany'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   flash,
   setemployee,
   setcompany,
-  currentemployee
+  currentemployee,
+  editcompany
  });
 
 export default rootReducer;
