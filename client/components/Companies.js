@@ -11,6 +11,7 @@ class Companies extends React.Component {
 
 
     this.addCompany = this.addCompany.bind(this)
+    this.setCompany = this.setCompany.bind(this)
   }
 
   componentDidMount() {
@@ -55,11 +56,15 @@ class Companies extends React.Component {
     })
   }
 
+  setCompany(company) {
+
+    this.props.dispatch({type: 'SET_COMPANY', company})
+  }
+
   displayCompanies() {
     return this.props.assigned.map( company => {
       return(
-        <div className="collection-item" key={company.id}><Link to={`/company/${company.id}`}>{company.name}</Link></div>
-
+        <div onClick={() => this.setCompany(company)}className="collection-item" key={company.id}><Link to={`/company/${company.id}`}>{company.name}</Link></div>
       );
     });
   }
