@@ -1,5 +1,5 @@
 const currentemployee = (state = [], action) => {
-
+  
 	switch(action.type) {
     case "CURRENT_EMPLOYEE":
       return action.employee
