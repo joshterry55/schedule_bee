@@ -1,6 +1,9 @@
-import React, { Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 import Schedule from './Schedule';
-import SideEmployees from './SideEmployees'
+import SideEmployees from './SideEmployees';
+import BottomEmployees from './BottomEmployees';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 class ScheduleView extends Component {
 	render() {
@@ -12,6 +15,9 @@ class ScheduleView extends Component {
 				<div className="col s9 m10" style={styles.noPadding}>
 					<Schedule />
 				</div>
+				<div className="col s12" style={styles.bottomEmployeesBox}>
+					<BottomEmployees />
+				</div>
 			</div>
 		);
 	}
@@ -20,12 +26,18 @@ class ScheduleView extends Component {
 const styles = {
 	scheduleBox: {
 		width: '100%',
-		height: '500px',
+		height: '450px',
 		backgroundColor: '#aaa'
+	},
+	bottomEmployeesBox: {
+		width: '100%',
+		backgroundColor: '#999',
+		marginTop: '10px',
+		height: '150px'
 	},
 	noPadding: {
 		padding: '0px'
 	}
 }
 
-export default ScheduleView;
+export default DragDropContext(HTML5Backend)(ScheduleView);

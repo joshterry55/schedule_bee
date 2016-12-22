@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
+import ShiftBox from './ShiftBox';
 
 class DayColumn extends Component {
 
@@ -35,11 +36,12 @@ class DayColumn extends Component {
 
 	addEmployeeRow(myDate) {
 		let employees = this.props.setemployee
+		let day = myDate[0]
 		if(employees.length != 0) {
       return employees.map( e => {
-        return(<div key={this.props.day + "-" + e.id} style={styles.shiftBox}>
-        				 <span style={styles.shiftDayText}>{myDate[0]}</span>
-        			 </div>)
+        return(
+        	<ShiftBox key={this.props.day + "-" + e.id} day={day} />
+        )
 			})
 		}
 	}

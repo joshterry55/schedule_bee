@@ -65,7 +65,7 @@ class Schedule extends Component {
 
 const styles = {
 	calendarWindow: {
-		height: '444px',
+		height: '394px',
 		width: '100%',
 		padding: "3px",
 		backgroundColor: "#ccc",
