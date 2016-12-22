@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { logout } from '../actions/auth';
 import Flash from '../components/Flash';
-import { removeemployee } from '../actions/setemployee'
+import { removeemployee, removecurrentemployee } from '../actions/setemployee'
 // I need an action to log out a user
 // does the prevent default automatically
 // materialize js
@@ -37,7 +37,7 @@ class App extends React.Component {
     e.preventDefault()
     this.props.dispatch(logout(this.props.history))
     this.props.dispatch(removeemployee())
-
+    this.props.dispatch(removecurrentemployee())
   }
 
 

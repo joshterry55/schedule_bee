@@ -3,7 +3,6 @@ const setemployee = (state = [], action) => {
     case "SET_EMPLOYEE":
       return action.employees
     case "RESET_EMPLOYEE":
-      
       return action.employees = []
 		default:
 			return state;

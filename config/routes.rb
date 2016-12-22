@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     # ajax calls go here
     get 'users/info'
     get 'companies/:id/users', as: 'companies/users', :to => 'users#index'
+    get 'users/:id', as: 'users', :to => 'users#show'
     resources :companies
   end
 
