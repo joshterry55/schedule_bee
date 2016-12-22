@@ -96,7 +96,8 @@ const styles = {
     color: '#fff',
     textShadow: '0 0 10px rgba(0,0,0,0.5)',
     textAlign: 'right',
-    lineHeight: '30px'
+    lineHeight: '30px',
+    overflowX: 'hidden'
 	},
   button: {
     height: '21px',
