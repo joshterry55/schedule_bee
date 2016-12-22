@@ -45,7 +45,7 @@ class Schedule extends Component {
 					<button type='button' style={{...styles.button, ...styles.buttonCurrent}} onClick={this.setCurrent}>Current</button>&nbsp;
 					<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
 				</div>
-				<div className="col s12">
+				<div className="col s12" style={styles.noPadding}>
 					<div style={styles.calendarWindow}>
 						<div style={styles.calendar}>
 							<DayColumn day="0" />
@@ -77,7 +77,7 @@ const styles = {
 		height: '100%'
 	},
 	button: {
-		height: '30px',
+		height: '35px',
 		padding: '0 15px',
 		margin: '5px',
 		borderRadius: '5px',
@@ -86,7 +86,7 @@ const styles = {
 		boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.25)",
 		fontSize: '20px',
 		fontWeight: 'bold',
-		lineHeight: '20px',
+		lineHeight: '25px',
 		color: '#333',
 		textShadow: '0 1px #ddd'
 	},
@@ -94,6 +94,9 @@ const styles = {
 		background: "linear-gradient(#1c86ff, #1257a6)",
 		color: '#0d3c73',
 		textShadow: '0 0 10px rgba(255,255,255,0.5), 0 1px #8cb7e8'
+	},
+	noPadding: {
+		paddingLeft: '0px'
 	}
 }
 

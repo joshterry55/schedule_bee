@@ -19,10 +19,10 @@ class SideEmployees extends React.Component {
     if(this.props.assigned.length) {
       return(
         <form onSubmit={this.displayEmployees}>
-          <select ref='companies' onChange={this.displayEmployees}>
+          <select ref='companies'>
             { this.companiesList() }
           </select>
-          <input className='btn' type='submit' />
+          <input style={styles.button} type='submit' value='Show Employees' />
         </form>
       );
     } else {
@@ -59,10 +59,16 @@ class SideEmployees extends React.Component {
     });
   }
 
+  testChange() {
+    console.log("hello")
+  }
+
   render() {
     return(
       <div style={styles.employeeColumn}>
-        {this.displayCompanies()}
+        <div style={styles.companySelectBox}>
+          {this.displayCompanies()}
+        </div>
         {this.employees()}
       </div>
     )
@@ -74,13 +80,39 @@ const styles = {
     height: '100%',
     width: '100%'
   },
+  companySelectBox: {
+    textAlign: 'center',
+    height: '89px',
+    padding: '0 5px'
+  },
 	employeeSideBox: {
-		width: "225px",
+		width: "100%",
 		height: "40px",
+    padding: '5px',
 		border: "1px solid #666",
 		backgroundColor: "#999",
-		position: "relative"
-	}
+    background: "linear-gradient(#999, #333)",
+    fontSize: '15px',
+    color: '#fff',
+    textShadow: '0 0 10px rgba(0,0,0,0.5)',
+    textAlign: 'right',
+    lineHeight: '30px'
+	},
+  button: {
+    height: '21px',
+    padding: '0 15px',
+    borderRadius: '5px',
+    border: '1px solid #666',
+    background: "linear-gradient(#bbb, #999)",
+    boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.25)",
+    fontSize: '11px',
+    fontWeight: 'bold',
+    lineHeight: '20px',
+    color: '#333',
+    textShadow: '0 1px #ddd',
+    position: 'relative',
+    top: '-10px'
+  }
 }
 
 const mapStateToProps = (state) => {

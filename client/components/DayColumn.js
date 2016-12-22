@@ -1,8 +1,5 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-// this is just a simulation of employees.length in the state
-let employee = [1,2,3,4,5,6,7,8,9,10,11,12,13]
-
 
 class DayColumn extends Component {
 
@@ -37,19 +34,10 @@ class DayColumn extends Component {
 	}
 
 	addEmployeeRow(myDate) {
-		// THIS IS JUST SIMULATION SHOWING THAT WE CAN DYNAMICALLY ADD A ROW UNDER EVERY COLUMN
-		// FOR WHATEVER THE EMPLOYEE STATE IS SET TO. WE NEED TO FIGURE OUT ADDING EMPLOYEES
-		// if(employee != 0) {
-    //   return employee.map( e => {
-    //     return(<div style={styles.shiftBox}>
-    //     				 <span style={styles.shiftDayText}>{myDate[0]}</span>
-    //     			 </div>)
-		// 	})
-		// }
 		let employees = this.props.setemployee
 		if(employees.length != 0) {
       return employees.map( e => {
-        return(<div style={styles.shiftBox}>
+        return(<div key={this.props.day + "-" + e.id} style={styles.shiftBox}>
         				 <span style={styles.shiftDayText}>{myDate[0]}</span>
         			 </div>)
 			})
