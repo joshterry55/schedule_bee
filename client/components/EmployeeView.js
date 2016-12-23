@@ -11,6 +11,7 @@ class EmployeeView extends React.Component {
 
     this.toggleEdit = this.toggleEdit.bind(this)
     this.submitEdittedEmployee = this.submitEdittedEmployee.bind(this)
+    this.deleteEmployee = this.deleteEmployee.bind(this)
   }
 
   componentDidMount(){
@@ -52,6 +53,7 @@ class EmployeeView extends React.Component {
           <p>Role: {employee.role}</p>
           <p>Title: {employee.title}</p>
           <button onClick={() => this.toggleEdit()}>Edit</button>
+          <button onClick={(e) => this.deleteEmployee(e)}>Delete</button>
         </div>
       )
     }
@@ -95,6 +97,27 @@ class EmployeeView extends React.Component {
       alert('Please Select an Employee')
     } else {
       this.props.dispatch(toggleemployeeedit())
+    }
+  }
+
+  deleteEmployee(e) {
+    e.preventDefault()
+    if(this.props.currentemployee.length === 0) {
+      alert('Please Select an Employee')
+    } else {
+      let employeeId = this.props.currentemployee.id
+      $.ajax({
+        url: `/api/users/${employeeId}`,
+        type: 'DELETE',
+        dataType: 'JSON'
+      }).done(employee => {
+        let ID = this.props.setcompany.id
+        this.props.dispatch(updateemployees(ID))
+        this.props.dispatch({type: 'REMOVE_CURRENT_EMPLOYEE'})
+
+      }).fail(data => {
+
+      })
     }
   }
 

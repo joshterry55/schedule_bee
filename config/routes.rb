@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'companies/:id/users', as: 'companies/users', :to => 'users#index'
     get 'users/:id', as: 'users', :to => 'users#show'
     put 'users/:id', as: 'users/edit', :to => 'users#update'
+    delete 'users/:id', as: 'users/delete', :to => 'users#destroy'
     resources :companies
   end
 

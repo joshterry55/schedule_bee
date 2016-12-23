@@ -37,6 +37,13 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.company_id = 1
+    @user.save
+    render json: @user
+  end
+
   private
 
   def user_params
