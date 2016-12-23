@@ -59,14 +59,11 @@ class EmployeeView extends React.Component {
 
   submitEdittedEmployee(e) {
     e.preventDefault()
-    debugger
     let id = this.props.currentemployee.id
     let firstName = this.refs.employeeFirstName.value
     let lastName = this.refs.employeeLastName.value
     let role = this.refs.employeeRole.value
     let title = this.refs.employeeTitle.value
-    debugger
-
     $.ajax({
       type: "PUT",
       url: `/api/users/${id}`,
@@ -76,7 +73,6 @@ class EmployeeView extends React.Component {
         last_name: lastName,
         role: role,
         title: title,
-        company_id: this.props.setcompany.id
       }}
     }).done( employee => {
       let companyID = this.props.setcompany.id
@@ -87,6 +83,9 @@ class EmployeeView extends React.Component {
       console.log('failed')
     })
   }
+
+  // company_id: this.props.setcompany.id
+
 
   toggleEdit(e) {
     if(e != undefined) {
