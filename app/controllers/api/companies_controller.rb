@@ -4,6 +4,7 @@ class Api::CompaniesController < ApplicationController
 
   def index
     @companies = current_user.assigned_companies
+  
   end
 
   def show

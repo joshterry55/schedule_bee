@@ -75,7 +75,8 @@ class EmployeeView extends React.Component {
         first_name: firstName,
         last_name: lastName,
         role: role,
-        title: title
+        title: title,
+        company_id: this.props.setcompany.id
       }}
     }).done( employee => {
       let companyID = this.props.setcompany.id

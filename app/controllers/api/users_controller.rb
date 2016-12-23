@@ -25,6 +25,13 @@ class Api::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      if(@user.role == 'admin')
+        @user.assigned_companies << @user.company_id
+        @user.save
+      else
+        @user.assigned_companies = []
+        @user.save
+      end
       render json: @user
     else
     end
@@ -35,7 +42,7 @@ class Api::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(
       :first_name, :last_name, :role,
-      :title
+      :title, :company_id
     )
   end
 
