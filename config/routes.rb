@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'users/info'
     get 'companies/:id/users', as: 'companies/users', :to => 'users#index'
     get 'users/:id', as: 'users', :to => 'users#show'
+    put 'users/:id', as: 'users/edit', :to => 'users#update'
     resources :companies
   end
 
