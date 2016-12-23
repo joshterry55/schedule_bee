@@ -28,13 +28,18 @@ class EmployeeView extends React.Component {
       return(
         <div>
           <form ref='editEmployeeForm' onSubmit={this.submitEdittedEmployee}>
+            <label>First Name</label>
             <input ref='employeeFirstName' type='text' defaultValue={employee.first_name} required placeholder="First Name" />
+            <label>Last Name</label>
             <input ref='employeeLastName' type='text' defaultValue={employee.last_name} required placeholder="Last Name" />
+            <label>Role</label>
             <select ref='employeeRole' defaultValue={employee.role}>
               <option value="employee">Employee</option>
               <option value="manager">Manager</option>
               <option value="admin">Admin</option>
             </select>
+            <br />
+            <label>Title</label>
             <input ref='employeeTitle' type='text' defaultValue={employee.title} placeholder="Title" />
             <input type='submit' className='btn' />
           </form>
@@ -54,6 +59,7 @@ class EmployeeView extends React.Component {
 
   submitEdittedEmployee(e) {
     e.preventDefault()
+    debugger
     let id = this.props.currentemployee.id
     let firstName = this.refs.employeeFirstName.value
     let lastName = this.refs.employeeLastName.value
@@ -85,7 +91,11 @@ class EmployeeView extends React.Component {
     if(e != undefined) {
       e.preventDefault()
     }
-    this.props.dispatch(toggleemployeeedit())
+    if(this.props.currentemployee.length === 0) {
+      alert('Please Select an Employee')
+    } else {
+      this.props.dispatch(toggleemployeeedit())
+    }
   }
 
   showEmployees() {
