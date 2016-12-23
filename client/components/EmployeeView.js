@@ -68,9 +68,10 @@ class EmployeeView extends React.Component {
         role: role,
         title: title
       }}
-    }).success( employee => {
+    }).done( employee => {
       debugger
       this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
+
       this.toggleEdit()
     }).fail( data => {
       console.log('failed')
@@ -94,8 +95,8 @@ class EmployeeView extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { currentemployee, editemployee } = state;
-  return { currentemployee, editemployee }
+  let { currentemployee, editemployee, setcompany } = state;
+  return { currentemployee, editemployee, setcompany }
 }
 
 export default connect(mapStateToProps)(EmployeeView)

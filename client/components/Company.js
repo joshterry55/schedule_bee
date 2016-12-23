@@ -79,7 +79,6 @@ class Company extends React.Component {
       dataType: 'JSON',
       data: { company: { name: this.refs.newCompanyName.value }}
     }).success( company => {
-      debugger
       this.props.dispatch({type: 'SET_COMPANY', company})
       this.toggleEdit()
     }).fail( data => {
