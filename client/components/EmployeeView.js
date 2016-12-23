@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { seteditemployeestate, toggleemployeeedit } from '../actions/editemployee'
+import { seteditemployeestate, toggleemployeeedit } from '../actions/editemployee';
+import { updateemployees } from '../actions/updateemployeedropdown'
 
 class EmployeeView extends React.Component {
   constructor(props) {
@@ -69,9 +70,9 @@ class EmployeeView extends React.Component {
         title: title
       }}
     }).done( employee => {
-      debugger
+      let companyID = this.props.setcompany.id
       this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
-
+      this.props.dispatch(updateemployees(companyID))
       this.toggleEdit()
     }).fail( data => {
       console.log('failed')
