@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { seteditemployeestate, toggleemployeeedit } from '../actions/editemployee';
 import { updateemployees } from '../actions/updateemployeedropdown'
+import { currentemployee } from '../actions/setemployee';
+
 
 class EmployeeView extends React.Component {
   constructor(props) {
@@ -86,9 +88,36 @@ class EmployeeView extends React.Component {
     this.props.dispatch(toggleemployeeedit())
   }
 
+  showEmployees() {
+
+    return this.props.setemployee.map( employee => {
+      return(<option key={employee.id} value={employee.id}>{employee.first_name} {employee.last_name}</option>);
+    });
+  }
+
+  employeeInfo(e) {
+    e.preventDefault()
+    let id = this.refs.employee.value
+    $.ajax({
+      url: `/api/users/${id}`,
+      type: 'GET',
+      dataType: 'JSON'
+    }).done( employee => {
+      this.props.dispatch(currentemployee(employee));
+    }).fail( data => {
+      console.log(data);
+    });
+  }
+
   render() {
     return(
       <div>
+        <form onSubmit={(e) => this.employeeInfo(e)}>
+          <select ref='employee'>
+            { this.showEmployees() }
+          </select>
+          <input className='btn blue darken-3' type='submit' />
+        </form>
         { this.display() }
       </div>
     )
@@ -96,8 +125,8 @@ class EmployeeView extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { currentemployee, editemployee, setcompany } = state;
-  return { currentemployee, editemployee, setcompany }
+  let { currentemployee, editemployee, setcompany, setemployee } = state;
+  return { currentemployee, editemployee, setcompany, setemployee }
 }
 
 export default connect(mapStateToProps)(EmployeeView)

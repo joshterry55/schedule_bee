@@ -40,26 +40,7 @@ class Company extends React.Component {
     $('select').material_select();
   }
 
-  showEmployees() {
 
-    return this.props.setemployee.map( employee => {
-      return(<option key={employee.id} value={employee.id}>{employee.first_name} {employee.last_name}</option>);
-    });
-  }
-
-  employeeInfo(e) {
-    e.preventDefault()
-    let id = this.refs.employee.value
-    $.ajax({
-      url: `/api/users/${id}`,
-      type: 'GET',
-      dataType: 'JSON'
-    }).done( employee => {
-      this.props.dispatch(currentemployee(employee));
-    }).fail( data => {
-      console.log(data);
-    });
-  }
 
   toggleEdit(e) {
     if(e != undefined) {
@@ -113,12 +94,6 @@ class Company extends React.Component {
         <div className="col s6 offset-s3">
           <br />
           <h4>Employees</h4>
-          <form onSubmit={(e) => this.employeeInfo(e)}>
-            <select ref='employee'>
-              { this.showEmployees() }
-            </select>
-            <input className='btn blue darken-3' type='submit' />
-          </form>
           <EmployeeView />
         </div>
       </div>
