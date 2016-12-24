@@ -42,6 +42,8 @@ class EmployeeView extends React.Component {
             <br />
             <label>Title</label>
             <input ref='employeeTitle' type='text' defaultValue={employee.title} placeholder="Title" />
+            <label>Phone Number</label>
+            <input ref='employeePhone' type='text' defaultValue={employee.phone} placeholder="Phone Number" />
             <input type='submit' className='btn' value='Update'/>
           </form>
         </div>
@@ -53,6 +55,7 @@ class EmployeeView extends React.Component {
           <p>Role: {employee.role}</p>
           <p>Title: {employee.title}</p>
           <p>Email: {employee.email}</p>
+          <p>Phone Number: {employee.phone}</p>
           <button onClick={() => this.toggleEdit()}>Edit</button>
           <button onClick={(e) => this.deleteEmployee(e)}>Delete</button>
         </div>
@@ -67,6 +70,7 @@ class EmployeeView extends React.Component {
     let lastName = this.refs.employeeLastName.value
     let role = this.refs.employeeRole.value
     let title = this.refs.employeeTitle.value
+    let phone = this.refs.employeePhone.value
     $.ajax({
       type: "PUT",
       url: `/api/users/${id}`,
@@ -76,6 +80,7 @@ class EmployeeView extends React.Component {
         last_name: lastName,
         role: role,
         title: title,
+        phone: phone
       }}
     }).done( employee => {
       let companyID = this.props.setcompany.id
