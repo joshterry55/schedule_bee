@@ -28,7 +28,7 @@ class EmployeeView extends React.Component {
     if(this.props.editemployee) {
       return(
         <div>
-          <form ref='editEmployeeForm' onSubmit={this.submitEdittedEmployee}>
+          <form className='center' ref='editEmployeeForm' onSubmit={this.submitEdittedEmployee}>
             <label>First Name</label>
             <input ref='employeeFirstName' type='text' defaultValue={employee.first_name} required placeholder="First Name" />
             <label>Last Name</label>
@@ -165,6 +165,7 @@ class EmployeeView extends React.Component {
           </select>
           <input className='btn blue darken-3' type='submit' value="Search" />
         </form>
+        <br />
         { this.display() }
       </div>
     )

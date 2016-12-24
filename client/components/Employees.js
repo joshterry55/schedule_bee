@@ -64,15 +64,17 @@ class Employees extends React.Component {
   display() {
     if(this.props.assigned.length) {
       return(
-        <form className='container' onSubmit={this.inviteEmployee}>
-          <label>Select A Company</label>
-          <select ref='company'>
-            { this.companiesOptions() }
-          </select>
-          <input ref='firstName' type='text' required placeholder='Employee First Name' />
-          <input ref='lastName' type='text' required placeholder='Employee Last Name' />
-          <input ref='email' type='email' required placeholder='Employee Email' />
-          <input className='btn blue darken-3' type='submit' />
+        <form className='row center' onSubmit={this.inviteEmployee}>
+          <div className='col s6 offset-s3'>
+            <label>Select A Company</label>
+            <select ref='company'>
+              { this.companiesOptions() }
+            </select>
+            <input ref='firstName' type='text' required placeholder='Employee First Name' />
+            <input ref='lastName' type='text' required placeholder='Employee Last Name' />
+            <input ref='email' type='email' required placeholder='Employee Email' />
+            <input className='btn blue darken-3' type='submit' />
+          </div>
         </form>
       );
     } else {
@@ -84,7 +86,7 @@ class Employees extends React.Component {
     return(
       <div>
         <AdminNav />
-        Employees
+        <h3 className='center'>Add an Employee</h3>
         { this.display() }
       </div>
     )

@@ -75,9 +75,11 @@ class Companies extends React.Component {
     return(
       <div>
         <AdminNav />
-        <form ref='companyForm' className="container center" onSubmit={this.addCompany}>
-          <input ref='companyName' type='text' placeholder='Company Name' />
-          <input type="submit" className='btn blue darken-3' value='Add Company'/>
+        <form ref='companyForm' className="row center" onSubmit={this.addCompany}>
+          <div className='col s4 offset-s4'>
+            <input ref='companyName' type='text' placeholder='Company Name' />
+            <input type="submit" className='btn blue darken-3' value='Add Company'/>
+          </div>
         </form>
         <br />
         <div className='container row collection'>
