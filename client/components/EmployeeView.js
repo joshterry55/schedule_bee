@@ -42,6 +42,8 @@ class EmployeeView extends React.Component {
             <br />
             <label>Title</label>
             <input ref='employeeTitle' type='text' defaultValue={employee.title} placeholder="Title" />
+            <label>Wage</label>
+            <input ref='employeeWage' type='text' defaultValue={employee.wage} placeholder="Wage" />
             <label>Phone Number</label>
             <input ref='employeePhone' type='text' defaultValue={employee.phone} placeholder="Phone Number" />
             <input type='submit' className='btn' value='Update'/>
@@ -54,6 +56,7 @@ class EmployeeView extends React.Component {
           <p>Name: {employee.first_name} {employee.last_name}</p>
           <p>Role: {employee.role}</p>
           <p>Title: {employee.title}</p>
+          <p>Wage: {employee.wage} <small>per hour</small></p>
           <p>Email: {employee.email}</p>
           <p>Phone Number: {employee.phone}</p>
           <button onClick={() => this.toggleEdit()}>Edit</button>
@@ -71,6 +74,7 @@ class EmployeeView extends React.Component {
     let role = this.refs.employeeRole.value
     let title = this.refs.employeeTitle.value
     let phone = this.refs.employeePhone.value
+    let wage = (this.refs.employeeWage.value)
     $.ajax({
       type: "PUT",
       url: `/api/users/${id}`,
@@ -80,7 +84,8 @@ class EmployeeView extends React.Component {
         last_name: lastName,
         role: role,
         title: title,
-        phone: phone
+        phone: phone,
+        wage: wage
       }}
     }).done( employee => {
       let companyID = this.props.setcompany.id
