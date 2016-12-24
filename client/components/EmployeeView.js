@@ -106,18 +106,21 @@ class EmployeeView extends React.Component {
       alert('Please Select an Employee')
     } else {
       let employeeId = this.props.currentemployee.id
-      $.ajax({
-        url: `/api/users/${employeeId}`,
-        type: 'DELETE',
-        dataType: 'JSON'
-      }).done(employee => {
-        let ID = this.props.setcompany.id
-        this.props.dispatch(updateemployees(ID))
-        this.props.dispatch({type: 'REMOVE_CURRENT_EMPLOYEE'})
+      let confirmed = confirm('Are you sure you want to delete?')
+      if(confirmed){
+        $.ajax({
+          url: `/api/users/${employeeId}`,
+          type: 'DELETE',
+          dataType: 'JSON'
+        }).done(employee => {
+          let ID = this.props.setcompany.id
+          this.props.dispatch(updateemployees(ID))
+          this.props.dispatch({type: 'REMOVE_CURRENT_EMPLOYEE'})
 
-      }).fail(data => {
+        }).fail(data => {
 
-      })
+        })
+      }
     }
   }
 
