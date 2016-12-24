@@ -19,8 +19,8 @@ class Company extends React.Component {
   componentDidMount() {
     $('select').material_select();
 
-    let companyId = this.props.setcompany.id
-
+    let companyId = this.props.params.id
+    debugger
     $.ajax({
       url: `/api/companies/${companyId}/users`,
       type: 'GET',
@@ -40,6 +40,23 @@ class Company extends React.Component {
     $('select').material_select();
   }
 
+  componentWillMount() {
+    $('select').material_select();
+
+    let company = this.props.params.id
+
+    $.ajax({
+      url: `/api/companies/${company}`,
+      type: 'GET',
+      dataType: 'JSON'
+    }).done( company => {
+      debugger
+      this.props.dispatch({type: 'SET_COMPANY', company})
+    }).fail( data => {
+      debugger
+      console.log(data);
+    });
+  }
 
 
   toggleEdit(e) {

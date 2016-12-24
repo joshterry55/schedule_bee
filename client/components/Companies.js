@@ -58,7 +58,7 @@ class Companies extends React.Component {
 
   setCompany(company) {
 
-    this.props.dispatch({type: 'SET_COMPANY', company})
+    // this.props.dispatch({type: 'SET_COMPANY', company})
   }
 
   displayCompanies() {
