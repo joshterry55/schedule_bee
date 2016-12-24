@@ -71,9 +71,9 @@ class Company extends React.Component {
     let company = this.props.setcompany
     if(this.props.editcompany) {
       return(
-        <form ref='editCompanyForm' onSubmit={this.submitEdittedCompany}>
+        <form className='center col s6 offset-s3'ref='editCompanyForm' onSubmit={this.submitEdittedCompany}>
           <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder="Company Name" />
-          <input type='submit' className='btn' />
+          <input type='submit' className='btn' value='Update' />
         </form>
       )
     } else {

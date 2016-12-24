@@ -42,7 +42,7 @@ class EmployeeView extends React.Component {
             <br />
             <label>Title</label>
             <input ref='employeeTitle' type='text' defaultValue={employee.title} placeholder="Title" />
-            <input type='submit' className='btn' />
+            <input type='submit' className='btn' value='Update'/>
           </form>
         </div>
       )
@@ -52,6 +52,7 @@ class EmployeeView extends React.Component {
           <p>Name: {employee.first_name} {employee.last_name}</p>
           <p>Role: {employee.role}</p>
           <p>Title: {employee.title}</p>
+          <p>Email: {employee.email}</p>
           <button onClick={() => this.toggleEdit()}>Edit</button>
           <button onClick={(e) => this.deleteEmployee(e)}>Delete</button>
         </div>
@@ -148,11 +149,11 @@ class EmployeeView extends React.Component {
   render() {
     return(
       <div>
-        <form onSubmit={(e) => this.employeeInfo(e)}>
+        <form className='center' onSubmit={(e) => this.employeeInfo(e)}>
           <select ref='employee'>
             { this.showEmployees() }
           </select>
-          <input className='btn blue darken-3' type='submit' />
+          <input className='btn blue darken-3' type='submit' value="Search" />
         </form>
         { this.display() }
       </div>

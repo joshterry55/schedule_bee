@@ -75,8 +75,7 @@ class Companies extends React.Component {
     return(
       <div>
         <AdminNav />
-        Companies
-        <form ref='companyForm' className="container" onSubmit={this.addCompany}>
+        <form ref='companyForm' className="container center" onSubmit={this.addCompany}>
           <input ref='companyName' type='text' placeholder='Company Name' />
           <input type="submit" className='btn blue darken-3' value='Add Company'/>
         </form>
