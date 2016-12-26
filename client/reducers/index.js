@@ -9,6 +9,7 @@ import setcompany from './setcompany'
 import currentemployee from './currentemployee'
 import editcompany from './editcompany'
 import editemployee from './editemployee'
+import contactlist from './contactlist'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   setcompany,
   currentemployee,
   editcompany,
-  editemployee
+  editemployee,
+  contactlist
  });
 
 export default rootReducer;

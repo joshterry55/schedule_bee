@@ -46,7 +46,7 @@ class App extends React.Component {
       case 'employee':
         return(
           <div>
-            <li><Link to='/schedule'>Schedule</Link></li>
+            <li><Link to='/employeescheduleview'>My Schedule</Link></li>
             <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
           </div>
         )
