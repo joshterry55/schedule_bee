@@ -13,7 +13,7 @@ class EmployeeScheduleView extends Component {
 				<div className="col s9 m10" style={styles.noPadding}>
 					<EmployeeSchedule />
 				</div>
-				<div className="col s8 offset-s2">
+				<div className="col s12">
 					<EmployeeContactList />
 				</div>
 			</div>
