@@ -27,6 +27,7 @@ class Api::UsersController < ApplicationController
     if @user.update(user_params)
       if(@user.role == 'admin')
         @user.assigned_companies << @user.company_id
+        @user.assigned_companies = @user.assigned_companies.uniq
         @user.save
       else
         @user.assigned_companies = []
