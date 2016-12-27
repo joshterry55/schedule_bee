@@ -12,6 +12,7 @@ class ShiftBox extends React.Component {
 	}
 
 	componentDidMount() {
+		$('.modal').modal();
 		let employeeId = this.props.id
 		let shiftdate = `${this.props.month}, ${this.props.year}`
 
