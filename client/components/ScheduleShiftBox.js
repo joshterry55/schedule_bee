@@ -95,6 +95,9 @@ const styles = {
 		bottom: "0px",
 		right: "2px",
 		transform: "rotate(-35deg)"
+	},
+	addShiftButton: {
+		
 	}
 }
 

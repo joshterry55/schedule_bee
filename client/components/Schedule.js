@@ -20,6 +20,15 @@ class Schedule extends Component {
 	componentDidMount() {
 		this.props.dispatch(setdate());
 		this.props.dispatch(getcompanies());
+
+    $(function(){
+      $('.scrollLinked').scroll(function(){
+        $('.scrollLinked').scrollTop($(this).scrollTop());    
+      })
+      $('.scrollLinked').scroll(function(){
+        $('.scrollLinked').scrollLeft($(this).scrollLeft());    
+      })
+    })
 	}
 
 	setWeekBack() {
@@ -56,7 +65,7 @@ class Schedule extends Component {
 					</div>
 				</div>
 				<div className="col s12" style={styles.noPadding}>
-					<div style={styles.calendarWindow}>
+					<div style={styles.calendarWindow} className="scrollLinked">
 						<div style={styles.calendar}>
 							<DayColumn day="0" />
 							<DayColumn day="1" />
@@ -77,14 +86,12 @@ const styles = {
 	calendarWindow: {
 		height: '394px',
 		width: '100%',
-		padding: "3px",
 		backgroundColor: "#ccc",
 		border: "1px solid black",
 		overflow: 'scroll'
 	},
 	calendar: {
-		width: '1579px',
-		height: '100%'
+		width: '1575px'
 	},
 	button: {
 		height: '35px',
