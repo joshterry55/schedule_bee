@@ -12,16 +12,28 @@ class About extends React.Component {
          create a schedule as well as to keep track of employee hours to ensure his employees were getting enough hours and not working overtime.</p>
        <hr/>
        </div>
-       <div>
-       <h3 className="center">Team</h3>
-       <h5>Cael Jensen</h5>
-       <p>Something about Cael here</p>
-       <h5>Josh Terry</h5>
-       <p>Some stuff about Josh here</p>
-       <h5>Marisa Jense</h5>
-       <p></p>
-       <h5>Ali Jepson</h5>
-       <p>Stuff about Ali</p>
+       <div className="center row">
+         <h3>The Team</h3>
+         <div className="col s12 m6">
+         <h5><strong>Cael Jensen</strong></h5>
+         <span className="cael-pic"></span>
+         <p>Something about Cael here</p>
+         </div>
+         <div className="col s12 m6">
+         <h5><strong>Josh Terry</strong></h5>
+         <span className="josh-pic"></span>
+         <p>Some stuff about Josh here</p>
+         </div>
+         <div className="col s12 m6">
+         <h5><strong>Marisa Jense</strong></h5>
+         <span className="marisa-pic"></span>
+         <p>Marisa graduated with a BS in Behavioral Science from Utah Valley University in 2014. </p>
+         </div>
+         <div className="col s12 m6">
+         <h5><strong>Ali Jepson</strong></h5>
+         <span className="ali-pic"></span>
+         <p>Stuff about Ali</p>
+         </div>
        </div>
        <div>
          <h3>Languages & Tools</h3>
