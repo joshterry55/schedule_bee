@@ -5,18 +5,55 @@ class ScheduleShiftBox extends React.Component {
 	constructor(props) {
 		super(props)
 
-		this.addShift = this.addShift.bind(this)
+		this.shiftModal = this.shiftModal.bind(this)
+		this.submitShift = this.submitShift.bind(this)
 	}
 
-	addShift() {
+
+	componentWillMount() {
+		$('.modal').modal();
+	}
+
+	shiftModal() {
 		let date = `${this.props.month}, ${this.props.year}`
 		let employeeId = this.props.id
-		debugger
-		// AJAX call will go here
-		// shift will have a start and end date
-		// shift will have the employeeId above
-		// shift will have date
+
+		let company = this.props.setcompany
+		return(
+			<div>
+				<div className="modal-content">
+					<h4>{date}</h4>
+					<form className='row'>
+						<div className='col s3'>
+							<label>Start</label>
+							<input type='text' ref='shiftStart' />
+						</div>
+						<div className='col s3'>
+							<label>End</label>
+							<input type='text' ref='shiftEnd' />
+						</div>
+						<input type='hidden' ref='shiftDate' value={date} />
+						<input type='hidden' ref='shiftEmployeeId' value={employeeId} />
+					</form>
+				</div>
+				<div className="modal-footer">
+					<a href="#!" onClick={this.submitShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+				</div>
+			</div>
+		)
 	}
+
+	submitShift(e) {
+		e.preventDefault()
+		let id = this.props.currentemployee
+		let shiftDay = this.refs.shiftDate.value
+		let start = this.refs.shiftStart.value
+		let end = this.refs.shiftEnd.value
+		let companyId = this.props.setcompany.id
+
+		debugger
+	}
+
 
 	display() {
 		let day = this.props.day
@@ -32,6 +69,9 @@ class ScheduleShiftBox extends React.Component {
 		return(
 			<div>
 				{this.display()}
+				<div id="modal1" className="modal">
+					{this.shiftModal()}
+				</div>
 			</div>
 		);
 	}
@@ -59,8 +99,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assigned } = state;
-  return { user, assigned }
+  let { user, assigned, setcompany, currentemployee } = state;
+  return { user, assigned, setcompany, currentemployee }
 }
 
 export default connect(mapStateToProps)(ScheduleShiftBox);
