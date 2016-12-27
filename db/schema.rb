@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161227032741) do
+ActiveRecord::Schema.define(version: 20161227174359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20161227032741) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.integer  "user_id"
+    t.integer  "company_id"
+    t.index ["company_id"], name: "index_shifts_on_company_id", using: :btree
     t.index ["schedule_templates_id"], name: "index_shifts_on_schedule_templates_id", using: :btree
     t.index ["user_id"], name: "index_shifts_on_user_id", using: :btree
   end
@@ -88,6 +90,7 @@ ActiveRecord::Schema.define(version: 20161227032741) do
   end
 
   add_foreign_key "schedule_templates", "companies"
+  add_foreign_key "shifts", "companies"
   add_foreign_key "shifts", "schedule_templates", column: "schedule_templates_id"
   add_foreign_key "shifts", "users"
   add_foreign_key "users", "companies"

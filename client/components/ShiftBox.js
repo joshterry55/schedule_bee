@@ -6,16 +6,58 @@ class ShiftBox extends React.Component {
 		super(props)
 
 		this.addShift = this.addShift.bind(this)
+		this.shiftModal = this.shiftModal.bind(this)
+		this.submitShift = this.submitShift.bind(this)
+	}
+
+
+	componentWillMount() {
+		$('.modal').modal();
+	}
+
+	shiftModal() {
+		let date = `${this.props.month}, ${this.props.year}`
+		let employeeId = this.props.id
+
+		let company = this.props.setcompany
+		return(
+			<div>
+				<div className="modal-content">
+					<h4>{date}</h4>
+					<form className='row'>
+						<div className='col s3'>
+							<label>Start</label>
+							<input type='text' ref='shiftStart' />
+						</div>
+						<div className='col s3'>
+							<label>End</label>
+							<input type='text' ref='shiftEnd' />
+						</div>
+						<input type='hidden' ref='shiftDate' value={date} />
+						<input type='hidden' ref='shiftEmployeeId' value={employeeId} />
+					</form>
+				</div>
+				<div className="modal-footer">
+					<a href="#!" onClick={this.submitShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+				</div>
+			</div>
+		)
+	}
+
+	submitShift(e) {
+		e.preventDefault()
+		let id = this.props.currentemployee
+		let shiftDay = this.refs.shiftDate.value
+		let start = this.refs.shiftStart.value
+		let end = this.refs.shiftEnd.value
+		let companyId = this.props.setcompany.id
+
+		debugger
 	}
 
 	addShift() {
-		let date = `${this.props.month}, ${this.props.year}`
-		let employeeId = this.props.id
-		debugger
-		// AJAX call will go here
-		// shift will have a start and end date
-		// shift will have the employeeId above
-		// shift will have date
+		let employee = this.props.id
+		this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
 	}
 
 	display() {
@@ -23,7 +65,7 @@ class ShiftBox extends React.Component {
 
 		return(
 			<div style={styles.shiftBox}>
-				<button onClick={this.addShift}>+</button>
+				<button data-target="modal1" onClick={this.addShift}>+</button>
 				<span style={styles.shiftDayText}>{day}</span>
 			</div>
 		)
@@ -33,6 +75,9 @@ class ShiftBox extends React.Component {
 		return(
 			<div>
 				{this.display()}
+				<div id="modal1" className="modal">
+					{this.shiftModal()}
+				</div>
 			</div>
 		);
 	}
@@ -60,8 +105,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assigned } = state;
-  return { user, assigned }
+  let { user, assigned, setcompany, currentemployee } = state;
+  return { user, assigned, setcompany, currentemployee }
 }
 
 export default connect(mapStateToProps)(ShiftBox);
