@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     get 'users/:id', as: 'users', :to => 'users#show'
     put 'users/:id', as: 'users/edit', :to => 'users#update'
     delete 'users/:id', as: 'users/delete', :to => 'users#destroy'
-    get 'companies/:id/shifts', as: 'companies/shifts', :to => 'shifts#index'
+    get 'users/:id/shifts', as: 'users/shifts', :to => 'shifts#index'
     resources :shifts
     resources :companies
   end

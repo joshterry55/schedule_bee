@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { showshift } from '../actions/showshift'
 
 class ShiftBox extends React.Component {
 	constructor(props) {
@@ -11,11 +12,19 @@ class ShiftBox extends React.Component {
 	}
 
 	componentDidMount() {
-		// let compId = this.props.setcompany
-		debugger
-		// $.ajax({
-		// 	url: `/api/companies//shifts`
-		// })
+		let employeeId = this.props.id
+		let shiftdate = `${this.props.month}, ${this.props.year}`
+
+		$.ajax({
+			url: `/api/users/${employeeId}/shifts`,
+			type: 'GET',
+			dataType: 'JSON'
+		}).done( shift => {
+
+			this.props.dispatch(showshift(shift, shiftdate))
+		}).fail( shift => {
+			debugger
+		})
 	}
 
 
@@ -128,8 +137,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assigned, setcompany, currentemployee, shiftdate } = state;
-  return { user, assigned, setcompany, currentemployee, shiftdate }
+  let { user, assigned, setcompany, currentemployee, shiftdate, showshift } = state;
+  return { user, assigned, setcompany, currentemployee, shiftdate, showshift }
 }
 
 export default connect(mapStateToProps)(ShiftBox);

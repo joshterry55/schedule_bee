@@ -1,5 +1,8 @@
 class Api::ShiftsController < ApplicationController
   def index
+    @user = User.find(params[:id])
+    @shift = @user.shifts
+    render json: @shift
   end
 
   def show
