@@ -33,6 +33,7 @@ class EmployeeSideEmployees extends React.Component {
       dataType: 'JSON'
     }).done( company => {
       this.props.dispatch({type: 'SET_COMPANY', company})
+      
     }).fail( data => {
       debugger
       console.log(data);

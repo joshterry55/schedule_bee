@@ -10,13 +10,21 @@ class ShiftBox extends React.Component {
 		this.submitShift = this.submitShift.bind(this)
 	}
 
+	componentDidMount() {
+		// let compId = this.props.setcompany
+		debugger
+		// $.ajax({
+		// 	url: `/api/companies//shifts`
+		// })
+	}
+
 
 	componentWillMount() {
 		$('.modal').modal();
 	}
 
 	shiftModal() {
-		let date = `${this.props.month}, ${this.props.year}`
+		let date = this.props.shiftdate
 		let employeeId = this.props.id
 
 		let company = this.props.setcompany
@@ -33,8 +41,6 @@ class ShiftBox extends React.Component {
 							<label>End</label>
 							<input type='text' ref='shiftEnd' />
 						</div>
-						<input type='hidden' ref='shiftDate' value={date} />
-						<input type='hidden' ref='shiftEmployeeId' value={employeeId} />
 					</form>
 				</div>
 				<div className="modal-footer">
@@ -47,16 +53,33 @@ class ShiftBox extends React.Component {
 	submitShift(e) {
 		e.preventDefault()
 		let id = this.props.currentemployee
-		let shiftDay = this.refs.shiftDate.value
+		let shiftDay = this.props.shiftdate
 		let start = this.refs.shiftStart.value
 		let end = this.refs.shiftEnd.value
 		let companyId = this.props.setcompany.id
 
-		debugger
+		$.ajax({
+			url: '/api/shifts',
+			type: 'POST',
+			dataType: 'JSON',
+			data: { shift: {
+        day: shiftDay,
+				start: start,
+				end: end,
+				user_id: id,
+				company_id: companyId
+      }}
+		}).done( shift => {
+			debugger
+		}).fail( data => {
+			debugger
+		})
 	}
 
 	addShift() {
+		let date = `${this.props.month}, ${this.props.year}`
 		let employee = this.props.id
+		this.props.dispatch({type: 'SHIFT_DATE', date })
 		this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
 	}
 
@@ -105,8 +128,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assigned, setcompany, currentemployee } = state;
-  return { user, assigned, setcompany, currentemployee }
+  let { user, assigned, setcompany, currentemployee, shiftdate } = state;
+  return { user, assigned, setcompany, currentemployee, shiftdate }
 }
 
 export default connect(mapStateToProps)(ShiftBox);
