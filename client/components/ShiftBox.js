@@ -13,6 +13,9 @@ class ShiftBox extends React.Component {
 		let employeeId = this.props.id
 		debugger
 		// AJAX call will go here
+		// shift will have a start and end date
+		// shift will have the employeeId above
+		// shift will have date
 	}
 
 	display() {
