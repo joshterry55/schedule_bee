@@ -1,13 +1,36 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
 class ShiftBox extends React.Component {
-	
-	render() {
+	constructor(props) {
+		super(props)
+
+		this.addShift = this.addShift.bind(this)
+	}
+
+	addShift() {
+		let date = `${this.props.month}, ${this.props.year}`
+		let employeeId = this.props.id
+		debugger
+		// AJAX call will go here
+	}
+
+	display() {
 		let day = this.props.day
+
 		return(
 			<div style={styles.shiftBox}>
-      	<span style={styles.shiftDayText}>{day}</span>
-      </div>
+				<button onClick={this.addShift}>+</button>
+				<span style={styles.shiftDayText}>{day}</span>
+			</div>
+		)
+	}
+
+	render() {
+		return(
+			<div>
+				{this.display()}
+			</div>
 		);
 	}
 
@@ -33,4 +56,9 @@ const styles = {
 	}
 }
 
-export default ShiftBox;
+const mapStateToProps = (state) => {
+  let { user, assigned } = state;
+  return { user, assigned }
+}
+
+export default connect(mapStateToProps)(ShiftBox);

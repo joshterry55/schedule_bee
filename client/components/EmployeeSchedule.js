@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 import setdate from '../actions/setdate';
 import setweek from '../actions/setweek';
 import { getcompanies } from '../actions/companies';
-import DayColumn from './DayColumn';
+import EmployeeDayColumn from './EmployeeDayColumn';
 let weekOffset = 0
 
 class EmployeeSchedule extends Component {
@@ -48,13 +48,13 @@ class EmployeeSchedule extends Component {
 				<div className="col s12" style={styles.noPadding}>
 					<div style={styles.calendarWindow}>
 						<div style={styles.calendar}>
-							<DayColumn day="0" />
-							<DayColumn day="1" />
-							<DayColumn day="2" />
-							<DayColumn day="3" />
-							<DayColumn day="4" />
-							<DayColumn day="5" />
-							<DayColumn day="6" />
+							<EmployeeDayColumn day="0" />
+							<EmployeeDayColumn day="1" />
+							<EmployeeDayColumn day="2" />
+							<EmployeeDayColumn day="3" />
+							<EmployeeDayColumn day="4" />
+							<EmployeeDayColumn day="5" />
+							<EmployeeDayColumn day="6" />
 						</div>
 					</div>
 				</div>
