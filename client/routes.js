@@ -6,6 +6,7 @@ import NoMatch from './components/NoMatch';
 import Admin from './components/Admin';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import About from './components/About';
 import AuthenticatedRoutes from './components/AuthenticatedRoutes';
 import Dashboard from './components/Dashboard';
 import ScheduleView from './components/ScheduleView';
@@ -30,6 +31,7 @@ export default (
     <Route path="/" component={App}>
       <Route path='/signup' component={SignUp} />
       <Route path='/signin' component={SignIn} />
+      <Route path='/about' component={About} />
       <Route component={AuthenticatedRoutes}>
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/schedule' component={ScheduleView} />

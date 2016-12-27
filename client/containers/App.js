@@ -64,6 +64,7 @@ class App extends React.Component {
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/signup'>Signup</Link></li>
           <li><Link to='/signin'>Signin</Link></li>
+          <li><Link to='/about'>About</Link></li>
         </div>
       )
     }
