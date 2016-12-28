@@ -1,14 +1,24 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import ShiftBox from './ShiftBox';
-import ScheduleShiftBox from './ScheduleShiftBox';
 
-class DayColumn extends Component {
+class DateBar extends Component {
+	constructor(props) {
+		super(props);
+		
+		this.showDates = this.showDates.bind(this);
+	}
 
+	componentDidMount() {
+    $(function(){
+      $('.scrollLinkedX').scroll(function(){
+        $('.scrollLinkedX').scrollLeft($(this).scrollLeft());    
+      })
+    })
+  }
 
-	myDate() {
+	myDate(day) {
 
-		let dayOffset = this.props.setdate - this.props.day;
+		let dayOffset = this.props.setdate - day;
 		let fullDate = new Date(Date.now()-((dayOffset * 24)*60*60*1000));
 		let myDate = []
 
@@ -26,39 +36,37 @@ class DayColumn extends Component {
 		return myDate
 	}
 
-	addEmployeeRow(myDate) {
-		let month = myDate[1]
-		let year = myDate[2]
-		let employees = this.props.setemployee
-		let day = myDate[0]
-		let highlightRow = 0
-		if(employees.length != 0) {
-			if(document.location.pathname === "/shiftschedule") {
-				return employees.map( e => {
-					highlightRow += 1
-					let highlight = highlightRow % 2
-	        return(
-	        	<ScheduleShiftBox key={this.props.day + "-" + e.id} day={day} month={month} year={year} id={e.id} highlight={highlight} />
-	        )
-				})
-			} else {
-	      return employees.map( e => {
-	      	highlightRow += 1
-					let highlight = highlightRow % 2
-	        return(
-	        	<ShiftBox key={this.props.day + "-" + e.id} day={day} month={month} year={year} id={e.id} highlight={highlight} />
-	        )
-				})
-			}
+	highlightToday(day) {
+		let dayOffset = this.props.setdate - day;
+		if(dayOffset === 0) {
+			return {...styles.dateBox, ...styles.dateBoxToday}
+		} else {
+			return styles.dateBox
 		}
 	}
 
-	render() {
-		let myDate = this.myDate();
-		return (
+	showDates() {
+		let days = [0,1,2,3,4,5,6];
+		return days.map( day => {
+			let myDate = this.myDate(day);
+      return(
+      	<div style={styles.leftFloat}>
+					<div style={this.highlightToday(day)}>
+						<span style={styles.dayText}> {myDate[0]} </span>
+						<span style={styles.dateText}> {myDate[1]} </span>
+						<span style={styles.yearText}> {myDate[2]} </span>
+					</div>
+				</div>
+      )
+		})
+	}
 
-			<div style={styles.leftFloat}>
-				{ this.addEmployeeRow(myDate) }
+	render() {
+		return (
+			<div style={styles.dateBarWindow} className="scrollLinkedX">
+				<div style={styles.dateBar}>
+					{this.showDates()}
+				</div>
 			</div>
 		);
 	}
@@ -71,6 +79,17 @@ const mapStateToProps = (state) => {
 }
 
 const styles = {
+	dateBarWindow: {
+		width: '100%',
+		height: '40px',
+		backgroundColor: "#ccc",
+		border: "1px solid black",
+		borderBottom: '0px solid black',
+		overflow: 'scroll'
+	},
+	dateBar: {
+		width: '1575px'
+	},
 	dateBox: {
 		width: "225px",
 		height: "40px",
@@ -110,26 +129,9 @@ const styles = {
 		top: "-7px",
 		right: "0"
 	},
-	shiftDayText: {
-		fontWeight: "bold",
-		fontSize: "18px",
-		color: "#000",
-		opacity: "0.10",
-		position: "absolute",
-		bottom: "0px",
-		right: "2px",
-		transform: "rotate(-35deg)"
-	},
 	leftFloat: {
 		float: 'left'
-	},
-	shiftBox: {
-		width: "225px",
-		height: "40px",
-		border: "1px solid #666",
-		backgroundColor: "#999",
-		position: "relative"
 	}
 }
 
-export default connect(mapStateToProps)(DayColumn);
+export default connect(mapStateToProps)(DateBar);

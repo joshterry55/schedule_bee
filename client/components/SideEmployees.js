@@ -17,9 +17,6 @@ class SideEmployees extends React.Component {
       $('.scrollLinkedY').scroll(function(){
         $('.scrollLinkedY').scrollTop($(this).scrollTop());    
       })
-      $('.scrollLinkedX').scroll(function(){
-        $('.scrollLinkedX').scrollLeft($(this).scrollLeft());    
-      })
     })
   }
 
@@ -78,7 +75,7 @@ class SideEmployees extends React.Component {
         <div style={styles.companySelectBox}>
           {this.displayCompanies()}
         </div>
-        <div style={styles.employeeSideWindow} className="scrollLinked">
+        <div style={styles.employeeSideWindow} className="scrollLinkedY">
           <div style={styles.employeeSideContainer}>
             {this.employees()}
           </div>
@@ -105,7 +102,7 @@ const styles = {
     overflowY: 'scroll'
   },
   employeeSideContainer: {
-    paddingBottom: '6px'
+    paddingBottom: '7px'
   },
 	employeeSideBox: {
 		width: "100%",

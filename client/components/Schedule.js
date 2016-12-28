@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import setdate from '../actions/setdate';
 import setweek from '../actions/setweek';
 import { getcompanies } from '../actions/companies';
+import DateBar from './DateBar';
 import DayColumn from './DayColumn';
 import SideEmployees from './SideEmployees'
 let weekOffset = 0
@@ -22,11 +23,11 @@ class Schedule extends Component {
 		this.props.dispatch(getcompanies());
 
     $(function(){
-      $('.scrollLinked').scroll(function(){
-        $('.scrollLinked').scrollTop($(this).scrollTop());    
+      $('.scrollLinkedY').scroll(function(){
+        $('.scrollLinkedY').scrollTop($(this).scrollTop());    
       })
-      $('.scrollLinked').scroll(function(){
-        $('.scrollLinked').scrollLeft($(this).scrollLeft());    
+      $('.scrollLinkedX').scroll(function(){
+        $('.scrollLinkedX').scrollLeft($(this).scrollLeft());    
       })
     })
 	}
@@ -65,7 +66,8 @@ class Schedule extends Component {
 					</div>
 				</div>
 				<div className="col s12" style={styles.noPadding}>
-					<div style={styles.calendarWindow} className="scrollLinked">
+					<DateBar />
+					<div style={styles.calendarWindow} className="scrollLinkedY scrollLinkedX">
 						<div style={styles.calendar}>
 							<DayColumn day="0" />
 							<DayColumn day="1" />
@@ -84,7 +86,7 @@ class Schedule extends Component {
 
 const styles = {
 	calendarWindow: {
-		height: '394px',
+		height: '354px',
 		width: '100%',
 		backgroundColor: "#ccc",
 		border: "1px solid black",

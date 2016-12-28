@@ -93,11 +93,19 @@ class ShiftBox extends React.Component {
 		this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
 	}
 
+	rowHighlight() {
+		if(this.props.highlight === 0) {
+			return styles.shiftBox
+		} else {
+			return styles.shiftBoxHighlight
+		}
+	}
+
 	display() {
 		let day = this.props.day
 
 		return(
-			<div style={styles.shiftBox}>
+			<div style={this.rowHighlight()}>
 				<button data-target="modal1" onClick={this.addShift}>+</button>
 				<span style={styles.shiftDayText}>{day}</span>
 			</div>
@@ -123,6 +131,13 @@ const styles = {
 		height: "40px",
 		border: "1px solid #666",
 		backgroundColor: "#999",
+		position: "relative"
+	},
+	shiftBoxHighlight: {
+		width: "225px",
+		height: "40px",
+		border: "1px solid #666",
+		backgroundColor: "#bbb",
 		position: "relative"
 	},
 	shiftDayText: {
