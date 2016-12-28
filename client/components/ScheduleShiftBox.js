@@ -54,12 +54,19 @@ class ScheduleShiftBox extends React.Component {
 		debugger
 	}
 
+	rowHighlight() {
+		if(this.props.highlight === 0) {
+			return styles.shiftBox
+		} else {
+			return styles.shiftBoxHighlight
+		}
+	}
 
 	display() {
 		let day = this.props.day
 
 		return(
-			<div style={styles.shiftBox}>
+			<div style={this.rowHighlight()}>
 				<span style={styles.shiftDayText}>{day}</span>
 			</div>
 		)
@@ -84,6 +91,13 @@ const styles = {
 		height: "40px",
 		border: "1px solid #666",
 		backgroundColor: "#999",
+		position: "relative"
+	},
+	shiftBoxHighlight: {
+		width: "225px",
+		height: "40px",
+		border: "1px solid #666",
+		backgroundColor: "#aaa",
 		position: "relative"
 	},
 	shiftDayText: {
