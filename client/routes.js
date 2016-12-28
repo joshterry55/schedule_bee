@@ -41,6 +41,7 @@ export default (
           <Route path='/admin' component={Admin} />
           <Route path='/companies' component={Companies} />
           <Route path='/company/:id' component={Company} />
+          <Route path='/schedule/:id' component={ScheduleView} />
           <Route path='/employees' component={Employees} />
           <Route path='/settings' component={Settings} />
         </Route>

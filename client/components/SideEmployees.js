@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { setemployee } from '../actions/setemployee';
 import { setcompany } from '../actions/setcompany';
+import {browserHistory} from 'react-router';
+
 
 class SideEmployees extends React.Component {
   constructor(props) {
@@ -15,7 +17,11 @@ class SideEmployees extends React.Component {
   componentDidMount() {
     $(function(){
       $('.scrollLinkedY').scroll(function(){
-        $('.scrollLinkedY').scrollTop($(this).scrollTop());    
+        $('.scrollLinkedY').scrollTop($(this).scrollTop());
+      })
+
+      $('.scrollLinkedX').scroll(function(){
+        $('.scrollLinkedX').scrollLeft($(this).scrollLeft());
       })
     })
   }
@@ -60,9 +66,11 @@ class SideEmployees extends React.Component {
       type: 'GET',
       dataType: 'JSON'
     }).done( companies => {
+      browserHistory.push(`/schedule/${companyId}`);
+      let that = window.location.pathname.substr(10)
+      debugger
       this.props.dispatch(setemployee(companies))
       this.props.dispatch(setcompany(companyId))
-
     }).fail( data => {
       debugger
       console.log(data);
