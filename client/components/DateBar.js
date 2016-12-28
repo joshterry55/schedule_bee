@@ -50,7 +50,7 @@ class DateBar extends Component {
 		return days.map( day => {
 			let myDate = this.myDate(day);
       return(
-      	<div style={styles.leftFloat}>
+      	<div key={day} style={styles.leftFloat}>
 					<div style={this.highlightToday(day)}>
 						<span style={styles.dayText}> {myDate[0]} </span>
 						<span style={styles.dateText}> {myDate[1]} </span>
