@@ -106,7 +106,7 @@ class ShiftBox extends React.Component {
 
 		return(
 			<div style={this.rowHighlight()}>
-				<button data-target="modal1" onClick={this.addShift}>+</button>
+				<button data-target="modal1" onClick={this.addShift} style={styles.addShiftButton}>+ Add Shift</button>
 				<span style={styles.shiftDayText}>{day}</span>
 			</div>
 		)
@@ -149,6 +149,16 @@ const styles = {
 		bottom: "0px",
 		right: "2px",
 		transform: "rotate(-35deg)"
+	},
+	addShiftButton: {
+		backgroundColor: 'Transparent',
+		margin: '6px 65px',
+		height: '25px',
+		width: '91px',
+		lineHeight: '10px',
+		color: '#666',
+		borderRadius: '5px',
+		border: '2px dashed #666'
 	}
 }
 
