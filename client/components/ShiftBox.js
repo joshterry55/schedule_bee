@@ -137,7 +137,7 @@ const styles = {
 		width: "225px",
 		height: "40px",
 		border: "1px solid #666",
-		backgroundColor: "#bbb",
+		backgroundColor: "#aaa",
 		position: "relative"
 	},
 	shiftDayText: {
