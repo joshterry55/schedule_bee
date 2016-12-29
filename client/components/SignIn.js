@@ -25,7 +25,7 @@ class SignIn extends React.Component {
       data: user
     }).done( user => {
       this.props.dispatch(login(user));
-      this.props.history.push('/dashboard')
+      this.props.history.push('/schedule')
     }).fail( err => {
       debugger
       let message = err.responseJSON.error
@@ -37,10 +37,14 @@ class SignIn extends React.Component {
     return(
       <div>
         <h3 className='center'>Sign In</h3>
-        <form className='container' onSubmit={this.handleSubmit}>
-          <input type="email" required={true} ref='email' placeholder='Email' />
-          <input type='password' required={true} ref='password' placeholder='Password' />
-          <button className='btn blue darken-3'>Sign In</button>
+        <form className='container row' onSubmit={this.handleSubmit}>
+          <div className='col s8 offset-s2'>
+            <input type="email" required={true} ref='email' placeholder='Email' />
+            <input type='password' required={true} ref='password' placeholder='Password' />
+          </div>
+          <div className='col s12 center'>
+            <button className='btn blue darken-3'>Sign In</button>
+          </div>
         </form>
       </div>
     )

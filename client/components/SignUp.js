@@ -37,18 +37,24 @@ class SignUp extends React.Component {
 
   render() {
     return(
-      <div>
-        <h2 className='center'>Sign Up</h2>
-        <form className='container' onSubmit={this.handleSubmit}>
-          <input placeholder='First Name' ref='first_name' required={true} />
-          <input placeholder='Last Name' ref='last_name' required={true} />
-          <input type='email' placeholder='Email' ref='email' required={true} />
-          <input type='password' placeholder='Password' ref='password' required={true} />
-          <input type='password' placeholder='Password Confirmation' ref='password_confirmation' required={true} />
-          <input type='hidden' ref='role' value='admin' />
-
-          <button className='btn blue darken-3'>Sign Up</button>
-        </form>
+      <div className='center'>
+        <h2>Admin Sign Up</h2>
+        <h6>If you are an employee, request a login from your manager.</h6><br />
+        <div className='container row center'>
+          <form onSubmit={this.handleSubmit}>
+            <div className="col s8 offset-s2">
+              <input placeholder='First Name' ref='first_name' required={true} />
+              <input placeholder='Last Name' ref='last_name' required={true} />
+              <input type='email' placeholder='Email' ref='email' required={true} />
+              <input type='password' placeholder='Password' ref='password' required={true} />
+              <input type='password' placeholder='Password Confirmation' ref='password_confirmation' required={true} />
+              <input type='hidden' ref='role' value='admin' />
+            </div>
+            <div className='col s12'>
+              <button className='btn blue darken-3'>Sign Up</button>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
