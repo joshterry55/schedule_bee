@@ -51,18 +51,20 @@ class Schedule extends Component {
 	render() {
 		return(
 			<div>
-				<div className="col s6 offset-s3 center">
-					<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
-					<button type='button' style={{...styles.button, ...styles.buttonCurrent}} onClick={this.setCurrent}>Current</button>&nbsp;
-					<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
-				</div>
-				<div className="col s3">
-					<div className="col s12 center grey-text text-darken-3">
-					View Schedule By:
+				<div style={styles.topBarContainer}>
+					<div className="col l6 offset-l3 m6 offset-m2 s6 offset-s1 center">
+						<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
+						<button type='button' style={{...styles.button, ...styles.buttonCurrent}} onClick={this.setCurrent}>Current</button>&nbsp;
+						<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
 					</div>
-					<div className="col s12 center">
-						<Link style={styles.viewButton} to='/schedule'>Employees</Link> &ensp;
-						<Link style={styles.viewButton} to='/shiftschedule'>Shifts</Link>
+					<div className="col l3 m4 s5">
+						<div className="col s12 center grey-text text-darken-3">
+						View Schedule By:
+						</div>
+						<div className="col s12 center">
+							<Link style={styles.viewButton} to='/schedule'>Employees</Link> &ensp;
+							<Link style={styles.viewButton} to='/shiftschedule'>Shifts</Link>
+						</div>
 					</div>
 				</div>
 				<div className="col s12" style={styles.noPadding}>
@@ -85,6 +87,9 @@ class Schedule extends Component {
 }
 
 const styles = {
+	topBarContainer: {
+		height: '40px'
+	},
 	calendarWindow: {
 		height: '354px',
 		width: '100%',
@@ -96,9 +101,9 @@ const styles = {
 		width: '1575px'
 	},
 	button: {
-		height: '35px',
-		padding: '0 15px',
-		margin: '5px',
+		height: '30px',
+		padding: '0 10px',
+		margin: '6px 5px',
 		borderRadius: '5px',
 		border: '1px solid #666',
 		background: "linear-gradient(#bbb, #999)",
@@ -116,7 +121,7 @@ const styles = {
 	},
 	viewButton: {
     height: '21px',
-    padding: '0 15px',
+    padding: '0 10px',
     borderRadius: '5px',
     border: '1px solid #666',
     background: "linear-gradient(#bbb, #999)",

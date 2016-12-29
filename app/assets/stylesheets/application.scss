@@ -1,5 +1,8 @@
 @import 'materialize';
 
+body {
+  min-width: 670px;
+}
 
 .alert {
   margin-bottom: 20px;
