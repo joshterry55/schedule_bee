@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, IndexRoute, browserHistory } from 'react-router';
 import { UserAuthWrapper } from 'redux-auth-wrapper';
 import App from './containers/App';
+import HomePage from './components/HomePage';
 import NoMatch from './components/NoMatch';
 import Admin from './components/Admin';
 import SignUp from './components/SignUp';
@@ -29,6 +30,7 @@ const AdminRoutes = AdminAccess( (props) => props.children )
 export default (
   <Route>
     <Route path="/" component={App}>
+      <IndexRoute component={HomePage} />
       <Route path='/signup' component={SignUp} />
       <Route path='/signin' component={SignIn} />
       <Route path='/about' component={About} />

@@ -61,6 +61,20 @@ body {
   display: inline-block;
 }
 
+#frontpage {
+  background-image: url('frontpage.jpg');
+  width: 667px;
+  height: 400px;
+  margin: 25px auto 50px;
+  padding-top: 75px;
+  color: #1565C0;
+  text-shadow: 0 0 5px #fff;
+}
+
+#frontpage h1 {
+  font-size: 80px;
+}
+
 .marisa-pic {
   background-image: url('marisa.jpg');
   background-size: cover;
