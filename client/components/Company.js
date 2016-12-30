@@ -31,7 +31,6 @@ class Company extends React.Component {
       this.props.dispatch(seteditcompanystate())
 
     }).fail( data => {
-      debugger
       console.log(data);
     });
   }
@@ -50,10 +49,9 @@ class Company extends React.Component {
       type: 'GET',
       dataType: 'JSON'
     }).done( company => {
-      
+
       this.props.dispatch({type: 'SET_COMPANY', company})
     }).fail( data => {
-      debugger
       console.log(data);
     });
   }
@@ -69,7 +67,6 @@ class Company extends React.Component {
   submitEdittedCompany(e) {
     e.preventDefault()
     let id = this.props.setcompany.id
-    debugger
 
     $.ajax({
       type: "PUT",
@@ -90,14 +87,14 @@ class Company extends React.Component {
       return(
         <form className='center col s4 offset-s4'ref='editCompanyForm' onSubmit={this.submitEdittedCompany}>
           <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder="Company Name" />
-          <input type='submit' className='btn' value='Update' />
+          <input type='submit' className='btn blue darken-3' value='Update' />
         </form>
       )
     } else {
       return(
         <div className='center'>
           <h2 className='center'>{company.name}</h2>
-          <button onClick={() => this.toggleEdit()}>Edit</button>
+          <button className='btn blue darken-3' onClick={() => this.toggleEdit()}>Edit</button>
         </div>
       )
     }

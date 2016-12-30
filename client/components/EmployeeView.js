@@ -46,7 +46,7 @@ class EmployeeView extends React.Component {
             <input ref='employeeWage' type='text' defaultValue={employee.wage} placeholder="Wage" />
             <label>Phone Number</label>
             <input ref='employeePhone' type='text' defaultValue={employee.phone} placeholder="Phone Number" />
-            <input type='submit' className='btn' value='Update'/>
+            <input type='submit' className='btn blue darken-3' value='Update'/>
           </form>
         </div>
       )
@@ -59,8 +59,10 @@ class EmployeeView extends React.Component {
           <p>Wage: {employee.wage} <small>per hour</small></p>
           <p>Email: {employee.email}</p>
           <p>Phone Number: {employee.phone}</p>
-          <button onClick={() => this.toggleEdit()}>Edit</button>
-          <button onClick={(e) => this.deleteEmployee(e)}>Delete</button>
+          <p>
+          <button className='emp-btn btn blue darken-3' onClick={() => this.toggleEdit()}>Edit</button>
+          <button className='emp-btn btn orange darken-3' onClick={(e) => this.deleteEmployee(e)}>Delete</button>
+          </p>
         </div>
       )
     }
