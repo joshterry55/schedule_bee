@@ -205,32 +205,40 @@ class ShiftBox extends React.Component {
 		// })
 		let shifts = this.props.currentshifts
 		let shiftMatch = false
-		for (var i = 0; i < this.props.currentshifts.length; i++) {
-			if (shifts[i].day === date && shifts[i].user_id === this.props.id) {
-				shiftMatch = true;
-				return (
-					<div style={styles.hasShift}>
-						<span>{shifts[i].start} - {shifts[i].end}</span>
-						<button onClick={(e) => this.deleteShift(e, shifts[i].id)}>Delete</button>
-						<button data-target="modal2" onClick={(e) => this.editShift(e, shifts[i].id)}>Edit</button>
-						<span style={styles.shiftDayText}>{day}</span>
-					</div>
-				)
-			} else {
-				if (i === this.props.currentshifts.length - 1) {
-					if (shiftMatch === false) {
-						return(
-							<div style={this.rowHighlight()}>
-								<button data-target="modal1" onClick={this.addShift} style={styles.addShiftButton}>+ Add Shift</button>
-								<span style={styles.shiftDayText}>{day}</span>
-							</div>
-						)
-					}
+		if(this.props.currentshifts.length != 0) {
+			for (var i = 0; i < this.props.currentshifts.length; i++) {
+				if (shifts[i].day === date && shifts[i].user_id === this.props.id) {
+					shiftMatch = true;
+					return (
+						<div style={styles.hasShift}>
+							<span>{shifts[i].start} - {shifts[i].end}</span>
+							<button onClick={(e) => this.deleteShift(e, shifts[i].id)}>Delete</button>
+							<button data-target="modal2" onClick={(e) => this.editShift(e, shifts[i].id)}>Edit</button>
+							<span style={styles.shiftDayText}>{day}</span>
+						</div>
+					)
+				} else {
+					if (i === this.props.currentshifts.length - 1) {
+						if (shiftMatch === false) {
+							return(
+								<div style={this.rowHighlight()}>
+									<button data-target="modal1" onClick={this.addShift} style={styles.addShiftButton}>+ Add Shift</button>
+									<span style={styles.shiftDayText}>{day}</span>
+								</div>
+							)
+						}
 
+					}
 				}
 			}
+		} else {
+			return(
+				<div style={this.rowHighlight()}>
+					<button data-target="modal1" onClick={this.addShift} style={styles.addShiftButton}>+ Add Shift</button>
+					<span style={styles.shiftDayText}>{day}</span>
+				</div>
+			)
 		}
-
 
 	}
 
