@@ -1,6 +1,7 @@
 import React from 'react';
 import AdminNav from './AdminNav'
 
+
 class Admin extends React.Component {
 
   componentDidMount() {
@@ -19,9 +20,10 @@ class Admin extends React.Component {
 
       <div>
         <AdminNav />
-        I am on Admin
+        <p className='container'>
+        Welcome, Admin
         {this.cael()}
-
+        </p>
       </div>
     )
   }

@@ -1,13 +1,13 @@
 import React from 'react';
 import AdminNav from './AdminNav'
 import { connect } from 'react-redux';
+import { setFlash } from '../actions/flash';
 
 
 class Employees extends React.Component {
   constructor(props) {
     super(props);
     // this.state = { companies: [] }
-
     this.inviteEmployee = this.inviteEmployee.bind(this);
     this.companiesOptions = this.companiesOptions.bind(this);
   }
@@ -27,7 +27,6 @@ class Employees extends React.Component {
     }).fail( data => {
       console.log(data);
     });
-
   }
 
   componentDidUpdate() {
@@ -55,16 +54,19 @@ class Employees extends React.Component {
     }).done( data => {
       // set success flash
       // clear the form
+      // let message = data.responseJSON.success;
+      // this.props.dispatch(setFlash(message, 'success'))
+      this.inviteForm.reset();
+      console.log('Invitation sent');
+      }).fail( data => {
       console.log(data);
-    }).fail( data => {
-      console.log(data);
-    })
+    });
   }
 
   display() {
     if(this.props.assigned.length) {
       return(
-        <form className='row center' onSubmit={this.inviteEmployee}>
+        <form ref={(input) => this.inviteForm = input} className='row center' onSubmit={this.inviteEmployee}>
           <div className='col s6 offset-s3'>
             <label>Select A Company</label>
             <select ref='company'>
@@ -86,7 +88,8 @@ class Employees extends React.Component {
     return(
       <div>
         <AdminNav />
-        <h3 className='center'>Add an Employee</h3>
+        <h3 className='center'>Add Employee: Send Email</h3>
+        <p className='container'><i> Employees are added by sending an email invitation.  Once the employee receives the email and clicks the link, they will be signed-in to view the schedule and their shifts.  <strong>Please note:</strong> employees will not be able to sign-in and see their shifts until they click the link in the invitation email.</i></p>
         { this.display() }
       </div>
     )

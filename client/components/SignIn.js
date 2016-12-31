@@ -1,7 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { login } from '../actions/auth'
-import { setFlash } from '../actions/flash'
+import { connect } from 'react-redux';
+import { login } from '../actions/auth';
+import { setFlash } from '../actions/flash';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -27,10 +27,9 @@ class SignIn extends React.Component {
       this.props.dispatch(login(user));
       this.props.history.push('/schedule')
     }).fail( err => {
-      debugger
-      let message = err.responseJSON.error
+      let message = err.responseJSON.error;
       this.props.dispatch(setFlash(message, 'error'))
-    })
+    });
   }
 
   render() {
