@@ -138,7 +138,8 @@ class ShiftBox extends React.Component {
 				company_id: editCompanyId
 			}}
 		}).done( shift => {
-			let companyId = window.location.pathname.substr(10)
+			// let companyId = window.location.pathname.substr(10)
+			let companyId = shift.company_id
 			this.props.dispatch(currentshifts(companyId))
 		}).fail( data => {
 			debugger
