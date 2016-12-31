@@ -12,6 +12,7 @@ import editemployee from './editemployee'
 import contactlist from './contactlist'
 import shiftdate from './shiftdate'
 import showshift from './showshift'
+import currentshifts from './currentshifts'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
   editemployee,
   contactlist,
   shiftdate,
-  showshift
+  showshift,
+  currentshifts
  });
 
 export default rootReducer;

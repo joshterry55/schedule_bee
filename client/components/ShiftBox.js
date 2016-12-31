@@ -9,6 +9,7 @@ class ShiftBox extends React.Component {
 		this.addShift = this.addShift.bind(this)
 		this.shiftModal = this.shiftModal.bind(this)
 		this.submitShift = this.submitShift.bind(this)
+		this.deleteShift = this.deleteShift.bind(this)
 	}
 
 	componentDidMount() {
@@ -16,18 +17,17 @@ class ShiftBox extends React.Component {
 		let employeeId = this.props.id
 		let shiftdate = `${this.props.month}, ${this.props.year}`
 
-		$.ajax({
-			url: `/api/users/${employeeId}/shifts`,
-			type: 'GET',
-			dataType: 'JSON'
-		}).done( shift => {
+		// $.ajax({
+		// 	url: `/api/users/${employeeId}/shifts`,
+		// 	type: 'GET',
+		// 	dataType: 'JSON'
+		// }).done( shift => {
 
-			this.props.dispatch(showshift(shift, shiftdate))
-		}).fail( shift => {
-			debugger
-		})
+		// 	this.props.dispatch(showshift(shift, shiftdate))
+		// }).fail( shift => {
+		// 	debugger
+		// })
 	}
-	//blah
 
 
 	componentWillMount() {
@@ -81,7 +81,7 @@ class ShiftBox extends React.Component {
 				company_id: companyId
       }}
 		}).done( shift => {
-			debugger
+			this.props.dispatch({type: 'ADD_CURRENT_SHIFT', shift})
 		}).fail( data => {
 			debugger
 		})
@@ -102,15 +102,67 @@ class ShiftBox extends React.Component {
 		}
 	}
 
+	deleteShift(e, id) {
+		e.preventDefault()
+		
+		$.ajax({
+			url: `/api/shifts/${id}`,
+			type: 'DELETE',
+			dataType: 'JSON'
+		}).done( shift => {
+			this.props.dispatch({type: 'DELETE_CURRENT_SHIFT', shift})
+		}).fail( shift => {
+			debugger
+		})
+	}
+
 	display() {
 		let day = this.props.day
+		let date = `${this.props.month}, ${this.props.year}`
+		// return this.props.currentshifts.map( shift => {
+			// if(shift.day === date) {
+			// 	return(
+			// 		<div style={this.rowHighlight()}>
+			// 			<span style={styles.shiftDayText}>{day}</span>
+			// 		</div>
+			// 	)
+			// } else {
+			// 	return(
+			// 		<div style={this.rowHighlight()}>
+			// 			<button data-target="modal1" onClick={this.addShift} style={styles.addShiftButton}>+ Add Shift</button>
+			// 			<span style={styles.shiftDayText}>{day}</span>
+			// 		</div>
+			// 	)
+			// }
+		// })
+		let shifts = this.props.currentshifts
+		let shiftMatch = false
+		for (var i = 0; i < this.props.currentshifts.length; i++) {
+			if (shifts[i].day === date && shifts[i].user_id === this.props.id) {
+				shiftMatch = true;
+				return (
+					<div style={styles.hasShift}>
+						<span>{shifts[i].start} - {shifts[i].end}</span>
+						<button onClick={(e) => this.deleteShift(e, shifts[i].id)}>Delete</button>
+						<span style={styles.shiftDayText}>{day}</span>
+					</div>
+				)
+			} else {
+				if (i === this.props.currentshifts.length - 1) {
+					if (shiftMatch === false) {
+						return(
+							<div style={this.rowHighlight()}>
+								<button data-target="modal1" onClick={this.addShift} style={styles.addShiftButton}>+ Add Shift</button>
+								<span style={styles.shiftDayText}>{day}</span>
+							</div>
+						)
+					}
+					
+				}
+			}
+		}
 
-		return(
-			<div style={this.rowHighlight()}>
-				<button data-target="modal1" onClick={this.addShift} style={styles.addShiftButton}>+ Add Shift</button>
-				<span style={styles.shiftDayText}>{day}</span>
-			</div>
-		)
+
 	}
 
 	render() {
@@ -160,12 +212,19 @@ const styles = {
 		color: '#666',
 		borderRadius: '5px',
 		border: '2px dashed #666'
-	}
+	},
+	hasShift: {
+		width: "225px",
+		height: "40px",
+		border: "1px solid #666",
+		backgroundColor: "#FFF",
+		position: "relative"
+	},
 }
 
 const mapStateToProps = (state) => {
-  let { user, assigned, setcompany, currentemployee, shiftdate, showshift } = state;
-  return { user, assigned, setcompany, currentemployee, shiftdate, showshift }
+  let { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts } = state;
+  return { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts }
 }
 
 export default connect(mapStateToProps)(ShiftBox);

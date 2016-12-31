@@ -68,7 +68,6 @@ class SideEmployees extends React.Component {
     }).done( companies => {
       browserHistory.push(`/schedule/${companyId}`);
       let that = window.location.pathname.substr(10)
-      debugger
       this.props.dispatch(setemployee(companies))
       this.props.dispatch(setcompany(companyId))
     }).fail( data => {

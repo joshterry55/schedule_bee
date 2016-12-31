@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
+import { currentshifts } from '../actions/currentshifts';
 
 class DateBar extends Component {
 	constructor(props) {
@@ -47,8 +48,15 @@ class DateBar extends Component {
 
 	showDates() {
 		let days = [0,1,2,3,4,5,6];
+		let weekDates = []
 		return days.map( day => {
 			let myDate = this.myDate(day);
+			let todayDate = `${myDate[1]}, ${myDate[2]}`
+			weekDates.push(todayDate)
+			let companyId = document.location.pathname.substr(10)
+			if(day === 6 && companyId != "" && weekDates[0] != "undefined NaN, NaN") {
+				this.props.dispatch(currentshifts(companyId))
+			}
       return(
       	<div key={day} style={styles.leftFloat}>
 					<div style={this.highlightToday(day)}>

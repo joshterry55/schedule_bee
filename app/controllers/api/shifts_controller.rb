@@ -1,8 +1,8 @@
 class Api::ShiftsController < ApplicationController
   def index
-    @user = User.find(params[:id])
-    @shift = @user.shifts
-    render json: @shift
+    @company = Company.find(params[:id])
+    @shifts = @company.shifts
+    render json: @shifts
   end
 
   def show
@@ -11,10 +11,15 @@ class Api::ShiftsController < ApplicationController
   def create
     @shift = Shift.new(shift_params)
     if @shift.save
-      binding.pry
       render json: @shift
     else
     end
+  end
+
+  def destroy
+    @shift = Shift.find(params[:id])
+    @shift.destroy
+    render json: @shift
   end
 
   private
