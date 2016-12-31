@@ -17,39 +17,55 @@ class About extends React.Component {
          <h3>The Team</h3>
 
          <div className="col s12 m6 individual">
+           <div className="col s6">
            <span style={styles.pic} className="cael-pic"></span>
+           </div>
+           <div className="col s6">
            <h5 style={styles.team}>Cael Jensen</h5>
            <p style={styles.bio}>Cael is an entrepreneurial-minded web developer who has been tinkering
               with computers all his life. Creativity and design are his driving passions,
             and he's always looking for ways to expand his knowledge and experience.</p>
+        </div>
           <Link style ={styles.button} to='https://www.linkedin.com/in/cael-jensen-58b1b6134' target='_blank'><img className="li-pic"/></Link>
           <Link style ={styles.button} to='https://github.com/crjmosh' target='_blank'><img className="github-pic"/></Link>
          </div>
 
          <div className="col s12 m6 individual">
+           <div className="col s6">
            <span style={styles.pic} className="josh-pic"></span>
+           </div>
+           <div className="col s6">
            <h5 style={styles.team}>Josh Terry</h5>
            <p style={styles.bio}>Josh stuff here. Need more info! Waiting for more info Josh. You can do it! Blah blah Blah
               Blah blah blah blah blaaaaaa.</p>
+          </div>
             <Link style ={styles.button} to='https://www.linkedin.com/in/josh-terry-12b55311b' target='_blank'><img className="li-pic"/></Link>
             <Link style ={styles.button} to='https://github.com/joshterry55' target='_blank'><img className="github-pic"/></Link>
          </div>
 
          <div className="col s12 m6 individual">
+           <div className="col s6">
            <span style={styles.pic} className="ali-pic"></span>
+           </div>
+           <div className="col s6">
            <h5 style={styles.team}>Ali Jepsen</h5>
            <p style={styles.bio}>Ali has been working in the software industry for almost 20 years primarily in product management and QA testing.</p>
+           </div>
            <Link style ={styles.button} to='https://www.linkedin.com/in/ali-jepsen-879639' target='_blank'><img className="li-pic"/></Link>
            <Link style ={styles.button} to='https://github.com/alijepsen' target='_blank'><img className="github-pic"/></Link>
          </div>
 
          <div className="col s12 m6 individual">
+           <div className="col s6">
            <span style={styles.pic} className="marisa-pic"></span>
+           </div>
+           <div className="col s6">
            <h5 style={styles.team}>Marisa Jense</h5>
            <p style={styles.bio}>Marisa's background is in behavioral science, but
               her passion for creativity and desire to learn carried her into the tech world.
               She is excited for her future in web development as it has proven to be ever
               challenging and extremely rewarding.</p>
+          </div>
             <Link style ={styles.button} to='https://www.linkedin.com/in/marisa-jense-332930aa' target='_blank'><img className="li-pic"/></Link>
             <Link style ={styles.button} to='https://github.com/marisajense' target='_blank'><img className="github-pic"/></Link>
          </div>
@@ -112,7 +128,6 @@ const styles = {
   },
   pic: {
     boxShadow: '10px 10px 5px #eee',
-    float: 'left',
     margin: '10px',
     marginTop: '20px'
   },
