@@ -32,7 +32,7 @@ class EmployeeShiftBox extends React.Component {
 				if (shifts[i].day === date && shifts[i].user_id === this.props.id) {
 					shiftMatch = true;
 					return (
-						<div style={styles.hasShift}>
+						<div className='center' style={styles.hasShift}>
 							<span>{shifts[i].start} - {shifts[i].end}</span>
 							<span style={styles.shiftDayText}>{day}</span>
 						</div>
