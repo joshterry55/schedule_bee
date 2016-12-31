@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { showshift } from '../actions/showshift'
+import { currentshifts } from '../actions/currentshifts'
 
 class ShiftBox extends React.Component {
 	constructor(props) {
@@ -9,7 +10,9 @@ class ShiftBox extends React.Component {
 		this.addShift = this.addShift.bind(this)
 		this.shiftModal = this.shiftModal.bind(this)
 		this.submitShift = this.submitShift.bind(this)
+		this.submitEditShift = this.submitEditShift.bind(this)
 		this.deleteShift = this.deleteShift.bind(this)
+		this.editShift = this.editShift.bind(this)
 	}
 
 	componentDidMount() {
@@ -61,6 +64,33 @@ class ShiftBox extends React.Component {
 		)
 	}
 
+	editShiftModal() {
+		let date = this.props.shiftdate
+		let employeeId = this.props.id
+
+		let company = this.props.setcompany
+		return(
+			<div>
+				<div className="modal-content">
+					<h4>{date}</h4>
+					<form className='row'>
+						<div className='col s3'>
+							<label>Start</label>
+							<input type='text' ref='editShiftStart' />
+						</div>
+						<div className='col s3'>
+							<label>End</label>
+							<input type='text' ref='editShiftEnd' />
+						</div>
+					</form>
+				</div>
+				<div className="modal-footer">
+					<a href="#!" onClick={this.submitEditShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+				</div>
+			</div>
+		)
+	}
+
 	submitShift(e) {
 		e.preventDefault()
 		let id = this.props.currentemployee
@@ -87,6 +117,34 @@ class ShiftBox extends React.Component {
 		})
 	}
 
+	submitEditShift(e) {
+
+		e.preventDefault()
+		let editId = this.props.shiftedit
+		let editEmployeeId = this.props.currentemployee
+		let editShiftDay = this.props.shiftdate
+		let editStart = this.refs.editShiftStart.value
+		let editEnd = this.refs.editShiftEnd.value
+		let editCompanyId = this.props.setcompany.id
+		$.ajax({
+			url: `/api/shifts/${editId}`,
+			type: 'PUT',
+			dataType: 'JSON',
+			data: { shift: {
+				day: editShiftDay,
+				start: editStart,
+				end: editEnd,
+				user_id: editEmployeeId,
+				company_id: editCompanyId
+			}}
+		}).done( shift => {
+			let companyId = window.location.pathname.substr(10)
+			this.props.dispatch(currentshifts(companyId))
+		}).fail( data => {
+			debugger
+		})
+	}
+
 	addShift() {
 		let date = `${this.props.month}, ${this.props.year}`
 		let employee = this.props.id
@@ -104,7 +162,7 @@ class ShiftBox extends React.Component {
 
 	deleteShift(e, id) {
 		e.preventDefault()
-		
+
 		$.ajax({
 			url: `/api/shifts/${id}`,
 			type: 'DELETE',
@@ -114,6 +172,15 @@ class ShiftBox extends React.Component {
 		}).fail( shift => {
 			debugger
 		})
+	}
+
+	editShift(e, id) {
+		e.preventDefault()
+		let date = `${this.props.month}, ${this.props.year}`
+		let employee = this.props.id
+		this.props.dispatch({type: 'SHIFT_DATE', date })
+		this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
+		this.props.dispatch({type: 'EDITTING_SHIFT', id})
 	}
 
 	display() {
@@ -144,6 +211,7 @@ class ShiftBox extends React.Component {
 					<div style={styles.hasShift}>
 						<span>{shifts[i].start} - {shifts[i].end}</span>
 						<button onClick={(e) => this.deleteShift(e, shifts[i].id)}>Delete</button>
+						<button data-target="modal2" onClick={(e) => this.editShift(e, shifts[i].id)}>Edit</button>
 						<span style={styles.shiftDayText}>{day}</span>
 					</div>
 				)
@@ -157,7 +225,7 @@ class ShiftBox extends React.Component {
 							</div>
 						)
 					}
-					
+
 				}
 			}
 		}
@@ -171,6 +239,9 @@ class ShiftBox extends React.Component {
 				{this.display()}
 				<div id="modal1" className="modal">
 					{this.shiftModal()}
+				</div>
+				<div id="modal2" className="modal">
+					{this.editShiftModal()}
 				</div>
 			</div>
 		);
@@ -223,8 +294,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts } = state;
-  return { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts }
+  let { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit } = state;
+  return { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit }
 }
 
 export default connect(mapStateToProps)(ShiftBox);

@@ -16,6 +16,14 @@ class Api::ShiftsController < ApplicationController
     end
   end
 
+  def update
+    @shift = Shift.find(params[:id])
+    if @shift.update(shift_params)
+      render json: @shift
+    else
+    end
+  end
+
   def destroy
     @shift = Shift.find(params[:id])
     @shift.destroy
