@@ -38,6 +38,7 @@ export default (
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/schedule' component={ScheduleView} />
         <Route path='/employeescheduleview' component={EmployeeScheduleView} />
+        <Route path='/employeescheduleview/:id' component={EmployeeScheduleView} />
         <Route path='/shiftschedule' component={ShiftScheduleView} />
         <Route component={AdminRoutes}>
           <Route path='/admin' component={Admin} />

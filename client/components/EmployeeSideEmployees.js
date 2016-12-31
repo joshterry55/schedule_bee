@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { setemployee } from '../actions/setemployee';
 import { setcompany } from '../actions/setcompany';
+import {browserHistory} from 'react-router';
 
 class EmployeeSideEmployees extends React.Component {
   constructor(props) {
@@ -32,8 +33,9 @@ class EmployeeSideEmployees extends React.Component {
       type: 'GET',
       dataType: 'JSON'
     }).done( company => {
+      browserHistory.push(`/employeescheduleview/${Id}`);
       this.props.dispatch({type: 'SET_COMPANY', company})
-      
+
     }).fail( data => {
       debugger
       console.log(data);

@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import setdate from '../actions/setdate';
 import setweek from '../actions/setweek';
 import { getcompanies } from '../actions/companies';
+import EmployeeDateBar from './EmployeeDateBar';
 import EmployeeDayColumn from './EmployeeDayColumn';
 let weekOffset = 0
 
@@ -19,6 +20,15 @@ class EmployeeSchedule extends Component {
 	componentDidMount() {
 		this.props.dispatch(setdate());
 		this.props.dispatch(getcompanies());
+
+    $(function(){
+      $('.scrollLinkedY').scroll(function(){
+        $('.scrollLinkedY').scrollTop($(this).scrollTop());
+      })
+      $('.scrollLinkedX').scroll(function(){
+        $('.scrollLinkedX').scrollLeft($(this).scrollLeft());
+      })
+    })
 	}
 
 	setWeekBack() {
@@ -40,13 +50,16 @@ class EmployeeSchedule extends Component {
 	render() {
 		return(
 			<div>
-				<div className="col s6 offset-s3 center">
-					<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
-					<button type='button' style={{...styles.button, ...styles.buttonCurrent}} onClick={this.setCurrent}>Current</button>&nbsp;
-					<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
+				<div style={styles.topBarContainer}>
+					<div className="col l6 offset-l3 m6 offset-m2 s6 offset-s1 center">
+						<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
+						<button type='button' style={{...styles.button, ...styles.buttonCurrent}} onClick={this.setCurrent}>Current</button>&nbsp;
+						<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
+					</div>
 				</div>
 				<div className="col s12" style={styles.noPadding}>
-					<div style={styles.calendarWindow}>
+					<EmployeeDateBar />
+					<div style={styles.calendarWindow} className="scrollLinkedY scrollLinkedX">
 						<div style={styles.calendar}>
 							<EmployeeDayColumn day="0" />
 							<EmployeeDayColumn day="1" />
@@ -64,22 +77,23 @@ class EmployeeSchedule extends Component {
 }
 
 const styles = {
+	topBarContainer: {
+		height: '40px'
+	},
 	calendarWindow: {
-		height: '394px',
+		height: '354px',
 		width: '100%',
-		padding: "3px",
 		backgroundColor: "#ccc",
 		border: "1px solid black",
 		overflow: 'scroll'
 	},
 	calendar: {
-		width: '1579px',
-		height: '100%'
+		width: '1575px'
 	},
 	button: {
-		height: '35px',
-		padding: '0 15px',
-		margin: '5px',
+		height: '30px',
+		padding: '0 10px',
+		margin: '6px 5px',
 		borderRadius: '5px',
 		border: '1px solid #666',
 		background: "linear-gradient(#bbb, #999)",
@@ -97,7 +111,7 @@ const styles = {
 	},
 	viewButton: {
     height: '21px',
-    padding: '0 15px',
+    padding: '0 10px',
     borderRadius: '5px',
     border: '1px solid #666',
     background: "linear-gradient(#bbb, #999)",

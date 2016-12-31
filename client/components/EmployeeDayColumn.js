@@ -25,38 +25,28 @@ class EmployeeDayColumn extends Component {
 		return myDate
 	}
 
-	highlightToday() {
-		let dayOffset = this.props.setdate - this.props.day;
-		if(dayOffset === 0) {
-			return {...styles.dateBox, ...styles.dateBoxToday}
-		} else {
-			return styles.dateBox
-		}
-	}
-
 	addEmployeeRow(myDate) {
+		let month = myDate[1]
+		let year = myDate[2]
 		let employees = this.props.setemployee
 		let day = myDate[0]
+		let highlightRow = 0
 		if(employees.length != 0) {
       return employees.map( e => {
+      	highlightRow += 1
+				let highlight = highlightRow % 2
         return(
-        	<EmployeeShiftBox key={this.props.day + "-" + e.id} day={day} />
+        	<EmployeeShiftBox key={this.props.day + "-" + e.id} day={day} month={month} year={year} id={e.id} highlight={highlight} />
         )
 			})
 		}
 	}
-
 
 	render() {
 		let myDate = this.myDate();
 		return (
 
 			<div style={styles.leftFloat}>
-				<div style={this.highlightToday()}>
-					<span style={styles.dayText}> {myDate[0]} </span>
-					<span style={styles.dateText}> {myDate[1]} </span>
-					<span style={styles.yearText}> {myDate[2]} </span>
-				</div>
 				{ this.addEmployeeRow(myDate) }
 			</div>
 		);
@@ -119,9 +109,9 @@ const styles = {
 		right: "2px",
 		transform: "rotate(-35deg)"
 	},
-		leftFloat: {
-			float: 'left'
-		},
+	leftFloat: {
+		float: 'left'
+	},
 	shiftBox: {
 		width: "225px",
 		height: "40px",
