@@ -1,4 +1,6 @@
 class Api::ShiftsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     @company = Company.find(params[:id])
     @shifts = @company.shifts
