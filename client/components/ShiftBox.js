@@ -211,10 +211,10 @@ class ShiftBox extends React.Component {
 					shiftMatch = true;
 					return (
 						<div style={styles.hasShift}>
-							<span>{shifts[i].start} - {shifts[i].end}</span>
-							<button onClick={(e) => this.deleteShift(e, shifts[i].id)}>Delete</button>
-							<button data-target="modal2" onClick={(e) => this.editShift(e, shifts[i].id)}>Edit</button>
+							<span style={styles.shiftTimes}>{shifts[i].start} - {shifts[i].end}</span>
 							<span style={styles.shiftDayText}>{day}</span>
+							<button style={styles.shiftDeleteButton} title = 'Delete Shift' onClick={(e) => this.deleteShift(e, shifts[i].id)}> <i className="tiny material-icons">delete</i> </button>
+							<button style={styles.shiftEditButton} title='Edit Shift' data-target="modal2" onClick={(e) => this.editShift(e, shifts[i].id)}> <i className="tiny material-icons">mode_edit</i> </button>
 						</div>
 					)
 				} else {
@@ -289,17 +289,41 @@ const styles = {
 		height: '25px',
 		width: '91px',
 		lineHeight: '10px',
-		color: '#666',
+		color: '#777',
 		borderRadius: '5px',
-		border: '2px dashed #666'
+		border: '2px dashed #777'
 	},
 	hasShift: {
 		width: "225px",
 		height: "40px",
-		border: "1px solid #666",
-		backgroundColor: "#FFF",
-		position: "relative"
+		border: "1px solid #1565C0",
+		backgroundColor: "#2B8FFF",
+		position: "relative",
+		paddingLeft: '3px'
 	},
+	shiftTimes: {
+		color: '#fff',
+		fontWeight: 'bold',
+		fontSize: '15px'
+	},
+	shiftEditButton: {
+		background: 'Transparent',
+		color: '#000',
+		opacity: "0.35",
+		border: 'none',
+		position: "absolute",
+		top: "-2px",
+		right: "15px",
+	},
+	shiftDeleteButton: {
+		background: 'Transparent',
+		color: '#000',
+		opacity: "0.35",
+		border: 'none',
+		position: "absolute",
+		top: "-2px",
+		right: "-5px",
+	}
 }
 
 const mapStateToProps = (state) => {
