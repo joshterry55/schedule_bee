@@ -32,8 +32,8 @@ class EmployeeShiftBox extends React.Component {
 				if (shifts[i].day === date && shifts[i].user_id === this.props.id) {
 					shiftMatch = true;
 					return (
-						<div className='center' style={styles.hasShift}>
-							<span>{shifts[i].start} - {shifts[i].end}</span>
+						<div style={styles.hasShift}>
+							<span style={styles.shiftTimes}>{shifts[i].start} - {shifts[i].end}</span>
 							<span style={styles.shiftDayText}>{day}</span>
 						</div>
 					)
@@ -108,10 +108,16 @@ const styles = {
 	hasShift: {
 		width: "225px",
 		height: "40px",
-		border: "1px solid #666",
-		backgroundColor: "#FFF",
-		position: "relative"
+		border: "1px solid #1565C0",
+		backgroundColor: "#2B8FFF",
+		position: "relative",
+		paddingLeft: '3px'
 	},
+	shiftTimes: {
+		color: '#fff',
+		fontWeight: 'bold',
+		fontSize: '15px'
+	}
 }
 
 const mapStateToProps = (state) => {
