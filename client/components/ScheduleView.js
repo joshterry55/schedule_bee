@@ -1,8 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import Schedule from './Schedule';
 import SideEmployees from './SideEmployees';
+import { connect } from 'react-redux'
 
 class ScheduleView extends Component {
+	constructor(props) {
+		super(props)
+	}
+
+	componentDidMount(){
+		debugger
+		if(this.props.user.role === "employee") {
+
+			this.props.history.push('/employeescheduleview')
+		}
+	}
+
 	render() {
 		return(
 			<div style={styles.scheduleBox} className="row">
@@ -15,6 +28,11 @@ class ScheduleView extends Component {
 			</div>
 		);
 	}
+}
+
+const mapStateToProps = (state) => {
+  let { user } = state;
+  return { user }
 }
 
 const styles = {
@@ -33,4 +51,4 @@ const styles = {
 	}
 }
 
-export default ScheduleView;
+export default connect(mapStateToProps)(ScheduleView);
