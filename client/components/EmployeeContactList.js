@@ -27,8 +27,9 @@ class EmployeeContactList extends React.Component {
       return this.props.setemployee.map( employee => {
         return(
           <div key={employee.id}>
-            <strong>{employee.first_name} {employee.last_name}</strong>: <br />
+            <strong>{employee.first_name} {employee.last_name}</strong><br />
             <strong>Email:</strong> {employee.email} <br />
+            <strong>Title:</strong> {employee.title} <br />
             <strong>Phone Number:</strong> {employee.phone} <br /><br />
           </div>);
       });
@@ -40,7 +41,8 @@ class EmployeeContactList extends React.Component {
     return(
       <div>
         <br />
-        <button className='btn' onClick={this.toggleContacts}>Contact List</button>
+        <button className='btn yellow darken-2' onClick={this.toggleContacts}>View Contacts List</button>
+        <br /><br />
         {this.showContactList()}
       </div>
     )

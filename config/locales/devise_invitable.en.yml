@@ -13,7 +13,7 @@ en:
         header: "Send invitation"
         submit_button: "Send an invitation"
       edit:
-        header: "Set your password"
+        header: "Set your password and view schedule"
         submit_button: "Set my password"
     mailer:
       invitation_instructions:

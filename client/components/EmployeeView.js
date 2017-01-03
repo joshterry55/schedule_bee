@@ -61,7 +61,7 @@ class EmployeeView extends React.Component {
           <p>Phone Number: {employee.phone}</p>
           <p>
           <button className='emp-btn btn blue darken-3' onClick={() => this.toggleEdit()}>Edit</button>
-          <button className='emp-btn btn orange darken-3' onClick={(e) => this.deleteEmployee(e)}>Delete</button>
+          <button className='emp-btn btn yellow darken-2' onClick={(e) => this.deleteEmployee(e)}>Delete</button>
           </p>
         </div>
       )
@@ -165,7 +165,7 @@ class EmployeeView extends React.Component {
           <select ref='employee'>
             { this.showEmployees() }
           </select>
-          <input className='btn blue darken-3' type='submit' value="Search" />
+          <input className='btn blue darken-3' type='submit' value="View Details" />
         </form>
         <br />
         { this.display() }
