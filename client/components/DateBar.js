@@ -93,7 +93,8 @@ const styles = {
 		backgroundColor: "#ccc",
 		border: "1px solid black",
 		borderBottom: '0px solid black',
-		overflow: 'scroll'
+		overflowX: 'scroll',
+		overflowY: 'hidden'
 	},
 	dateBar: {
 		width: '1575px'

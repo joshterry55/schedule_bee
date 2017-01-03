@@ -99,7 +99,6 @@ class ShiftBox extends React.Component {
 		let start = this.refs.shiftStart.value
 		let end = this.refs.shiftEnd.value
 		let companyId = this.props.setcompany.id
-		debugger
 		$.ajax({
 			url: '/api/shifts',
 			type: 'POST',
