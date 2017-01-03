@@ -207,3 +207,14 @@ body {
 .emp-btn {
   margin: 5px;
 }
+
+input:focus {
+  border-bottom: 1px solid #1565C0 !important;
+  -webkit-box-shadow: 0 1px 0 0 #01579b !important;
+  -moz-box-shadow: 0 1px 0 0 #01579b !important;
+  box-shadow: 0 1px 0 0 #01579b !important;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    color: #1565C0 !important;
+}
