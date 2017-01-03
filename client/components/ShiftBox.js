@@ -38,9 +38,9 @@ class ShiftBox extends React.Component {
 	}
 
 	shiftModal() {
+
 		let date = this.props.shiftdate
 		let employeeId = this.props.id
-
 		let company = this.props.setcompany
 		return(
 			<div>
@@ -49,7 +49,7 @@ class ShiftBox extends React.Component {
 					<form className='row'>
 						<div className='col s3'>
 							<label>Start</label>
-							<input type='time' ref='shiftStart' />
+							<input type='time' ref='shiftStart' autofocus />
 						</div>
 						<div className='col s3'>
 							<label>End</label>
@@ -77,7 +77,7 @@ class ShiftBox extends React.Component {
 					<form className='row'>
 						<div className='col s3'>
 							<label>Start</label>
-							<input type='time' ref='editShiftStart' />
+							<input type='time' ref='editShiftStart' autofocus />
 						</div>
 						<div className='col s3'>
 							<label>End</label>
@@ -92,6 +92,17 @@ class ShiftBox extends React.Component {
 		)
 	}
 
+	calculateDuration(start, end) {
+		let startHour = start.substr(0,2)
+		let startMinute = start.substr(3,2)
+		let endHour = end.substr(0,2)
+		let endMinute = end.substr(3,2)
+		let startTime = (parseInt(startHour * 60) + parseInt(startMinute))
+		let endTime = (parseInt(endHour * 60) + parseInt(endMinute))
+		let totalTime = Math.abs(endTime - startTime)
+		return(totalTime)
+	}
+
 	submitShift(e) {
 		e.preventDefault()
 		let id = this.props.currentemployee
@@ -99,7 +110,8 @@ class ShiftBox extends React.Component {
 		let start = this.refs.shiftStart.value
 		let end = this.refs.shiftEnd.value
 		let companyId = this.props.setcompany.id
-		
+		let duration = this.calculateDuration(start, end)
+
 		$.ajax({
 			url: '/api/shifts',
 			type: 'POST',
@@ -109,7 +121,8 @@ class ShiftBox extends React.Component {
 				start: start,
 				end: end,
 				user_id: id,
-				company_id: companyId
+				company_id: companyId,
+				duration: duration
       }}
 		}).done( shift => {
 			this.props.dispatch({type: 'ADD_CURRENT_SHIFT', shift})
@@ -127,7 +140,7 @@ class ShiftBox extends React.Component {
 		let editStart = this.refs.editShiftStart.value
 		let editEnd = this.refs.editShiftEnd.value
 		let editCompanyId = this.props.setcompany.id
-
+		let editDuration = this.calculateDuration(editStart, editEnd)
 		$.ajax({
 			url: `/api/shifts/${editId}`,
 			type: 'PUT',
@@ -137,7 +150,8 @@ class ShiftBox extends React.Component {
 				start: editStart,
 				end: editEnd,
 				user_id: editEmployeeId,
-				company_id: editCompanyId
+				company_id: editCompanyId,
+				duration: editDuration
 			}}
 		}).done( shift => {
 			// let companyId = window.location.pathname.substr(10)
