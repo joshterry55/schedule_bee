@@ -1,5 +1,5 @@
 <div class='container'>
-<h2><%= t 'devise.invitations.edit.header' %></h2>
+<h3><%= t 'devise.invitations.edit.header' %></h3>
 
 <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
   <%= devise_error_messages! %>

@@ -19,8 +19,8 @@ en:
       invitation_instructions:
         subject: "Welcome to ScheduleBee!"
         hello: "Hello %{email},"
-        someone_invited_you: "ScheduleBee has invited you to complete your Employee account and view your schedule.  Click the link below."
-        accept: "Set Password - View Schedule"
+        someone_invited_you: "ScheduleBee has invited you to view your schedule.  Click the link below to complete the setup of your account."
+        accept: "Create Employee Account"
         accept_until: "This invitation will be due in %{due_date}."
         ignore: "If you don't want to accept the account invitation, please ignore this email.<br /><br />\nYour account won't be created until you access the link above and set your password."
   time:
