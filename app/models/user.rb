@@ -8,9 +8,9 @@ class User < ApplicationRecord
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role, in: %w(admin manager employee)
 
-  # def block_from_invitation?
-  #   false
-  # end
+  def block_from_invitation?
+    false
+  end
 
   def full_name
     "#{first_name} #{last_name}"
