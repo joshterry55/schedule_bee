@@ -49,11 +49,11 @@ class ShiftBox extends React.Component {
 					<form className='row'>
 						<div className='col s3'>
 							<label>Start</label>
-							<input type='text' ref='shiftStart' />
+							<input type='time' ref='shiftStart' />
 						</div>
 						<div className='col s3'>
 							<label>End</label>
-							<input type='text' ref='shiftEnd' />
+							<input type='time' ref='shiftEnd' />
 						</div>
 					</form>
 				</div>
@@ -77,11 +77,11 @@ class ShiftBox extends React.Component {
 					<form className='row'>
 						<div className='col s3'>
 							<label>Start</label>
-							<input type='text' ref='editShiftStart' />
+							<input type='time' ref='editShiftStart' />
 						</div>
 						<div className='col s3'>
 							<label>End</label>
-							<input type='text' ref='editShiftEnd' defaultValue={shifts.end}/>
+							<input type='time' ref='editShiftEnd' defaultValue={shifts.end}/>
 						</div>
 					</form>
 				</div>
@@ -99,6 +99,7 @@ class ShiftBox extends React.Component {
 		let start = this.refs.shiftStart.value
 		let end = this.refs.shiftEnd.value
 		let companyId = this.props.setcompany.id
+		
 		$.ajax({
 			url: '/api/shifts',
 			type: 'POST',
@@ -126,6 +127,7 @@ class ShiftBox extends React.Component {
 		let editStart = this.refs.editShiftStart.value
 		let editEnd = this.refs.editShiftEnd.value
 		let editCompanyId = this.props.setcompany.id
+
 		$.ajax({
 			url: `/api/shifts/${editId}`,
 			type: 'PUT',
@@ -209,9 +211,35 @@ class ShiftBox extends React.Component {
 			for (var i = 0; i < this.props.currentshifts.length; i++) {
 				if (shifts[i].day === date && shifts[i].user_id === this.props.id) {
 					shiftMatch = true;
+					let shiftStartHour = shifts[i].start.substr(0,2)
+					let shiftStartMinute = shifts[i].start.substr(3,2)
+					let startMeridiem = 'AM'
+					if (shiftStartHour > 12) {
+						shiftStartHour -= 12
+						startMeridiem = 'PM'
+					}
+					if(shiftStartHour == 0){
+						shiftStartHour = 12
+					}
+					if(shiftStartHour < 10) {
+						shiftStartHour -= 0
+					}
+					let shiftEndHour = shifts[i].end.substr(0,2)
+					let shiftEndMinute = shifts[i].end.substr(3,2)
+					let endMeridiem = 'AM'
+					if (shiftEndHour > 12) {
+						shiftEndHour -= 12
+						endMeridiem = 'PM'
+					}
+					if(shiftEndHour == 0){
+						shiftEndHour = 12
+					}
+					if(shiftEndHour < 10) {
+						shiftEndHour -= 0
+					}
 					return (
 						<div style={styles.hasShift}>
-							<span style={styles.shiftTimes}>{shifts[i].start} - {shifts[i].end}</span>
+							<span style={styles.shiftTimes}>{`${shiftStartHour}:${shiftStartMinute} ${startMeridiem}`} - {`${shiftEndHour}:${shiftEndMinute} ${endMeridiem}`}</span>
 							<span style={styles.shiftDayText}>{day}</span>
 							<button style={styles.shiftDeleteButton} title = 'Delete Shift' onClick={(e) => this.deleteShift(e, shifts[i].id)}> <i className="tiny material-icons">delete</i> </button>
 							<button style={styles.shiftEditButton} title='Edit Shift' data-target="modal2" onClick={(e) => this.editShift(e, shifts[i])}> <i className="tiny material-icons">mode_edit</i> </button>

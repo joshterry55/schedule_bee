@@ -9,7 +9,7 @@ class ScheduleView extends Component {
 	}
 
 	componentDidMount(){
-		debugger
+		
 		if(this.props.user.role === "employee") {
 
 			this.props.history.push('/employeescheduleview')
