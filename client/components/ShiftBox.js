@@ -67,8 +67,9 @@ class ShiftBox extends React.Component {
 	editShiftModal() {
 		let date = this.props.shiftdate
 		let employeeId = this.props.id
-
+		let shifts = this.props.shiftedit
 		let company = this.props.setcompany
+
 		return(
 			<div>
 				<div className="modal-content">
@@ -80,7 +81,7 @@ class ShiftBox extends React.Component {
 						</div>
 						<div className='col s3'>
 							<label>End</label>
-							<input type='text' ref='editShiftEnd' />
+							<input type='text' ref='editShiftEnd' defaultValue={shifts.end}/>
 						</div>
 					</form>
 				</div>
@@ -120,7 +121,7 @@ class ShiftBox extends React.Component {
 	submitEditShift(e) {
 
 		e.preventDefault()
-		let editId = this.props.shiftedit
+		let editId = this.props.shiftedit.id
 		let editEmployeeId = this.props.currentemployee
 		let editShiftDay = this.props.shiftdate
 		let editStart = this.refs.editShiftStart.value
@@ -175,13 +176,13 @@ class ShiftBox extends React.Component {
 		})
 	}
 
-	editShift(e, id) {
+	editShift(e, shift) {
 		e.preventDefault()
 		let date = `${this.props.month}, ${this.props.year}`
 		let employee = this.props.id
 		this.props.dispatch({type: 'SHIFT_DATE', date })
 		this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
-		this.props.dispatch({type: 'EDITTING_SHIFT', id})
+		this.props.dispatch({type: 'EDITTING_SHIFT', shift})
 	}
 
 	display() {
@@ -214,7 +215,7 @@ class ShiftBox extends React.Component {
 							<span style={styles.shiftTimes}>{shifts[i].start} - {shifts[i].end}</span>
 							<span style={styles.shiftDayText}>{day}</span>
 							<button style={styles.shiftDeleteButton} title = 'Delete Shift' onClick={(e) => this.deleteShift(e, shifts[i].id)}> <i className="tiny material-icons">delete</i> </button>
-							<button style={styles.shiftEditButton} title='Edit Shift' data-target="modal2" onClick={(e) => this.editShift(e, shifts[i].id)}> <i className="tiny material-icons">mode_edit</i> </button>
+							<button style={styles.shiftEditButton} title='Edit Shift' data-target="modal2" onClick={(e) => this.editShift(e, shifts[i])}> <i className="tiny material-icons">mode_edit</i> </button>
 						</div>
 					)
 				} else {

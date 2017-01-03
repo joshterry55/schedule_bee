@@ -1,7 +1,7 @@
 const shiftedit = (state = [], action) => {
 	switch(action.type) {
     case "EDITTING_SHIFT":
-      return action.id
+      return action.shift
 		default:
 			return state;
 	}
