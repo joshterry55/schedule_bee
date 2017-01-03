@@ -25,7 +25,7 @@ const styles = {
   adminTab: {
     background: "linear-gradient(#999, #666)",
     margin: '5px',
-    lineHeight: '42px'
+    lineHeight: '42px',
   },
   tabText: {
     textShadow: "0 0 10px rgba(0,0,0,0.75)",
