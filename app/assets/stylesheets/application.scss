@@ -54,7 +54,10 @@ body {
 }
 
 .admin-tabs:hover {
-  background: linear-gradient(#bbb, #888) !important;
+  // background: linear-gradient(#C6CFD5, #56606F) !important;
+  background: linear-gradient(#1257a6, #1565C0)!important;
+  color: #0d3c73 !important;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5), 0 1px #8cb7e8 !important;
 }
 
 .ul.dropdown-content.select-dropdown.active li span  {

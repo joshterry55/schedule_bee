@@ -23,7 +23,9 @@ class AdminNav extends React.Component {
 
 const styles = {
   adminTab: {
-    background: "linear-gradient(#999, #666)",
+    background: "linear-gradient(#999, #333)",
+    border: "1px solid #666",
+		backgroundColor: "#999",
     margin: '5px',
     lineHeight: '42px',
   },
