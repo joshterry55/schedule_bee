@@ -289,7 +289,7 @@ class ShiftBox extends React.Component {
 						<div style={styles.hasShift}>
 							<span style={styles.shiftTimes}>{`${shiftStartHour}:${shiftStartMinute} ${startMeridiem}`} - {`${shiftEndHour}:${shiftEndMinute} ${endMeridiem}`}</span>
 							<br />
-							<span style={this.durationCheck(shifts[i].duration)}><i>Duration: {durationHours} hrs {durationMinutes} min</i></span>
+							<span style={this.durationCheck(shifts[i].duration)}><i>{durationHours} hrs {durationMinutes} min</i></span>
 							<span style={styles.shiftDayText}>{day}</span>
 							<button style={styles.shiftDeleteButton} title = 'Delete Shift' onClick={(e) => this.deleteShift(e, shifts[i].id)}> <i className="tiny material-icons">delete</i> </button>
 							<button style={styles.shiftEditButton} title='Edit Shift' data-target="modal2" onClick={(e) => this.editShift(e, shifts[i])}> <i className="tiny material-icons">mode_edit</i> </button>
