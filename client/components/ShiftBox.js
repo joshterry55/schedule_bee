@@ -58,7 +58,7 @@ class ShiftBox extends React.Component {
 					</form>
 				</div>
 				<div className="modal-footer">
-					<a href="#!" onClick={this.submitShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+					<a href="#!" onClick={this.submitShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
 				</div>
 			</div>
 		)
@@ -86,7 +86,7 @@ class ShiftBox extends React.Component {
 					</form>
 				</div>
 				<div className="modal-footer">
-					<a href="#!" onClick={this.submitEditShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+					<a href="#!" onClick={this.submitEditShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Update</a>
 				</div>
 			</div>
 		)
