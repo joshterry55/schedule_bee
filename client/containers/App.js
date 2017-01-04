@@ -87,6 +87,7 @@ class App extends React.Component {
             </ul>
           </div>
         </nav>
+        <Flash />
         { this.props.children }
       </div>
     )
