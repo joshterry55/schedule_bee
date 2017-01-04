@@ -281,7 +281,7 @@ class ShiftBox extends React.Component {
 					if(shiftEndHour < 10) {
 						shiftEndHour -= 0
 					}
-					
+
 					let durationHours = Math.floor(shifts[i].duration / 60)
 					let durationMinutes = (shifts[i].duration % 60)
 
@@ -422,7 +422,7 @@ const styles = {
 		width: '80%',
 		maxWidth: '500px',
 		border: '1px solid #333',
-		borderRadius: '15px'
+		borderRadius: '10px'
 	},
 	modalFooter: {
 		position: 'absolute',
