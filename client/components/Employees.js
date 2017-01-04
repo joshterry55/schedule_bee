@@ -58,8 +58,9 @@ class Employees extends React.Component {
       // this.props.dispatch(setFlash(message, 'success'))
       this.inviteForm.reset();
       console.log('Invitation sent');
-      }).fail( data => {
-      console.log(data);
+    }).fail( err => {
+      let message = err.responseJSON.error;
+      this.props.dispatch(setFlash(message, 'error'))
     });
   }
 
