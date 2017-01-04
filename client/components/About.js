@@ -18,7 +18,7 @@ class About extends React.Component {
 
          <div className="col s12 m6 individual">
            <div className="col s6">
-           <span style={styles.pic} className="cael-pic"></span>
+           <span style={styles.pic} className="cael-pic z-depth-5"></span>
            </div>
            <div className="col s6">
            <h5 style={styles.team}>Cael Jensen</h5>
@@ -32,7 +32,7 @@ class About extends React.Component {
 
          <div className="col s12 m6 individual">
            <div className="col s6">
-           <span style={styles.pic} className="josh-pic"></span>
+           <span style={styles.pic} className="josh-pic z-depth-5"></span>
            </div>
            <div className="col s6">
            <h5 style={styles.team}>Josh Terry</h5>
@@ -45,7 +45,7 @@ class About extends React.Component {
 
          <div className="col s12 m6 individual">
            <div className="col s6">
-           <span style={styles.pic} className="ali-pic"></span>
+           <span style={styles.pic} className="ali-pic z-depth-5"></span>
            </div>
            <div className="col s6">
            <h5 style={styles.team}>Ali Jepsen</h5>
@@ -57,7 +57,7 @@ class About extends React.Component {
 
          <div className="col s12 m6 individual">
            <div className="col s6">
-           <span style={styles.pic} className="marisa-pic"></span>
+           <span style={styles.pic} className="marisa-pic z-depth-5"></span>
            </div>
            <div className="col s6">
            <h5 style={styles.team}>Marisa Jense</h5>
@@ -127,7 +127,7 @@ const styles = {
     textShadow: '0 1px #ddd'
   },
   pic: {
-    boxShadow: '10px 10px 5px #eee',
+    borderRadius: '50%',
     margin: '10px',
     marginTop: '20px'
   },
@@ -144,3 +144,5 @@ const styles = {
 }
 
 export default About;
+
+// boxShadow: '10px 10px 5px #eee',
