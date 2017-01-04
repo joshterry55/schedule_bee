@@ -49,7 +49,7 @@ class ShiftBox extends React.Component {
 					<form className='row'>
 						<div className='col s3'>
 							<label>Start</label>
-							<input type='time' ref='shiftStart' />
+							<input type='time' ref='shiftStart' autofocus />
 						</div>
 						<div className='col s3'>
 							<label>End</label>
@@ -58,7 +58,7 @@ class ShiftBox extends React.Component {
 					</form>
 				</div>
 				<div className="modal-footer">
-					<a href="#!" onClick={this.submitShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+					<a href="#!" onClick={this.submitShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
 				</div>
 			</div>
 		)
@@ -77,7 +77,7 @@ class ShiftBox extends React.Component {
 					<form className='row'>
 						<div className='col s3'>
 							<label>Start</label>
-							<input type='time' ref='editShiftStart' />
+							<input type='time' ref='editShiftStart' autofocus />
 						</div>
 						<div className='col s3'>
 							<label>End</label>
@@ -86,7 +86,7 @@ class ShiftBox extends React.Component {
 					</form>
 				</div>
 				<div className="modal-footer">
-					<a href="#!" onClick={this.submitEditShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Update</a>
+					<a href="#!" onClick={this.submitEditShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
 				</div>
 			</div>
 		)
@@ -97,12 +97,9 @@ class ShiftBox extends React.Component {
 		let startMinute = start.substr(3,2)
 		let endHour = end.substr(0,2)
 		let endMinute = end.substr(3,2)
-		if (endHour == 0 && endMinute == 0) {
-			endHour = 24
-		}
 		let startTime = (parseInt(startHour * 60) + parseInt(startMinute))
 		let endTime = (parseInt(endHour * 60) + parseInt(endMinute))
-		let totalTime = (endTime - startTime)
+		let totalTime = Math.abs(endTime - startTime)
 		return(totalTime)
 	}
 
@@ -203,14 +200,6 @@ class ShiftBox extends React.Component {
 		this.props.dispatch({type: 'EDITTING_SHIFT', shift})
 	}
 
-	durationCheck(duration) {
-		if (duration < 0) {
-			return styles.durationError
-		} else {
-			return styles.shiftDuration
-		}
-	}
-
 	display() {
 		let day = this.props.day
 		let date = `${this.props.month}, ${this.props.year}`
@@ -262,15 +251,9 @@ class ShiftBox extends React.Component {
 					if(shiftEndHour < 10) {
 						shiftEndHour -= 0
 					}
-
-					let durationHours = Math.floor(shifts[i].duration / 60)
-					let durationMinutes = (shifts[i].duration % 60)
-
 					return (
 						<div style={styles.hasShift}>
 							<span style={styles.shiftTimes}>{`${shiftStartHour}:${shiftStartMinute} ${startMeridiem}`} - {`${shiftEndHour}:${shiftEndMinute} ${endMeridiem}`}</span>
-							<br />
-							<span style={this.durationCheck(shifts[i].duration)}><i>Duration: {durationHours} hrs {durationMinutes} min</i></span>
 							<span style={styles.shiftDayText}>{day}</span>
 							<button style={styles.shiftDeleteButton} title = 'Delete Shift' onClick={(e) => this.deleteShift(e, shifts[i].id)}> <i className="tiny material-icons">delete</i> </button>
 							<button style={styles.shiftEditButton} title='Edit Shift' data-target="modal2" onClick={(e) => this.editShift(e, shifts[i])}> <i className="tiny material-icons">mode_edit</i> </button>
@@ -364,21 +347,6 @@ const styles = {
 		color: '#fff',
 		fontWeight: 'bold',
 		fontSize: '15px'
-	},
-	shiftDuration: {
-		color: '#fff',
-		fontSize: '12px',
-		opacity: '0.6',
-		position: 'absolute',
-		bottom: '0px',
-		left: '3px'
-	},
-	durationError: {
-		color: '#900',
-		fontSize: '12px',
-		position: 'absolute',
-		bottom: '0px',
-		left: '3px'
 	},
 	shiftEditButton: {
 		background: 'Transparent',
