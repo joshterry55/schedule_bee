@@ -42,7 +42,6 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.company_id = 1
     @user.save
-    binding.pry
     render json: @user
   end
 
