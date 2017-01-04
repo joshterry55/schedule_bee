@@ -105,7 +105,7 @@ const styles = {
   },
   employeeSideWindow: {
     width: '100%',
-    height: '353px',
+    height: '451px',
     overflowY: 'scroll'
   },
   employeeSideContainer: {
@@ -139,16 +139,6 @@ const styles = {
     textShadow: '0 1px #ddd',
     position: 'relative',
     top: '-10px'
-  },
-  testBox: {
-    width: '100%',
-    height: '100px',
-    border: '1px solid black',
-    overflow: 'scroll',
-    whitespace: 'nowrap'
-  },
-  testContainer: {
-    width: '500px'
   }
 }
 

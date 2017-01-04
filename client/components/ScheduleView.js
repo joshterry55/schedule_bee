@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import Schedule from './Schedule';
 import SideEmployees from './SideEmployees';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import EmployeeContactList from './EmployeeContactList';
 
 class ScheduleView extends Component {
 	constructor(props) {
@@ -25,6 +26,9 @@ class ScheduleView extends Component {
 				<div className="col s9 m10" style={styles.noPadding}>
 					<Schedule />
 				</div>
+				<div className="col s10 offset-s1" style={styles.underneath}>
+					<EmployeeContactList />
+				</div>
 			</div>
 		);
 	}
@@ -38,8 +42,10 @@ const mapStateToProps = (state) => {
 const styles = {
 	scheduleBox: {
 		width: '100%',
-		height: '450px',
-		backgroundColor: '#aaa'
+		height: '550px',
+		backgroundColor: '#aaa',
+		borderBottom: '1px solid black',
+		boxShadow: '0 5px 25px rgba(0,0,0,0.50)',
 	},
 	sideEmployeesBox: {
 		backgroundColor: '#888',
@@ -47,7 +53,11 @@ const styles = {
 		height: '100%'
 	},
 	noPadding: {
-		padding: '0px'
+		padding: '0px',
+		zIndex: '2'
+	},
+	underneath: {
+		zIndex: '1'
 	}
 }
 

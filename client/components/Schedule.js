@@ -91,7 +91,7 @@ const styles = {
 		height: '40px'
 	},
 	calendarWindow: {
-		height: '354px',
+		height: '454px',
 		width: '100%',
 		backgroundColor: "#ccc",
 		border: "1px solid black",

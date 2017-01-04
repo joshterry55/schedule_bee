@@ -26,11 +26,13 @@ class EmployeeContactList extends React.Component {
     if(this.props.contactlist) {
       return this.props.setemployee.map( employee => {
         return(
-          <div key={employee.id}>
-            <strong>{employee.first_name} {employee.last_name}</strong><br />
-            <strong>Email:</strong> {employee.email} <br />
-            <strong>Title:</strong> {employee.title} <br />
-            <strong>Phone Number:</strong> {employee.phone} <br /><br />
+          <div key={employee.id} className="col s6">
+            <div style={styles.contactCard}>
+              <span style={styles.contactName}>{employee.first_name} {employee.last_name}</span><br />
+              <span><b>Email:</b> {employee.email}</span> <br />
+              <strong>Title:</strong> {employee.title ? employee.title : "n/a"} <br />
+              <strong>Phone Number:</strong> {employee.phone} <br /><br />
+            </div>
           </div>);
       });
     } else {
@@ -39,13 +41,37 @@ class EmployeeContactList extends React.Component {
 
   render() {
     return(
-      <div>
+      <div style={styles.contactColumn} className='center' >
         <br />
-        <button className='btn yellow darken-2' onClick={this.toggleContacts}>View Contacts List</button>
+        <button className='btn blue darken-2' onClick={this.toggleContacts}>View Contacts List</button>
         <br /><br />
-        {this.showContactList()}
+        <div className='row'>
+          {this.showContactList()}
+        </div>
       </div>
     )
+  }
+}
+
+const styles = {
+  contactColumn: {
+    height: '100%',
+    backgroundColor: '#fff',
+    boxShadow: 'inset 0 25px 25px -25px rgba(0,0,0,1)',
+    marginTop: '1px',
+    paddingTop: '10px',
+    borderBottom: '10px solid white'
+  },
+  contactCard: {
+    backgroundColor: '#ddd',
+    borderRadius: '5px',
+    boxShadow: '3px 3px 5px rgba(0,0,0,0.45)',
+    margin: '15px 5px',
+    padding: '10px'
+  },
+  contactName: {
+    fontSize: '21px',
+    fontWeight: 'bold'
   }
 }
 
