@@ -88,40 +88,16 @@ body {
 
 .marisa-pic {
   background-image: url('marisa.jpg');
-  background-size: cover;
-  width: 220px;
-  height: 220px;
-  display: inline-block;
-  border: 2px solid #1565C0;
 }
 
 .cael-pic {
   background-image: url('cael.jpg');
-  background-size: cover;
-  width: 220px;
-  height: 220px;
-  display: inline-block;
-  border: 2px solid #1565C0;
 }
 .josh-pic {
   background-image: url('josh.jpg');
-  background-size: cover;
-  width: 220px;
-  height: 220px;
-  display: inline-block;
-  border: 2px solid #1565C0;
 }
 .ali-pic {
   background-image: url('ali.jpg');
-  background-size: cover;
-  width: 220px;
-  height: 220px;
-  display: inline-block;
-  border: 2px solid #1565C0;
-}
-
-.about-page {
-  float: left;
 }
 
 .react-pic {
@@ -195,6 +171,19 @@ body {
 
 .individual {
   height: 300px;
+}
+
+.about-whole {
+  background-color: white !important;
+  padding: 30px;
+}
+
+.main-about {
+  background-color: #1565C0 !important;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .li-pic {

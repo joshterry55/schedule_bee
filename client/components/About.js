@@ -5,13 +5,13 @@ class About extends React.Component {
 
   render() {
     return(
-      <div className='container'>
-        <div>
-        <h3>About ScheduleBee</h3>
+      <div className='container about-whole'>
+        <div className='main-about z-depth-5'>
+        <h3 style={styles.aboutSched}>About ScheduleBee</h3>
+        <hr />
         <p style={styles.about}><strong style={styles.name}>ScheduleBee</strong> was created due to the lack of easy-to-use scheduling apps on the market currently.
           Cael Jensen thought of the idea, having mangaged and scheduled employees in the past. Cael wanted an easier way to
          create a schedule as well as to keep track of employee hours to ensure his employees were getting enough hours and not working overtime.</p>
-       <hr/>
        </div>
        <div className="center row about-page" >
          <h3>The Team</h3>
@@ -119,17 +119,21 @@ const styles = {
     textShadow: '0 1px #ddd',
   },
   about: {
-    fontSize: '18px'
+    fontSize: '18px',
+    textShadow: '0 0 15px rgba(0,0,0,0.5)',
+    fontWeight: '300',
   },
   name: {
-    color: '#1565C0',
     fontSize: '20px',
-    textShadow: '0 1px #ddd'
+    color: '#FDCC0B',
   },
   pic: {
     borderRadius: '50%',
-    margin: '10px',
-    marginTop: '20px'
+    width: '220px',
+    height: '220px',
+    display: 'block',
+    border: '2px solid #1565C0',
+    backgroundSize: 'cover',
   },
   bio: {
     fontSize: '16px',
@@ -140,9 +144,15 @@ const styles = {
   },
   button: {
     float: 'right',
+  },
+  aboutSched: {
+    textShadow: '0 0 15px rgba(0,0,0,0.5)',
+    color: '#FDCC0B',
   }
 }
 
 export default About;
 
 // boxShadow: '10px 10px 5px #eee',
+// margin: '10px',
+// marginTop: '20px'
