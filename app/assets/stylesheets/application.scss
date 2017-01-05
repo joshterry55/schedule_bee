@@ -1,7 +1,7 @@
 @import 'materialize';
 
 body {
-  background-color: #aaa;
+  background-color: #fff;
   // font-family: 'Arimo', sans-serif;
   // font-family: 'Poppins', sans-serif;
   // font-family: 'Oxygen', sans-serif;
@@ -72,13 +72,10 @@ body {
 }
 
 #frontpage {
-  background-image: url('frontpage.jpg');
-  width: 667px;
-  height: 400px;
+  width: 100%;
+  max-width: 667px;
+  height: auto;
   margin: 25px auto 50px;
-  padding-top: 75px;
-  color: #1565C0;
-  text-shadow: 0 0 5px #fff;
 }
 
 #frontpage h1 {
