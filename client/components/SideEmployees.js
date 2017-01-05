@@ -117,7 +117,6 @@ const styles = {
     height: '86px',
     padding: '0 5px',
     backgroundColor: '#888',
-    overflowY: 'hidden'
   },
   employeeSideWindow: {
     width: '100%',
