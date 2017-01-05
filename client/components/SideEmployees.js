@@ -52,7 +52,6 @@ class SideEmployees extends React.Component {
   }
 
   employees() {
-    debugger
 		return this.props.setemployee.map( employee => {
 			return(<div key={employee.id} style={styles.employeeSideBox}>
               <div style={{
