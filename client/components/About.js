@@ -15,7 +15,7 @@ class About extends React.Component {
        </div>
        <div className="center row" style={styles.teamMain} >
          <h3>The Team</h3>
-         <br /> <br />
+         <br />
          <div className="col s12 m6 individual">
            <div className="col s6">
            <span style={styles.pic} className="cael-pic z-depth-5"></span>
@@ -163,3 +163,6 @@ export default About;
 // margin: '10px',
 // marginTop: '20px'
 // '#FDCC0B' yellow
+//
+// bio
+//     textAlign: 'left',
