@@ -45,12 +45,18 @@ class Api::UsersController < ApplicationController
     render json: @user
   end
 
+  def add_avatar
+    u = Cloudinary::Uploader.upload(File.open(params[:avatar].tempfile))
+   current_user.update(avatar: u['url'])
+   render json: { avatar: u['url'] }
+  end
+
   private
 
   def user_params
     params.require(:user).permit(
       :first_name, :last_name, :role,
-      :title, :company_id, :phone, :wage
+      :title, :company_id, :phone, :wage, :avatar
     )
   end
 

@@ -16,7 +16,8 @@ import Settings from './components/Settings';
 import Employees from './components/Employees';
 import Companies from './components/Companies';
 import Company from './components/Company';
-import EmployeeScheduleView from './components/EmployeeScheduleView'
+import EmployeeScheduleView from './components/EmployeeScheduleView';
+import EmployeeInfo from './components/EmployeeInfo';
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -35,6 +36,7 @@ export default (
       <Route path='/signin' component={SignIn} />
       <Route path='/about' component={About} />
       <Route component={AuthenticatedRoutes}>
+        <Route path='/employeeinfo' component={EmployeeInfo} />
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/schedule' component={ScheduleView} />
         <Route path='/employeescheduleview' component={EmployeeScheduleView} />

@@ -4,6 +4,9 @@ import EmployeeSideEmployees from './EmployeeSideEmployees';
 import EmployeeContactList from './EmployeeContactList';
 
 class EmployeeScheduleView extends Component {
+
+
+
 	render() {
 		return(
 			<div style={styles.scheduleBox} className="row">

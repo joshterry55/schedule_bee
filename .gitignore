@@ -19,3 +19,5 @@
 /public/webpack
 npm-debug.log
 config/mail.yml
+
+.env
