@@ -62,7 +62,10 @@ class EmployeeSideEmployees extends React.Component {
 
   employees() {
 		return this.props.setemployee.map( employee => {
-			return(<div key={employee.id} style={styles.employeeSideBox}>{employee.first_name} {employee.last_name}</div>);
+			return(<div key={employee.id} style={styles.employeeSideBox}>
+              <img style={styles.avatar} src={employee.avatar} />
+              {employee.first_name} {employee.last_name}
+            </div>);
 		});
 	}
 
@@ -112,9 +115,12 @@ const styles = {
     fontSize: '15px',
     color: '#fff',
     textShadow: '0 0 10px rgba(0,0,0,0.5)',
-    textAlign: 'right',
+    textAlign: 'left',
     lineHeight: '30px',
-    overflowX: 'hidden'
+    overflowX: 'hidden',
+    position: 'relative',
+    paddingLeft: '52px'
+
 	},
   button: {
     height: '21px',
@@ -140,6 +146,16 @@ const styles = {
   },
   testContainer: {
     width: '500px'
+  },
+  avatar: {
+    height: '36px',
+    width: 'auto',
+    borderRadius: '50%',
+    position: 'absolute',
+    left: '6px',
+    top: '2px',
+    boxShadow: '0 0 2px rgba(0,0,0,0.35)',
+    border: '1px solid #000'
   }
 }
 
