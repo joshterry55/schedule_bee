@@ -24,10 +24,10 @@ class Schedule extends Component {
 
     $(function(){
       $('.scrollLinkedY').scroll(function(){
-        $('.scrollLinkedY').scrollTop($(this).scrollTop());    
+        $('.scrollLinkedY').scrollTop($(this).scrollTop());
       })
       $('.scrollLinkedX').scroll(function(){
-        $('.scrollLinkedX').scrollLeft($(this).scrollLeft());    
+        $('.scrollLinkedX').scrollLeft($(this).scrollLeft());
       })
     })
 	}
@@ -47,25 +47,27 @@ class Schedule extends Component {
 		weekOffset -= 1
 		this.props.dispatch(setweek(weekOffset));
 	}
+	// LINKS TO DRAG AND DROP UNFINISHED
+	// <div className="col l3 m4 s5">
+	// 	<div className="col s12 center grey-text text-darken-3">
+	// 	View Schedule By:
+	// 	</div>
+	// 	<div className="col s12 center">
+	// 		<Link style={styles.viewButton} to='/schedule'>Employees</Link> &ensp;
+	// 		<Link style={styles.viewButton} to='/shiftschedule'>Shifts</Link>
+	// 	</div>
+	// </div>
 
 	render() {
 		return(
 			<div>
 				<div style={styles.topBarContainer}>
-					<div className="col l6 offset-l3 m6 offset-m2 s6 offset-s1 center">
+					<div className="col s12 center">
 						<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
 						<button type='button' style={{...styles.button, ...styles.buttonCurrent}} onClick={this.setCurrent}>Current</button>&nbsp;
 						<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
 					</div>
-					<div className="col l3 m4 s5">
-						<div className="col s12 center grey-text text-darken-3">
-						View Schedule By:
-						</div>
-						<div className="col s12 center">
-							<Link style={styles.viewButton} to='/schedule'>Employees</Link> &ensp;
-							<Link style={styles.viewButton} to='/shiftschedule'>Shifts</Link>
-						</div>
-					</div>
+
 				</div>
 				<div className="col s12" style={styles.noPadding}>
 					<DateBar />
