@@ -1,25 +1,9 @@
-// import React from 'react';
-
-// const App = ({ children }) => (
-//   <div>
-//     Hello World
-//     { children }
-//   </div>
-// )
-//
-// export default App;
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { logout } from '../actions/auth';
 import Flash from '../components/Flash';
 import { removeemployee, removecurrentemployee } from '../actions/setemployee'
-// I need an action to log out a user
-// does the prevent default automatically
-// materialize js
-// font awesome
-// user props
-// logout action
 
 
 class App extends React.Component {
@@ -40,7 +24,6 @@ class App extends React.Component {
     this.props.dispatch(removecurrentemployee())
   }
 
-
   navs() {
     switch(this.props.user.role) {
       case 'employee':
@@ -55,7 +38,7 @@ class App extends React.Component {
       return(
         <div>
           <li><Link to='/schedule'>Schedule</Link></li>
-          <li><Link to='/admin'>Admin</Link></li>
+          <li><Link to='/companies'>Admin</Link></li>
           <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
         </div>
       )
@@ -93,7 +76,6 @@ class App extends React.Component {
       </div>
     )
   }
-
 }
 
 const mapStateToProps = (state) => {
