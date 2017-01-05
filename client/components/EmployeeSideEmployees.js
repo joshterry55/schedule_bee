@@ -93,7 +93,7 @@ const styles = {
   },
   companySelectBox: {
     textAlign: 'center',
-    height: '86px',
+    height: '83px',
     padding: '0 5px',
     backgroundColor: '#888'
   },
