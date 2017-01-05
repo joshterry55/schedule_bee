@@ -34,9 +34,9 @@ class SignIn extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className='conatiner row' style={styles.signIn}>
         <h3 className='center'>Sign In</h3>
-        <form className='container row' onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <div className='col s8 offset-s2'>
             <input type="email" required={true} ref='email' placeholder='Email' />
             <input type='password' required={true} ref='password' placeholder='Password' />
@@ -49,6 +49,16 @@ class SignIn extends React.Component {
     )
   }
 
+}
+
+const styles={
+  signIn: {
+    backgroundColor: '#E9EAED',
+    width: '800px',
+    height: '300px',
+    padding: '5px',
+    marginTop: '20px',
+  },
 }
 
 export default connect()(SignIn)

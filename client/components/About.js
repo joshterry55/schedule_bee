@@ -6,16 +6,16 @@ class About extends React.Component {
   render() {
     return(
       <div className='container about-whole'>
-        <div className='main-about z-depth-5'>
+        <div className='main-about z-depth-4'>
         <h3 style={styles.aboutSched}>About ScheduleBee</h3>
         <hr />
         <p style={styles.about}><strong style={styles.name}>ScheduleBee</strong> was created due to the lack of easy-to-use scheduling apps on the market currently.
           Cael Jensen thought of the idea, having mangaged and scheduled employees in the past. Cael wanted an easier way to
          create a schedule as well as to keep track of employee hours to ensure his employees were getting enough hours and not working overtime.</p>
        </div>
-       <div className="center row about-page" >
+       <div className="center row" style={styles.teamMain} >
          <h3>The Team</h3>
-
+         <br /> <br />
          <div className="col s12 m6 individual">
            <div className="col s6">
            <span style={styles.pic} className="cael-pic z-depth-5"></span>
@@ -71,9 +71,9 @@ class About extends React.Component {
          </div>
        </div>
 
-       <div>
-         <h3>Languages & Tools</h3>
-         <hr/>
+       <div style={styles.lang}>
+         <h3 className="center">Languages & Tools</h3>
+         <hr />
          <div className="center row">
            <div className='col s12 m4'>
              <h5>Ruby on Rails</h5>
@@ -118,6 +118,9 @@ const styles = {
     color: '#1565C0',
     textShadow: '0 1px #ddd',
   },
+  teamMain: {
+    marginTop: '50px',
+  },
   about: {
     fontSize: '18px',
     textShadow: '0 0 15px rgba(0,0,0,0.5)',
@@ -129,8 +132,8 @@ const styles = {
   },
   pic: {
     borderRadius: '50%',
-    width: '220px',
-    height: '220px',
+    width: '200px',
+    height: '200px',
     display: 'block',
     border: '2px solid #1565C0',
     backgroundSize: 'cover',
@@ -147,7 +150,10 @@ const styles = {
   },
   aboutSched: {
     textShadow: '0 0 15px rgba(0,0,0,0.5)',
-    color: '#FDCC0B',
+    color: 'white',
+  },
+  lang: {
+    marginTop: '75px',
   }
 }
 
@@ -156,3 +162,4 @@ export default About;
 // boxShadow: '10px 10px 5px #eee',
 // margin: '10px',
 // marginTop: '20px'
+// '#FDCC0B' yellow
