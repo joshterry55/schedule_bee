@@ -9,7 +9,15 @@ class EmployeeInfo extends React.Component {
   constructor(props) {
     super(props)
 
-    let avatar = this.props.user.avatar
+    let avatar;
+    this.props.setemployee.map( employee => {
+      if(this.props.user.id == employee.id) {
+        avatar = employee.avatar
+      }
+    })
+    if(avatar == undefined) {
+      avatar = this.props.user.avatar
+    }
     this.state = { edit: false, avatar: [avatar] }
     this.toggleEdit = this.toggleEdit.bind(this)
     this.employeeUpdate = this.employeeUpdate.bind(this)
@@ -18,7 +26,13 @@ class EmployeeInfo extends React.Component {
   componentDidMount() {
     let employee = this.props.user
     this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
+
   }
+
+  // componentWillMount() {
+  //   let user = this.props.user
+  //   this.props.dispatch({type: 'USER', ...user})
+  // }
 
   onDrop = (files) => {
     let id = this.props.currentemployee.id
@@ -111,8 +125,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, currentemployee } = state;
-  return { user, currentemployee }
+  let { user, currentemployee, setemployee } = state;
+  return { user, currentemployee, setemployee }
 }
 
 export default connect(mapStateToProps)(EmployeeInfo)
