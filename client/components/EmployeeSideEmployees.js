@@ -63,11 +63,23 @@ class EmployeeSideEmployees extends React.Component {
   employees() {
 		return this.props.setemployee.map( employee => {
 			return(<div key={employee.id} style={styles.employeeSideBox}>
-              <img style={styles.avatar} src={employee.avatar} />
+              <div style={{
+                height: '36px',
+                width: '36px',
+                borderRadius: '50%',
+                position: 'absolute',
+                left: '6px',
+                top: '2px',
+                boxShadow: '0 0 2px rgba(0,0,0,0.35)',
+                border: '1px solid #000',
+                backgroundImage: `url(${employee.avatar})`,
+                backgroundSize: 'cover'
+               }}></div>
               {employee.first_name} {employee.last_name}
             </div>);
 		});
 	}
+
 
 
   render() {

@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import DropZone from 'react-dropzone';
+import request from 'superagent';
+require('superagent-rails-csrf')(request)
+
 
 class EmployeeInfo extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { edit: false }
+    let avatar = this.props.user.avatar
+    this.state = { edit: false, avatar: [avatar] }
     this.toggleEdit = this.toggleEdit.bind(this)
     this.employeeUpdate = this.employeeUpdate.bind(this)
   }
@@ -13,6 +18,20 @@ class EmployeeInfo extends React.Component {
   componentDidMount() {
     let employee = this.props.user
     this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
+  }
+
+  onDrop = (files) => {
+    let id = this.props.currentemployee.id
+    let employee = this.props.user
+    let file = files[0];
+    let req = request.put(`api/users/${id}/avatar`);
+    req.setCsrfToken();
+    req.attach('avatar', file)
+    req.end( (err, res) => {
+      if(res.body) {
+        this.setState({avatar: [res.body.avatar]})
+      }
+    })
   }
 
   employeeUpdate(e) {
@@ -27,7 +46,6 @@ class EmployeeInfo extends React.Component {
         phone: phone
       }}
     }).done( employee => {
-
       this.toggleEdit()
       this.props.dispatch({type: "CURRENT_EMPLOYEE", employee})
     }).fail( data => {
@@ -44,13 +62,15 @@ class EmployeeInfo extends React.Component {
             <input type='text' ref='phoneNumber' placeholder='Phone Number' defaultValue={employee.phone}/>
             <input type='submit' />
           </form>
+          <DropZone multiple={false} onDrop={this.onDrop} />
         </div>
       )
     } else {
       return(
         <div>
           <h2>{employee.first_name} {employee.last_name}</h2>
-          <img style={styles.avatar}src={employee.avatar} />
+          <div style={{backgroundImage: `url(${this.state.avatar})`, width: '300px', height: '300px', backgroundSize: 'cover'}}>
+          </div>
           <h4>Phone Number</h4>
           <p>{employee.phone}</p>
           <h4>Email</h4>
@@ -61,6 +81,9 @@ class EmployeeInfo extends React.Component {
       )
     }
   }
+
+  // <img style={styles.avatar}src={this.state.avatar} />
+
 
   toggleEdit() {
 
