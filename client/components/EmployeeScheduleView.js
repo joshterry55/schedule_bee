@@ -16,7 +16,7 @@ class EmployeeScheduleView extends Component {
 				<div className="col s9 m10" style={styles.noPadding}>
 					<EmployeeSchedule />
 				</div>
-				<div className="col s12">
+				<div className="col s10 offset-s1">
 					<EmployeeContactList />
 				</div>
 			</div>
@@ -27,8 +27,10 @@ class EmployeeScheduleView extends Component {
 const styles = {
 	scheduleBox: {
 		width: '100%',
-		height: '450px',
-		backgroundColor: '#aaa'
+		height: '550px',
+		backgroundColor: '#aaa',
+		borderBottom: '1px solid black',
+		boxShadow: '0 5px 25px rgba(0,0,0,0.50)',
 	},
 	sideEmployeesBox: {
 		backgroundColor: '#888',

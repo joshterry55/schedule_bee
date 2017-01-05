@@ -26,7 +26,7 @@ class ScheduleView extends Component {
 				<div className="col s9 m10" style={styles.noPadding}>
 					<Schedule />
 				</div>
-				<div className="col s10 offset-s1" style={styles.underneath}>
+				<div className="col s10 offset-s1">
 					<EmployeeContactList />
 				</div>
 			</div>
@@ -53,11 +53,7 @@ const styles = {
 		height: '100%'
 	},
 	noPadding: {
-		padding: '0px',
-		zIndex: '2'
-	},
-	underneath: {
-		zIndex: '1'
+		padding: '0px'
 	}
 }
 

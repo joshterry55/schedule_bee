@@ -145,7 +145,6 @@ const styles = {
     textShadow: '0 1px #ddd',
     position: 'relative',
     top: '-10px'
-
   },
   avatar: {
     height: '36px',

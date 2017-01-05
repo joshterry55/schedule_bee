@@ -23,6 +23,14 @@ class EmployeeShiftBox extends React.Component {
 		}
 	}
 
+	shiftHighlight() {
+		if(this.props.highlight === 0) {
+			return styles.hasShift
+		} else {
+			return styles.hasShiftHighlight
+		}
+	}
+
 	durationCheck(duration) {
 		if (duration < 0) {
 			return styles.durationError
@@ -70,7 +78,7 @@ class EmployeeShiftBox extends React.Component {
 					let durationHours = Math.floor(shifts[i].duration / 60)
 					let durationMinutes = (shifts[i].duration % 60)
 					return (
-						<div style={styles.hasShift}>
+						<div style={this.shiftHighlight()}>
 							<span style={styles.shiftTimes}>{`${shiftStartHour}:${shiftStartMinute} ${startMeridiem}`} - {`${shiftEndHour}:${shiftEndMinute} ${endMeridiem}`}</span>
 							<br />
 							<span style={this.durationCheck(shifts[i].duration)}><i>{durationHours} hrs {durationMinutes} min</i></span>
@@ -150,6 +158,14 @@ const styles = {
 		height: "40px",
 		border: "1px solid #1565C0",
 		backgroundColor: "#2B8FFF",
+		position: "relative",
+		paddingLeft: '3px'
+	},
+	hasShiftHighlight: {
+		width: "225px",
+		height: "40px",
+		border: "1px solid #1565C0",
+		backgroundColor: "#37abff",
 		position: "relative",
 		paddingLeft: '3px'
 	},
