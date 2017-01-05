@@ -14,58 +14,41 @@ class About extends React.Component {
          create a schedule as well as to keep track of employee hours to ensure his employees were getting enough hours and not working overtime.</p>
        </div>
        <div className="center row" style={styles.teamMain} >
-         <h3>The Team</h3>
-         <br />
+         <h2>The Team</h2>
          <div className="col s12 m6 individual">
-           <div className="col s6">
-           <span style={styles.pic} className="cael-pic z-depth-5"></span>
-           </div>
-           <div className="col s6">
+           <span style={styles.pic} className="cael-pic z-depth-4"></span>
            <h5 style={styles.team}>Cael Jensen</h5>
            <p style={styles.bio}>Cael is an entrepreneurial-minded web developer who has been tinkering
               with computers all his life. Creativity and design are his driving passions,
             and he's always looking for ways to expand his knowledge and experience.</p>
-        </div>
           <Link style ={styles.button} to='https://www.linkedin.com/in/cael-jensen-58b1b6134' target='_blank'><img className="li-pic"/></Link>
           <Link style ={styles.button} to='https://github.com/crjmosh' target='_blank'><img className="github-pic"/></Link>
          </div>
 
          <div className="col s12 m6 individual">
-           <div className="col s6">
-           <span style={styles.pic} className="josh-pic z-depth-5"></span>
-           </div>
-           <div className="col s6">
+           <span style={styles.pic} className="josh-pic z-depth-4"></span>
            <h5 style={styles.team}>Josh Terry</h5>
            <p style={styles.bio}>Josh stuff here. Need more info! Waiting for more info Josh. You can do it! Blah blah Blah
               Blah blah blah blah blaaaaaa.</p>
-          </div>
             <Link style ={styles.button} to='https://www.linkedin.com/in/josh-terry-12b55311b' target='_blank'><img className="li-pic"/></Link>
             <Link style ={styles.button} to='https://github.com/joshterry55' target='_blank'><img className="github-pic"/></Link>
          </div>
 
          <div className="col s12 m6 individual">
-           <div className="col s6">
-           <span style={styles.pic} className="ali-pic z-depth-5"></span>
-           </div>
-           <div className="col s6">
+           <span style={styles.pic} className="ali-pic z-depth-4"></span>
            <h5 style={styles.team}>Ali Jepsen</h5>
            <p style={styles.bio}>Ali has been working in the software industry for almost 20 years primarily in product management and QA testing.</p>
-           </div>
            <Link style ={styles.button} to='https://www.linkedin.com/in/ali-jepsen-879639' target='_blank'><img className="li-pic"/></Link>
            <Link style ={styles.button} to='https://github.com/alijepsen' target='_blank'><img className="github-pic"/></Link>
          </div>
 
          <div className="col s12 m6 individual">
-           <div className="col s6">
-           <span style={styles.pic} className="marisa-pic z-depth-5"></span>
-           </div>
-           <div className="col s6">
+           <span style={styles.pic} className="marisa-pic z-depth-4"></span>
            <h5 style={styles.team}>Marisa Jense</h5>
            <p style={styles.bio}>Marisa's background is in behavioral science, but
               her passion for creativity and desire to learn carried her into the tech world.
               She is excited for her future in web development as it has proven to be ever
               challenging and extremely rewarding.</p>
-          </div>
             <Link style ={styles.button} to='https://www.linkedin.com/in/marisa-jense-332930aa' target='_blank'><img className="li-pic"/></Link>
             <Link style ={styles.button} to='https://github.com/marisajense' target='_blank'><img className="github-pic"/></Link>
          </div>
@@ -116,7 +99,7 @@ class About extends React.Component {
 const styles = {
   team: {
     color: '#1565C0',
-    textShadow: '0 1px #ddd',
+    textShadow: '0 0 15px rgba(0,0,0,0.3)',
   },
   teamMain: {
     marginTop: '50px',
@@ -132,10 +115,9 @@ const styles = {
   },
   pic: {
     borderRadius: '50%',
-    width: '200px',
-    height: '200px',
-    display: 'block',
-    border: '2px solid #1565C0',
+    width: '215px',
+    height: '215px',
+    display: 'inline-block',
     backgroundSize: 'cover',
   },
   bio: {
@@ -166,3 +148,5 @@ export default About;
 //
 // bio
 //     textAlign: 'left',
+// pic
+//     border: '2px solid #1565C0',
