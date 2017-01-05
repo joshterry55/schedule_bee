@@ -26,7 +26,7 @@ class EmployeeContactList extends React.Component {
     if(this.props.contactlist) {
       return this.props.setemployee.map( employee => {
         return(
-          <div key={employee.id} className="col s6">
+          <div key={employee.id} className="col m6 s12">
             <div style={styles.contactCard}>
               <span style={styles.contactName}>{employee.first_name} {employee.last_name}</span><br />
               <span><b>Email:</b> {employee.email}</span> <br />

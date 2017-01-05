@@ -34,7 +34,7 @@ class SignIn extends React.Component {
 
   render() {
     return(
-      <div className='conatiner row' style={styles.signIn}>
+      <div className='container row' style={styles.signIn}>
         <h3 className='center'>Sign In</h3>
         <form onSubmit={this.handleSubmit}>
           <div className='col s8 offset-s2'>
