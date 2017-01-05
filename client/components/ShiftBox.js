@@ -19,17 +19,6 @@ class ShiftBox extends React.Component {
 		$('.modal').modal();
 		let employeeId = this.props.id
 		let shiftdate = `${this.props.month}, ${this.props.year}`
-
-		// $.ajax({
-		// 	url: `/api/users/${employeeId}/shifts`,
-		// 	type: 'GET',
-		// 	dataType: 'JSON'
-		// }).done( shift => {
-
-		// 	this.props.dispatch(showshift(shift, shiftdate))
-		// }).fail( shift => {
-		// 	debugger
-		// })
 	}
 
 
@@ -199,6 +188,14 @@ class ShiftBox extends React.Component {
 		}
 	}
 
+	shiftHighlight() {
+		if(this.props.highlight === 0) {
+			return styles.hasShift
+		} else {
+			return styles.hasShiftHighlight
+		}
+	}
+
 	deleteShift(e, id) {
 		e.preventDefault()
 
@@ -233,22 +230,6 @@ class ShiftBox extends React.Component {
 	display() {
 		let day = this.props.day
 		let date = `${this.props.month}, ${this.props.year}`
-		// return this.props.currentshifts.map( shift => {
-			// if(shift.day === date) {
-			// 	return(
-			// 		<div style={this.rowHighlight()}>
-			// 			<span style={styles.shiftDayText}>{day}</span>
-			// 		</div>
-			// 	)
-			// } else {
-			// 	return(
-			// 		<div style={this.rowHighlight()}>
-			// 			<button data-target="modal1" onClick={this.addShift} style={styles.addShiftButton}>+ Add Shift</button>
-			// 			<span style={styles.shiftDayText}>{day}</span>
-			// 		</div>
-			// 	)
-			// }
-		// })
 		let shifts = this.props.currentshifts
 		let shiftMatch = false
 		if(this.props.currentshifts.length != 0) {
@@ -286,7 +267,7 @@ class ShiftBox extends React.Component {
 					let durationMinutes = (shifts[i].duration % 60)
 
 					return (
-						<div style={styles.hasShift}>
+						<div style={this.shiftHighlight()}>
 							<span style={styles.shiftTimes}>{`${shiftStartHour}:${shiftStartMinute} ${startMeridiem}`} - {`${shiftEndHour}:${shiftEndMinute} ${endMeridiem}`}</span>
 							<br />
 							<span style={this.durationCheck(shifts[i].duration)}><i>{durationHours} hrs {durationMinutes} min</i></span>
@@ -376,6 +357,14 @@ const styles = {
 		height: "40px",
 		border: "1px solid #1565C0",
 		backgroundColor: "#2B8FFF",
+		position: "relative",
+		paddingLeft: '3px'
+	},
+	hasShiftHighlight: {
+		width: "225px",
+		height: "40px",
+		border: "1px solid #1565C0",
+		backgroundColor: "#37abff",
 		position: "relative",
 		paddingLeft: '3px'
 	},
