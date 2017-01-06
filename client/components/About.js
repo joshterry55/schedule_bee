@@ -14,7 +14,7 @@ class About extends React.Component {
          create a schedule as well as to keep track of employee hours to ensure his employees were getting enough hours and not working overtime.</p>
        </div>
        <div className="center row" style={styles.teamMain} >
-         <h2>The Team</h2>
+         <h1>The Team</h1>
          <div className="col s12 m6 individual">
            <span style={styles.pic} className="cael-pic z-depth-4"></span>
            <h5 style={styles.team}>Cael Jensen</h5>
@@ -102,7 +102,7 @@ const styles = {
     textShadow: '0 0 15px rgba(0,0,0,0.3)',
   },
   teamMain: {
-    marginTop: '50px',
+    marginTop: '40px',
   },
   about: {
     fontSize: '18px',
@@ -119,13 +119,11 @@ const styles = {
     height: '215px',
     display: 'inline-block',
     backgroundSize: 'cover',
+    marginTop: '10px',
   },
   bio: {
     fontSize: '16px',
     textAlign: 'left',
-  },
-  li: {
-    height: '30px',
   },
   button: {
     float: 'right',
