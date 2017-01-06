@@ -24,6 +24,7 @@ class EmployeeInfo extends React.Component {
   }
 
   componentDidMount() {
+    // $(body).css('background-color', 'black !important');
     let employee = this.props.user
     this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
 
@@ -82,15 +83,29 @@ class EmployeeInfo extends React.Component {
     } else {
       return(
         <div>
-          <h2>{employee.first_name} {employee.last_name}</h2>
-          <div style={{backgroundImage: `url(${this.state.avatar})`, width: '300px', height: '300px', backgroundSize: 'cover'}}>
+          <div className="col s12 l5" style={{height: '300px', marginBottom: '15px'}}>
+            <div style={{
+              backgroundImage: `url(${this.state.avatar})`,
+              width: '100%',
+              height: '100%',
+              maxWidth: '300px',
+              display: 'block',
+              backgroundSize: 'cover',
+              borderRadius: '10px',
+              boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+              margin: '25px auto'
+            }}>
+            </div>
           </div>
-          <h4>Phone Number</h4>
-          <p>{employee.phone}</p>
-          <h4>Email</h4>
-          <p>{employee.email}</p>
-          <h4>Title</h4>
-          <p>{employee.title}</p>
+          <div className="col s12 l7" style={styles.infoContainer}>
+            <h2>{employee.first_name} {employee.last_name}</h2>
+            <h4>Phone Number</h4>
+            <p>{employee.phone}</p>
+            <h4>Email</h4>
+            <p>{employee.email}</p>
+            <h4>Title</h4>
+            <p>{employee.title}</p>
+          </div>
         </div>
       )
     }
@@ -107,12 +122,11 @@ class EmployeeInfo extends React.Component {
   render() {
     let employee = this.props.currentemployee
     return(
-      <div className="container">
-        <div>
-          Welcome {employee.first_name}
+      <div className="row">
+        <div className="col s8 offset-s2" style={styles.myInfoBox}>
+          {this.display()}
+          <button onClick={this.toggleEdit}>Edit</button>
         </div>
-        {this.display()}
-        <button onClick={this.toggleEdit}>Edit</button>
       </div>
     )
   }
@@ -120,8 +134,15 @@ class EmployeeInfo extends React.Component {
 }
 
 const styles = {
-	avatar: {
-	},
+	myInfoBox: {
+    backgroundColor: '#ddd',
+    marginTop: '50px',
+    borderRadius: '20px',
+    boxShadow: '5px 5px 5px rgba(0,0,0,0.5)',
+  },
+  infoContainer: {
+    textAlign: 'center',
+  }
 }
 
 const mapStateToProps = (state) => {
