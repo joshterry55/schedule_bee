@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import DropZone from 'react-dropzone';
 import request from 'superagent';
 import changeImage from '../images/changeImage.jpg';
-require('superagent-rails-csrf')(request)
-
+require('superagent-rails-csrf')(request);
 
 class EmployeeInfo extends React.Component {
   constructor(props) {
