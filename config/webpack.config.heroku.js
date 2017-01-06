@@ -44,13 +44,20 @@ var config = {
           presets:['es2015', 'react', 'stage-0']
         }
       },
+      // {
+      //   test: /\.(jpe?g|png|gif|svg)$/i,
+      //   loaders: [
+      //       'file?hash=sha512&digest=hex&name=[hash].[ext]',
+      //       'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+      //   ]
+      // },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-            'file?hash=sha512&digest=hex&name=[hash].[ext]',
-            'image-webpack'
-        ]
-      }
+        loader: 'url-loader',
+        options: {
+          limit: 25000
+        }
+      },
     ]
   },
 
