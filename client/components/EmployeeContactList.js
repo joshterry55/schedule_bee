@@ -28,10 +28,24 @@ class EmployeeContactList extends React.Component {
         return(
           <div key={employee.id} className="col m6 s12">
             <div style={styles.contactCard}>
+              <div style={{height: '100px', marginBottom: '10px'}}>
+                <div style={{
+                    backgroundImage: `url(${employee.avatar})`,
+                    width: '100%',
+                    height: '100%',
+                    maxWidth: '100px',
+                    display: 'block',
+                    backgroundSize: 'cover',
+                    borderRadius: '10px',
+                    boxShadow: '5px 5px 5px rgba(0,0,0,0.25)',
+                    margin: '10px auto'
+                  }}>
+                </div>
+              </div>
               <span style={styles.contactName}>{employee.first_name} {employee.last_name}</span><br />
               <span><b>Email:</b> {employee.email}</span> <br />
-              <strong>Title:</strong> {employee.title ? employee.title : "n/a"} <br />
-              <strong>Phone Number:</strong> {employee.phone} <br /><br />
+              <b>Title:</b> {employee.title ? employee.title : "N/A"} <br />
+              <b>Phone Number:</b> {employee.phone ? employee.phone : "N/A"}
             </div>
           </div>);
       });
