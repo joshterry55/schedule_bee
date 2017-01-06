@@ -64,7 +64,7 @@ class Companies extends React.Component {
   displayCompanies() {
     return this.props.assigned.map( company => {
       return(
-        <div onClick={() => this.setCompany(company)}className="collection-item" key={company.id}><Link to={`/company/${company.id}`}>{company.name}</Link></div>
+        <div key={company.id}><Link onClick={() => this.setCompany(company)}className="collection-item" to={`/company/${company.id}`}>{company.name}</Link></div>
       );
     });
   }
@@ -75,19 +75,53 @@ class Companies extends React.Component {
     return(
       <div>
         <AdminNav />
-        <form ref='companyForm' className="row center" onSubmit={this.addCompany}>
-          <div className='col s4 offset-s4'>
-            <input ref='companyName' type='text' placeholder='Company Name' />
-            <input type="submit" className='btn blue darken-3' value='Add Company'/>
+        <div className='row'>
+          <div style={styles.companies} className="col s10 offset-s1 m8 offset-m2 center">
+            <h3>Add Company</h3>
+            <form ref='companyForm' className="center" onSubmit={this.addCompany}>
+              <div className='col s10 offset-s1 m6 offset-m3'>
+                <div className="col s10">
+                  <input ref='companyName' type='text' placeholder='Company Name' />
+                </div>
+                <div className="col s2">
+                  <input type="submit" style={styles.button} value='Add'/>
+                </div>
+              </div>
+            </form>
+            <br />
+            <div className='col s12'>
+              <h3>View Company Details</h3>
+            </div>
+            <div className='col s10 offset-s1 m8 offset-m2 collection' style={{padding: '0px', borderRadius: '10px', border: '2px solid #ccc'}}>
+              {this.displayCompanies()}
+            </div>
           </div>
-        </form>
-        <br />
-        <div className='container row collection'>
-          {this.displayCompanies()}
-        </div>
-
+          </div>
       </div>
     );
+  }
+}
+
+const styles={
+  companies: {
+    backgroundColor: '#E9E9E9',
+    borderRadius: '15px',
+    boxShadow: '5px 5px 5px rgba(0,0,0,0.5)',
+    padding: '35px 5px 35px 5px',
+    marginTop: '25px',
+  },
+  button: {
+    height: '30px',
+    padding: '0 10px',
+    margin: '6px 5px',
+    borderRadius: '5px',
+    border: '1px solid #666',
+    background: "linear-gradient(#1c86ff, #1257a6)",
+    boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.25)",
+    fontSize: '20px',
+    lineHeight: '25px',
+    color: '#fff',
+    textShadow: '0 0 10px rgba(0,0,0,0.5), 0 1px #8cb7e8'
   }
 }
 
