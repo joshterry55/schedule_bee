@@ -57,7 +57,7 @@ class EmployeeContactList extends React.Component {
     return(
       <div style={styles.contactColumn} className='center' >
         <br />
-        <button className='btn blue darken-2' onClick={this.toggleContacts}>View Contacts List</button>
+        <button style={styles.button} onClick={this.toggleContacts}>Show Contact Info</button>
         <br /><br />
         <div className='row'>
           {this.showContactList()}
@@ -86,6 +86,19 @@ const styles = {
   contactName: {
     fontSize: '21px',
     fontWeight: 'bold'
+  },
+  button: {
+    height: '30px',
+    padding: '0 10px',
+    margin: '6px 5px',
+    borderRadius: '5px',
+    border: '1px solid #666',
+    background: "linear-gradient(#1c86ff, #1257a6)",
+    boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.25)",
+    fontSize: '20px',
+    lineHeight: '25px',
+    color: '#fff',
+    textShadow: '0 0 10px rgba(0,0,0,0.5), 0 1px #8cb7e8'
   }
 }
 
