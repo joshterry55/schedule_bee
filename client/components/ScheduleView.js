@@ -10,7 +10,7 @@ class ScheduleView extends Component {
 	}
 
 	componentDidMount(){
-		
+
 		if(this.props.user.role === "employee") {
 
 			this.props.history.push('/employeescheduleview')
@@ -20,10 +20,10 @@ class ScheduleView extends Component {
 	render() {
 		return(
 			<div style={styles.scheduleBox} className="row">
-				<div className="col s3 m2" style={styles.sideEmployeesBox}>
+				<div className="col s4 m2" style={styles.sideEmployeesBox}>
 					<SideEmployees />
 				</div>
-				<div className="col s9 m10" style={styles.noPadding}>
+				<div className="col s8 m10" style={styles.noPadding}>
 					<Schedule />
 				</div>
 				<div className="col s10 offset-s1">

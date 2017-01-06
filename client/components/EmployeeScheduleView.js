@@ -10,10 +10,10 @@ class EmployeeScheduleView extends Component {
 	render() {
 		return(
 			<div style={styles.scheduleBox} className="row">
-				<div className="col s3 m2" style={styles.sideEmployeesBox}>
+				<div className="col s4 m2" style={styles.sideEmployeesBox}>
 					<EmployeeSideEmployees />
 				</div>
-				<div className="col s9 m10" style={styles.noPadding}>
+				<div className="col s8 m10" style={styles.noPadding}>
 					<EmployeeSchedule />
 				</div>
 				<div className="col s10 offset-s1">
