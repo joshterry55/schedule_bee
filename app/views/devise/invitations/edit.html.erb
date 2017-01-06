@@ -1,18 +1,26 @@
-<div class='container'>
-<h3><%= t 'devise.invitations.edit.header' %></h3>
+<div class='container row'>
+  <div class="col s12 m10 offset-m1 center set-password">
+    <h3><%= t 'devise.invitations.edit.header' %></h3>
 
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :invitation_token %>
+    <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.hidden_field :invitation_token %>
 
-  <% if f.object.class.require_password_on_accepting %>
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+    <div class="col s12 m6 offset-m3">
+      <% if f.object.class.require_password_on_accepting %>
+      <p><%= f.label :password %><br />
+      <%= f.password_field :password %></p>
+    </div>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-  <% end %>
+    <div class="col s12 m6 offset-m3">
+      <p><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %></p>
+      <% end %>
+    </div>
 
-  <p><%= f.submit t("devise.invitations.edit.submit_button"), class: "btn blue darken-4" %></p>
-<% end %>
+    <div class="center button-container">
+      <p><%= f.submit t("devise.invitations.edit.submit_button"), class: "password-button col s6 offset-s3 m4 offset-m4" %></p>
+    </div>
+    <% end %>
+  </div>
 </div>

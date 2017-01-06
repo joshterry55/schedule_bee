@@ -13,8 +13,8 @@ en:
         header: "Send invitation"
         submit_button: "Send an invitation"
       edit:
-        header: "Set your password and view schedule"
-        submit_button: "Set my password"
+        header: "Set Password and View Schedule"
+        submit_button: "Set Password"
     mailer:
       invitation_instructions:
         subject: "Welcome to ScheduleBee!"
