@@ -39,6 +39,7 @@ class App extends React.Component {
         <div>
           <li><Link to='/schedule'>Schedule</Link></li>
           <li><Link to='/companies'>Admin</Link></li>
+          <li><Link to='/employeeinfo'>My Info</Link></li>
           <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
         </div>
       )

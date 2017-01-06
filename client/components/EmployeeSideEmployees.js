@@ -54,7 +54,7 @@ class EmployeeSideEmployees extends React.Component {
 
   displayCompanies() {
     return(
-      <div style={{overflow: 'scroll'}}>
+      <div className='valign' style={{overflow: 'scroll', margin: '0 auto'}}>
         <span style={styles.company}>{this.props.setcompany.name}</span>
       </div>
     )
@@ -85,7 +85,7 @@ class EmployeeSideEmployees extends React.Component {
   render() {
     return(
       <div style={styles.employeeColumn}>
-        <div style={styles.companySelectBox}>
+        <div className="valign-wrapper" style={styles.companySelectBox}>
           {this.displayCompanies()}
         </div>
         <div style={styles.employeeSideWindow} className="scrollLinkedY">
@@ -107,7 +107,8 @@ const styles = {
     textAlign: 'center',
     height: '83px',
     padding: '0 5px',
-    backgroundColor: '#888'
+    backgroundColor: "#666",
+    background: "linear-gradient(#666, #888)"
   },
   employeeSideWindow: {
     width: '100%',
@@ -159,8 +160,9 @@ const styles = {
     border: '1px solid #000'
   },
   company: {
-    textShadow: '0 1px #ddd',
-    fontSize: '20px'
+    fontSize: '20px',
+    color: '#fff',
+    textShadow: '0 0 5px rgba(0,0,0,0.35)'
   }
 }
 
