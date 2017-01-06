@@ -20,7 +20,7 @@ export const logout = (router) => {
       url: '/users/sign_out',
       type: 'DELETE'
     }).done( user => {
-      router.push('/signin')
+      router.push('/')
       dispatch(setUser())
     }).fail( err => {
 

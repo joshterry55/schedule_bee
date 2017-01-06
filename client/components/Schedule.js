@@ -90,7 +90,7 @@ class Schedule extends Component {
 
 const styles = {
 	topBarContainer: {
-		height: '40px'
+		height: '45px'
 	},
 	calendarWindow: {
 		height: '454px',
