@@ -51,7 +51,7 @@ class EmployeeShiftBox extends React.Component {
 					let shiftStartHour = shifts[i].start.substr(0,2)
 					let shiftStartMinute = shifts[i].start.substr(3,2)
 					let startMeridiem = 'AM'
-					if (shiftStartHour > 12) {
+					if (shiftStartHour >= 12) {
 						shiftStartHour -= 12
 						startMeridiem = 'PM'
 					}
