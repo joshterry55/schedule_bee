@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
-import frontPage from '../../app/assets/images/frontpage.jpg'
 
 class HomePage extends React.Component {
 	render() {
 		return(
 			<div className='center'>
-				<img src={frontPage} id='frontpage' alt='Welcome to Schedule Bee' />
-				<br /> 
+				<img src='http://res.cloudinary.com/dk2bj79p0/image/upload/v1483660774/frontpage_u9y6hw.jpg' id='frontpage' alt='Welcome to Schedule Bee' />
+				<br />
 				<Link to='/signup' style={styles.button}>Sign Up</Link>
         <Link to='/signin' style={styles.button}>Sign In</Link>
 			</div>
