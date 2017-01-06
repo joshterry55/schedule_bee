@@ -24,9 +24,18 @@ class Api::InvitationsController < Devise::InvitationsController
   def update
     #set_minimum_password_length
     raw_invitation_token = update_resource_params[:invitation_token]
-    resource = accept_resource
-    sign_in(resource_name, resource)
-    redirect_to '/employeescheduleview'
+    self.resource = accept_resource
+    invitation_accepted = resource.errors.empty?
+
+    yield resource if block_given?
+
+    if invitation_accepted
+      sign_in(resource_name, resource)
+      redirect_to '/employeescheduleview'
+    else
+      resource.invitation_token = raw_invitation_token
+      respond_with_navigational(resource){ render :edit }
+    end
   end
 
   private
