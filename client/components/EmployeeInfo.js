@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import DropZone from 'react-dropzone';
 import request from 'superagent';
-import changeImage from '../images/changeImageDownload.png';
+import changeImage from '../images/changeImage.jpg';
 require('superagent-rails-csrf')(request)
 
 class EmployeeInfo extends React.Component {
