@@ -86,32 +86,55 @@ class Company extends React.Component {
     if(this.props.editcompany) {
       return(
         <form className='center col s4 offset-s4'ref='editCompanyForm' onSubmit={this.submitEdittedCompany}>
-          <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder="Company Name" />
-          <input type='submit' className='btn blue darken-3' value='Update' />
+          <div className='col s10'>
+            <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder="Company Name" />
+          </div>
+          <div className='col s2'>
+            <button type='submit'><i className="material-icons">done</i></button>
+          </div>
         </form>
       )
     } else {
       return(
         <div className='center'>
-          <h2 className='center'>{company.name}</h2>
-          <button className='btn blue darken-3' onClick={() => this.toggleEdit()}>Edit</button>
+          <h2 className='center'>{company.name}<i className="small material-icons" style={styles.editCompany} onClick={() => this.toggleEdit()}>mode_edit</i></h2>
         </div>
       )
     }
   }
 
+
+
   render() {
     return(
-      <div className='row'>
+      <div>
         <AdminNav />
-        { this.editCompany() }
-        <div className="col s6 offset-s3">
-          <br />
-          <h4>Employees</h4>
-          <EmployeeView />
+        <div className='row'>
+          <div style={styles.company} className="col s10 offset-s1 m8 offset-m2">
+            { this.editCompany() }
+            <div className="col s6 offset-s3">
+              <br />
+              <h4>Employees</h4>
+              <EmployeeView />
+            </div>
+          </div>
         </div>
       </div>
     )
+  }
+}
+
+const styles={
+  company: {
+    backgroundColor: '#E9E9E9',
+    borderRadius: '15px',
+    boxShadow: '5px 5px 5px rgba(0,0,0,0.5)',
+    padding: '35px 5px 35px 5px',
+    marginTop: '25px',
+  },
+  editCompany: {
+    cursor: 'pointer',
+    color: '#888'
   }
 }
 

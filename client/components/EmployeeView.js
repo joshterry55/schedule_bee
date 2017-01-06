@@ -60,8 +60,8 @@ class EmployeeView extends React.Component {
           <p>Email: {employee.email}</p>
           <p>Phone Number: {employee.phone}</p>
           <p>
-          <button className='emp-btn btn blue darken-3' onClick={() => this.toggleEdit()}>Edit</button>
-          <button className='emp-btn btn yellow darken-2' onClick={(e) => this.deleteEmployee(e)}>Delete</button>
+          <button style={styles.button} onClick={() => this.toggleEdit()}>Edit</button>
+          <button style={styles.deleteButton} onClick={(e) => this.deleteEmployee(e)}>Delete</button>
           </p>
         </div>
       )
@@ -165,12 +165,41 @@ class EmployeeView extends React.Component {
           <select ref='employee'>
             { this.showEmployees() }
           </select>
-          <input className='btn blue darken-3' type='submit' value="View Details" />
+          <input style={styles.button} type='submit' value="View Details" />
         </form>
         <br />
         { this.display() }
       </div>
     )
+  }
+}
+
+const styles = {
+  button: {
+    height: '30px',
+    padding: '0 10px',
+    margin: '6px 5px',
+    borderRadius: '5px',
+    border: '1px solid #666',
+    background: "linear-gradient(#1c86ff, #1257a6)",
+    boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.25)",
+    fontSize: '20px',
+    lineHeight: '25px',
+    color: '#fff',
+    textShadow: '0 0 10px rgba(0,0,0,0.5), 0 1px #8cb7e8'
+  },
+  deleteButton: {
+    height: '30px',
+    padding: '0 10px',
+    margin: '6px 5px',
+    borderRadius: '5px',
+    border: '1px solid #666',
+    background: "linear-gradient(#900, #c00)",
+    boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.25)",
+    fontSize: '20px',
+    lineHeight: '25px',
+    color: '#fff',
+    textShadow: '0 0 10px rgba(0,0,0,0.5), 0 1px #c77'
   }
 }
 
