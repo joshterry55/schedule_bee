@@ -119,7 +119,7 @@ class EmployeeInfo extends React.Component {
             <h5>Phone Number</h5>
             <div className='col s10 offset-s1'>
               <form onSubmit={this.employeeUpdate}>
-                <input type='text' ref='phoneNumber' placeholder='Phone Number' defaultValue={employee.phone}/>
+                <input type='text' ref='phoneNumber' placeholder='Phone Number' defaultValue={employee.phone} autoFocus />
                 <button style={styles.editButton} type='submit'><i className="material-icons">done</i>save</button>
               </form>
             </div>
@@ -150,7 +150,7 @@ class EmployeeInfo extends React.Component {
           <div className="col s12 l7" style={styles.infoContainer}>
             <h2>{employee.first_name} {employee.last_name}</h2>
             <h5>Phone Number</h5>
-            <p>{employee.phone}</p>
+            <p>{employee.phone ? employee.phone : 'None Provided'}</p>
             <h5>Email</h5>
             <p>{employee.email}</p>
             <h5>Title</h5>
