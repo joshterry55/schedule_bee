@@ -116,11 +116,13 @@ class EmployeeInfo extends React.Component {
           </div>
           <div className="col s12 l7" style={styles.infoContainer}>
             <h2>{employee.first_name} {employee.last_name}</h2>
-            <form onSubmit={this.employeeUpdate}>
-              <label>Phone Number</label>
-              <input type='text' ref='phoneNumber' placeholder='Phone Number' defaultValue={employee.phone}/>
-              <input type='submit' />
-            </form>
+            <h5>Phone Number</h5>
+            <div className='col s10 offset-s1'>
+              <form onSubmit={this.employeeUpdate}>
+                <input type='text' ref='phoneNumber' placeholder='Phone Number' defaultValue={employee.phone}/>
+                <button style={styles.editButton} type='submit'><i className="material-icons">done</i>save</button>
+              </form>
+            </div>
             <h5>Email</h5>
             <p>{employee.email}</p>
             <h5>Title</h5>
@@ -154,6 +156,9 @@ class EmployeeInfo extends React.Component {
             <h5>Title</h5>
             <p>{employee.title ? employee.title : 'N/A'}</p>
           </div>
+          <div className="col s12 center">
+            <button style={styles.editButton} onClick={this.toggleEdit}><i className="material-icons">mode_edit</i>edit</button>
+          </div>
         </div>
       )
     }
@@ -173,9 +178,7 @@ class EmployeeInfo extends React.Component {
       <div className="row">
         <div className="col s8 offset-s2" style={styles.myInfoBox}>
           {this.display()}
-          <div className="col s12 center">
-            <button style={styles.editButton} onClick={this.toggleEdit}>Edit</button>
-          </div>
+
         </div>
       </div>
     )
@@ -189,24 +192,22 @@ const styles = {
     marginTop: '50px',
     borderRadius: '20px',
     boxShadow: '5px 5px 5px rgba(0,0,0,0.5)',
-    paddingBottom: '25px'
+    paddingBottom: '25px',
+    position: 'relative'
   },
   infoContainer: {
     textAlign: 'center',
   },
   editButton: {
-    height: '30px',
-    padding: '0 10px',
-    margin: '6px 5px',
-    borderRadius: '5px',
-    border: '1px solid #666',
-    background: "linear-gradient(#1c86ff, #1257a6)",
-    boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.25)",
+    backgroundColor: 'Transparent',
+    border: '2px dashed rgba(0,0,0,0.4)',
+    position: 'absolute',
+    bottom: '15px',
+    right: '15px',
+    color: 'rgba(0,0,0,0.4)',
     fontSize: '20px',
-    fontWeight: 'bold',
-    lineHeight: '25px',
-    color: '#0d3c73',
-    textShadow: '0 0 10px rgba(255,255,255,0.5), 0 1px #8cb7e8'
+    lineHeight: '20px',
+    borderRadius: '5px'
   }
 }
 

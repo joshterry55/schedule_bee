@@ -34,7 +34,7 @@ class SignIn extends React.Component {
 
   render() {
     return(
-      <div className='container row'> 
+      <div className='container row'>
         <div style={styles.signIn} className="col s12 m10 offset-m1 center">
           <h3>Sign In</h3>
           <form onSubmit={this.handleSubmit}>
@@ -43,7 +43,7 @@ class SignIn extends React.Component {
               <input type='password' required={true} ref='password' placeholder='Password' />
             </div>
             <div className='col s12 center'>
-              <button className='btn blue darken-3'>Sign In</button>
+              <button style={styles.button}>Sign In</button>
             </div>
           </form>
         </div>
@@ -58,10 +58,21 @@ const styles={
     backgroundColor: '#E9E9E9',
     borderRadius: '15px',
     boxShadow: '5px 5px 5px rgba(0,0,0,0.5)',
-    height: '300px',
-    padding: '5px',
-    marginTop: '20px',
+    padding: '5px 5px 35px 5px',
+    marginTop: '25px',
   },
+  button: {
+    padding: '10px 25px',
+    borderRadius: '5px',
+    border: '1px solid #666',
+    background: "linear-gradient(#1c86ff, #1257a6)",
+    boxShadow: "inset 0 1px 0px  #fff, 0 0 5px rgba(0,0,0,0.25)",
+    fontSize: '25px',
+    fontWeight: 'bold',
+    lineHeight: '15px',
+    color: '#fff',
+    textShadow: '0 0 10px rgba(0,0,0,0.5), 0 1px #999'
+  }
 }
 
 export default connect()(SignIn)
