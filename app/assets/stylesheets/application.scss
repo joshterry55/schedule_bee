@@ -1,14 +1,10 @@
 @import 'materialize';
 
 body {
+  background-image: url('honeycombBG.jpg');
+  background-repeat: repeat;
   background-color: #aaa;
-  // font-family: 'Arimo', sans-serif;
-  // font-family: 'Poppins', sans-serif;
-  // font-family: 'Oxygen', sans-serif;
-  // font-family: 'Questrial', sans-serif;
-  // font-family: 'Heebo', sans-serif;
-  // font-family: 'Prompt', sans-serif;
-  // font-family: 'Biryani', sans-serif;
+  font-family: 'Questrial', sans-serif;
 }
 
 .alert {
