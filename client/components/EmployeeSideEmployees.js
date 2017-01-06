@@ -54,8 +54,8 @@ class EmployeeSideEmployees extends React.Component {
 
   displayCompanies() {
     return(
-      <div>
-        {this.props.setcompany.name}
+      <div style={{overflow: 'scroll'}}>
+        <span style={styles.company}>{this.props.setcompany.name}</span>
       </div>
     )
   }
@@ -157,6 +157,10 @@ const styles = {
     top: '2px',
     boxShadow: '0 0 2px rgba(0,0,0,0.35)',
     border: '1px solid #000'
+  },
+  company: {
+    textShadow: '0 1px #ddd',
+    fontSize: '20px'
   }
 }
 

@@ -51,7 +51,7 @@ class EmployeeSchedule extends Component {
 		return(
 			<div>
 				<div style={styles.topBarContainer}>
-					<div className="col l6 offset-l3 m6 offset-m2 s6 offset-s1 center">
+					<div className="col s12 center">
 						<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
 						<button type='button' style={{...styles.button, ...styles.buttonCurrent}} onClick={this.setCurrent}>Current</button>&nbsp;
 						<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>

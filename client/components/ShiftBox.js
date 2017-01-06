@@ -44,21 +44,21 @@ class ShiftBox extends React.Component {
 					<span>Add Shift</span>
 					<span style={styles.modalHeaderInfo}>{date}<br />{employeeName}</span>
 				</div>
-				<div className="modal-content">
-					<form className='row'>
-						<div className='col s6 m4 offset-m2'>
-							<label>Start Time</label>
-							<input type='time' ref='shiftStart' />
-						</div>
-						<div className='col s6 m4'>
-							<label>End Time</label>
-							<input type='time' ref='shiftEnd' />
-						</div>
-					</form>
-				</div>
-				<div className="modal-footer" style={styles.modalFooter}>
-					<a href="#!" onClick={this.submitShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Add</a>
-				</div>
+				<form className='row' onSubmit={this.submitShift}>
+					<div className="modal-content">
+							<div className='col s6 m4 offset-m2'>
+								<label>Start Time</label>
+								<input type='time' ref='shiftStart' />
+							</div>
+							<div className='col s6 m4'>
+								<label>End Time</label>
+								<input type='time' ref='shiftEnd' />
+							</div>
+					</div>
+					<div className="modal-footer" style={styles.modalFooter}>
+						<button type="submit" className=" modal-action modal-close waves-effect waves-green btn-flat">Add</button>
+					</div>
+				</form>
 			</div>
 		)
 	}
@@ -81,8 +81,8 @@ class ShiftBox extends React.Component {
 					<span>Edit Shift</span>
 					<span style={styles.modalHeaderInfo}>{date}<br />{employeeName}</span>
 				</div>
-				<div className="modal-content">
-					<form className='row'>
+				<form className='row' onSubmit={this.submitEditShift}>
+					<div className="modal-content">
 						<div className='col s6 m4 offset-m2'>
 							<label>Start</label>
 							<input type='time' ref='editShiftStart' />
@@ -91,11 +91,11 @@ class ShiftBox extends React.Component {
 							<label>End</label>
 							<input type='time' ref='editShiftEnd' defaultValue={shifts.end}/>
 						</div>
-					</form>
-				</div>
-				<div className="modal-footer" style={styles.modalFooter}>
-					<a href="#!" onClick={this.submitEditShift} className=" modal-action modal-close waves-effect waves-green btn-flat">Update</a>
-				</div>
+					</div>
+					<div className="modal-footer" style={styles.modalFooter}>
+						<button type="submit" className=" modal-action modal-close waves-effect waves-green btn-flat">Update</button>
+					</div>
+				</form>
 			</div>
 		)
 	}
