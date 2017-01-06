@@ -26,7 +26,7 @@ class ScheduleView extends Component {
 				<div className="col s8 m10" style={styles.noPadding}>
 					<Schedule />
 				</div>
-				<div className="col s10 offset-s1">
+				<div className="col s10 offset-s1" style={styles.noPadding}>
 					<EmployeeContactList />
 				</div>
 				<div className="col s10 offset-s1" style={styles.whiteBottom}>
