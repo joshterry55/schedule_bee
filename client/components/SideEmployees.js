@@ -50,9 +50,9 @@ class SideEmployees extends React.Component {
   }
 
   companiesList() {
-    
+    let displayTimeout = this.displayTimeout
     return this.props.assigned.map( company => {
-      return(<NavItem key={company.id} onClick={() => this.displayEmployees(company)}>{company.name}</NavItem>);
+      return(<NavItem key={company.id} onClick={() => setTimeout(() => this.displayEmployees(company), 200)}>{company.name}</NavItem>);
     });
   }
 
