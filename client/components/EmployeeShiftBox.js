@@ -48,43 +48,56 @@ class EmployeeShiftBox extends React.Component {
 			for (var i = 0; i < this.props.currentshifts.length; i++) {
 				if (shifts[i].day === date && shifts[i].user_id === this.props.id) {
 					shiftMatch = true;
-					let shiftStartHour = shifts[i].start.substr(0,2)
-					let shiftStartMinute = shifts[i].start.substr(3,2)
-					let startMeridiem = 'AM'
-					if (shiftStartHour >= 12) {
-						shiftStartHour -= 12
-						startMeridiem = 'PM'
-					}
-					if(shiftStartHour == 0){
-						shiftStartHour = 12
-					}
-					if(shiftStartHour < 10) {
-						shiftStartHour -= 0
-					}
-					let shiftEndHour = shifts[i].end.substr(0,2)
-					let shiftEndMinute = shifts[i].end.substr(3,2)
-					let endMeridiem = 'AM'
-					if (shiftEndHour >= 12) {
-						shiftEndHour -= 12
-						endMeridiem = 'PM'
-					}
-					if(shiftEndHour == 0){
-						shiftEndHour = 12
-					}
-					if(shiftEndHour < 10) {
-						shiftEndHour -= 0
-					}
+					let regexCheck = new RegExp('^\\d{2}:\\d{2}$')
+					let startCheck = regexCheck.test(shifts[i].start)
+					let endCheck = regexCheck.test(shifts[i].end)
+					if (startCheck && endCheck) {
+						let shiftStartHour = shifts[i].start.substr(0,2)
+						let shiftStartMinute = shifts[i].start.substr(3,2)
+						let startMeridiem = 'AM'
+						if (shiftStartHour >= 12) {
+							shiftStartHour -= 12
+							startMeridiem = 'PM'
+						}
+						if(shiftStartHour == 0){
+							shiftStartHour = 12
+						}
+						if(shiftStartHour < 10) {
+							shiftStartHour -= 0
+						}
+						let shiftEndHour = shifts[i].end.substr(0,2)
+						let shiftEndMinute = shifts[i].end.substr(3,2)
+						let endMeridiem = 'AM'
+						if (shiftEndHour >= 12) {
+							shiftEndHour -= 12
+							endMeridiem = 'PM'
+						}
+						if(shiftEndHour == 0){
+							shiftEndHour = 12
+						}
+						if(shiftEndHour < 10) {
+							shiftEndHour -= 0
+						}
 
-					let durationHours = Math.floor(shifts[i].duration / 60)
-					let durationMinutes = (shifts[i].duration % 60)
-					return (
-						<div style={this.shiftHighlight()}>
-							<span style={styles.shiftTimes}>{`${shiftStartHour}:${shiftStartMinute} ${startMeridiem}`} - {`${shiftEndHour}:${shiftEndMinute} ${endMeridiem}`}</span>
-							<br />
-							<span style={this.durationCheck(shifts[i].duration)}><i>{durationHours} hrs {durationMinutes} min</i></span>
-							<span style={styles.shiftDayText}>{day}</span>
-						</div>
-					)
+						let durationHours = Math.floor(shifts[i].duration / 60)
+						let durationMinutes = (shifts[i].duration % 60)
+						return (
+							<div style={this.shiftHighlight()}>
+								<span style={styles.shiftTimes}>{`${shiftStartHour}:${shiftStartMinute} ${startMeridiem}`} - {`${shiftEndHour}:${shiftEndMinute} ${endMeridiem}`}</span>
+								<br />
+								<span style={this.durationCheck(shifts[i].duration)}><i>{durationHours} hrs {durationMinutes} min</i></span>
+								<span style={styles.shiftDayText}>{day}</span>
+							</div>
+						)
+					} else {
+						return (
+							<div style={this.shiftHighlight()}>
+								<span style={styles.shiftTimes}>{shifts[i].start} - {shifts[i].end}</span>
+								<br />
+								<span style={styles.shiftDayText}>{day}</span>
+							</div>
+						)
+					}
 				} else {
 					if (i === this.props.currentshifts.length - 1) {
 						if (shiftMatch === false) {
