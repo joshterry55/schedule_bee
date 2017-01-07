@@ -27,6 +27,7 @@ class SignIn extends React.Component {
       this.props.dispatch(login(user));
       this.props.history.push('/schedule')
     }).fail( err => {
+      debugger
       let message = err.responseJSON.error;
       this.props.dispatch(setFlash(message, 'error'))
     });

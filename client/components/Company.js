@@ -23,18 +23,18 @@ class Company extends React.Component {
     let assigned_companies = this.props.user.assigned_companies
     if (assigned_companies.indexOf(companyId) === -1) {
       browserHistory.push('/companies');
+    } else {
+      $.ajax({
+        url: `/api/companies/${companyId}/users`,
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( companies => {
+        this.props.dispatch(setemployee(companies));
+        this.props.dispatch(seteditcompanystate())
+      }).fail( data => {
+        console.log(data);
+      });
     }
-
-    $.ajax({
-      url: `/api/companies/${companyId}/users`,
-      type: 'GET',
-      dataType: 'JSON'
-    }).done( companies => {
-      this.props.dispatch(setemployee(companies));
-      this.props.dispatch(seteditcompanystate())
-    }).fail( data => {
-      console.log(data);
-    });
   }
 
   componentDidUpdate() {
@@ -43,18 +43,22 @@ class Company extends React.Component {
 
   componentWillMount() {
     $('select').material_select();
-    let company = this.props.params.id
+    let company = parseInt(this.props.params.id)
+    let assigned_companies = this.props.user.assigned_companies
+    if (assigned_companies.indexOf(company) === -1) {
+      browserHistory.push('/companies');
+    } else {
+      $.ajax({
+        url: `/api/companies/${company}`,
+        type: 'GET',
+        dataType: 'JSON'
+      }).done( company => {
 
-    $.ajax({
-      url: `/api/companies/${company}`,
-      type: 'GET',
-      dataType: 'JSON'
-    }).done( company => {
-
-      this.props.dispatch({type: 'SET_COMPANY', company})
-    }).fail( data => {
-      console.log(data);
-    });
+        this.props.dispatch({type: 'SET_COMPANY', company})
+      }).fail( data => {
+        console.log(data);
+      });
+    }
   }
 
 

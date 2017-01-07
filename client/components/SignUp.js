@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { login } from '../actions/auth'
+import { setFlash } from '../actions/flash';
+
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -28,9 +30,12 @@ class SignUp extends React.Component {
       data: user,
       dataType: 'JSON'
     }).done( user => {
+      debugger
       this.props.dispatch(login(user))
       this.props.history.push('/dashboard')
     }).fail( err => {
+      let message = "Error Signing In";
+      this.props.dispatch(setFlash(message, 'error'))
     })
   }
 
