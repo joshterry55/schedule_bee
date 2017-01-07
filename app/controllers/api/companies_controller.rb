@@ -4,7 +4,7 @@ class Api::CompaniesController < ApplicationController
 
   def index
     @companies = current_user.assigned_companies
-  
+
   end
 
   def show
@@ -21,6 +21,12 @@ class Api::CompaniesController < ApplicationController
     if @company.save
 
       current_user.assigned_companies << @company.id
+      current_user.assigned_companies.each do |x|
+        if x == 1
+          current_user.assigned_companies.delete(x)
+          binding.pry
+        end
+      end
       current_user.save
       render json: @company
     else

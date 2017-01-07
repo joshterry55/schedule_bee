@@ -46,6 +46,7 @@ class SideEmployees extends React.Component {
   }
 
   companiesList() {
+    
     return this.props.assigned.map( company => {
       return(<option key={company.id} value={company.id}>{company.name}</option>);
     });
