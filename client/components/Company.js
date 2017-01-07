@@ -85,12 +85,12 @@ class Company extends React.Component {
     let company = this.props.setcompany
     if(this.props.editcompany) {
       return(
-        <form className='center col s4 offset-s4'ref='editCompanyForm' onSubmit={this.submitEdittedCompany}>
+        <form className='center col s10 offset-s1 m8 offset-m2 l6 offset-l3'ref='editCompanyForm' onSubmit={this.submitEdittedCompany}>
           <div className='col s10'>
             <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder="Company Name" />
           </div>
           <div className='col s2'>
-            <button type='submit'><i className="material-icons">done</i></button>
+            <button type='submit' style={{border: 'none', backgroundColor: 'Transparent'}}><i style={styles.saveCompany} className="material-icons">done</i></button>
           </div>
         </form>
       )
@@ -112,7 +112,7 @@ class Company extends React.Component {
         <div className='row'>
           <div style={styles.company} className="col s10 offset-s1 m8 offset-m2">
             { this.editCompany() }
-            <div className="col s6 offset-s3">
+            <div className="col s10 offset-s1 m8 offset-m2 l6 offset-l3">
               <br />
               <h4>Employees</h4>
               <EmployeeView />
@@ -135,6 +135,11 @@ const styles={
   editCompany: {
     cursor: 'pointer',
     color: '#888'
+  },
+  saveCompany: {
+    backgroundColor: 'Transparent',
+    border: 'none',
+    cursor: 'pointer'
   }
 }
 
