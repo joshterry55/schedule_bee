@@ -33,7 +33,7 @@ class SignUp extends React.Component {
       this.props.dispatch(login(user))
       this.props.history.push('/dashboard')
     }).fail( err => {
-      
+
       let message;
       let emailTaken;
       let passwordConfirmation;

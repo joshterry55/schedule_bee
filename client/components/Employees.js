@@ -52,11 +52,13 @@ class Employees extends React.Component {
                 last_name: this.refs.lastName.value }},
       dataType: 'JSON'
     }).done( data => {
+      let messageSuccess = 'Invitation Sent'
       // set success flash
       // clear the form
       // let message = data.responseJSON.success;
       // this.props.dispatch(setFlash(message, 'success'))
       this.inviteForm.reset();
+      this.props.dispatch(setFlash(messageSuccess, 'success'))
       console.log('Invitation sent');
     }).fail( err => {
       let message = err.responseJSON.error;

@@ -24,10 +24,11 @@ class SignIn extends React.Component {
       dataType: 'JSON',
       data: user
     }).done( user => {
+      let successMessage = 'Sign in successful'
       this.props.dispatch(login(user));
       this.props.history.push('/schedule')
+      this.props.dispatch(setFlash(successMessage, 'success'))
     }).fail( err => {
-      debugger
       let message = err.responseJSON.error;
       this.props.dispatch(setFlash(message, 'error'))
     });
