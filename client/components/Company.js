@@ -20,7 +20,10 @@ class Company extends React.Component {
   componentDidMount() {
     $('select').material_select();
     let companyId = parseInt(this.props.params.id)
-    let assigned_companies = this.props.user.assigned_companies
+    let assigned_companies = []
+    this.props.assigned.map( company => {
+      assigned_companies.push(company.id)
+    })
     if (assigned_companies.indexOf(companyId) === -1) {
       browserHistory.push('/companies');
     } else {
@@ -44,7 +47,10 @@ class Company extends React.Component {
   componentWillMount() {
     $('select').material_select();
     let company = parseInt(this.props.params.id)
-    let assigned_companies = this.props.user.assigned_companies
+    let assigned_companies = []
+    this.props.assigned.map( company => {
+      assigned_companies.push(company.id)
+    })
     if (assigned_companies.indexOf(company) === -1) {
       browserHistory.push('/companies');
     } else {
@@ -152,8 +158,8 @@ const styles={
 }
 
 const mapStateToProps = (state) => {
-  let { user, setcompany, setemployee, currentemployee, editcompany } = state;
-  return { user, setcompany, setemployee, currentemployee, editcompany }
+  let { user, setcompany, setemployee, currentemployee, editcompany, assigned } = state;
+  return { user, setcompany, setemployee, currentemployee, editcompany, assigned }
 }
 
 export default connect(mapStateToProps)(Company)
