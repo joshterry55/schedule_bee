@@ -22,7 +22,7 @@ class ShiftBox extends React.Component {
 	}
 
 
-	componentWillMount() {
+	componentDidUpdate() {
 		$('.modal').modal();
 	}
 
@@ -67,6 +67,7 @@ class ShiftBox extends React.Component {
 		let date = this.props.shiftdate
 		let employeeId = this.props.currentemployee
 		let shifts = this.props.shiftedit
+	
 		let company = this.props.setcompany
 		let employeeName;
 		this.props.setemployee.map( employee => {
@@ -85,7 +86,7 @@ class ShiftBox extends React.Component {
 					<div className="modal-content">
 						<div className='col s6 m4 offset-m2'>
 							<label>Start</label>
-							<input type='time' ref='editShiftStart' />
+							<input type='time' ref='editShiftStart' defaultValue={shifts.start}/>
 						</div>
 						<div className='col s6 m4'>
 							<label>End</label>
@@ -217,6 +218,7 @@ class ShiftBox extends React.Component {
 		this.props.dispatch({type: 'SHIFT_DATE', date })
 		this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
 		this.props.dispatch({type: 'EDITTING_SHIFT', shift})
+		$('.modal').modal();
 	}
 
 	durationCheck(duration) {

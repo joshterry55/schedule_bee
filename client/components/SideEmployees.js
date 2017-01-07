@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { setemployee } from '../actions/setemployee';
 import { setcompany } from '../actions/setcompany';
 import {browserHistory} from 'react-router';
+import { Dropdown, Button, NavItem } from 'react-materialize';
 
 
 class SideEmployees extends React.Component {
@@ -31,14 +32,17 @@ class SideEmployees extends React.Component {
   }
 
   displayCompanies() {
+    let companyName
+    if (this.props.setcompany.name) {
+      companyName = this.props.setcompany.name
+    } else {
+      companyName = 'Select Company'
+    }
     if(this.props.assigned.length) {
       return(
-        <form onSubmit={this.displayEmployees}>
-          <select ref='companies' defaultValue={this.props.setcompany.id}>
+          <Dropdown  trigger={<Button style={styles.companyButton}>{companyName}</Button>}>
             { this.companiesList() }
-          </select>
-          <input style={styles.button} type='submit' value='Show Employees' />
-        </form>
+          </Dropdown>
       );
     } else {
       return(<h5>No Companies</h5>);
@@ -48,7 +52,7 @@ class SideEmployees extends React.Component {
   companiesList() {
     
     return this.props.assigned.map( company => {
-      return(<option key={company.id} value={company.id}>{company.name}</option>);
+      return(<NavItem key={company.id} onClick={() => this.displayEmployees(company)}>{company.name}</NavItem>);
     });
   }
 
@@ -72,10 +76,9 @@ class SideEmployees extends React.Component {
 		});
 	}
 
-  displayEmployees(e) {
-    e.preventDefault()
-    let companyId = this.refs.companies.value
-
+  displayEmployees(companyDetails) {
+    let companyId = companyDetails.id
+    let company = companyDetails
     $.ajax({
       url: `/api/companies/${companyId}/users`,
       type: 'GET',
@@ -84,7 +87,7 @@ class SideEmployees extends React.Component {
       browserHistory.push(`/schedule/${companyId}`);
       let that = window.location.pathname.substr(10)
       this.props.dispatch(setemployee(companies))
-      this.props.dispatch(setcompany(companyId))
+      this.props.dispatch({type: 'SET_COMPANY', company})
     }).fail( data => {
       debugger
       console.log(data);
@@ -115,8 +118,27 @@ const styles = {
   companySelectBox: {
     textAlign: 'center',
     height: '86px',
-    padding: '0 5px',
+    overflow: 'hidden',
+    paddingTop: '46px',
     backgroundColor: '#888',
+    backgroundImage: 'url("http://res.cloudinary.com/dupyswzaa7/image/upload/v1483816182/tinyBeeAccent_ohalki.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'top center'
+  },
+  companyButton: {
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    textAlign: 'left',
+    lineHeight: '42px',
+    width: '100%',
+    height: '40px',
+    paddingLeft: '5px',
+    backgroundColor: '#fff',
+    color: '#1665C1',
+    borderRadius: '0',
+    backgroundImage: 'url("http://res.cloudinary.com/dupyswzaa7/image/upload/v1483816910/dropdown_mgcry5.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'right center'
   },
   employeeSideWindow: {
     width: '100%',

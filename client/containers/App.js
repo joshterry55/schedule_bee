@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { logout, login } from '../actions/auth';
 import Flash from '../components/Flash';
-import { removeemployee, removecurrentemployee } from '../actions/setemployee'
+import { removeemployee, removecurrentemployee } from '../actions/setemployee';
+import { removesetcompany } from '../actions/setcompany';
 
 
 class App extends React.Component {
@@ -23,6 +24,7 @@ class App extends React.Component {
     this.props.dispatch(logout(this.props.history))
     this.props.dispatch(removeemployee())
     this.props.dispatch(removecurrentemployee())
+    this.props.dispatch(removesetcompany())
   }
 
   navs() {
