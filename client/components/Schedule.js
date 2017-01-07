@@ -97,7 +97,10 @@ const styles = {
 		width: '100%',
 		backgroundColor: "#ccc",
 		border: "1px solid black",
-		overflow: 'scroll'
+		overflow: 'scroll',
+		backgroundImage: 'url("http://res.cloudinary.com/dupyswzaa7/image/upload/v1483750654/beeGreyBack_x8oayo.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center'
 	},
 	calendar: {
 		width: '1575px',
