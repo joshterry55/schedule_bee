@@ -6,7 +6,8 @@ export const login = (user = null) => {
       $.ajax({
         url: '/api/users/info',
         type: 'GET',
-        dateType: 'JSON'
+        dateType: 'JSON',
+        async: false
       }).done( user => {
         dispatch(setUser(user))
       })
@@ -16,12 +17,13 @@ export const login = (user = null) => {
 
 export const logout = (router) => {
   return (dispatch) => {
+    dispatch(setUser())
     $.ajax({
       url: '/users/sign_out',
-      type: 'DELETE'
+      type: 'DELETE',
+      async: false
     }).done( user => {
       router.push('/')
-      dispatch(setUser())
     }).fail( err => {
 
     })

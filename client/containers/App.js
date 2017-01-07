@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { logout } from '../actions/auth';
+import { logout, login } from '../actions/auth';
 import Flash from '../components/Flash';
 import { removeemployee, removecurrentemployee } from '../actions/setemployee'
 
@@ -15,6 +15,7 @@ class App extends React.Component {
 
   componentDidMount() {
     $('.button-collapse').sideNav()
+    this.props.dispatch(login());
   }
 
   logout(e) {
