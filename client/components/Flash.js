@@ -5,7 +5,7 @@ import { clearFlash } from '../actions/flash'
 const fadeFlash = (dispatch) => {
   setTimeout( () => {
     dispatch(clearFlash())
-  }, 10000)
+  }, 4000)
 }
 
 const Flash = ({ flash, dispatch }) => {
