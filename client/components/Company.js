@@ -90,7 +90,7 @@ class Company extends React.Component {
             <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder="Company Name" />
           </div>
           <div className='col s2'>
-            <button type='submit' style={{border: 'none', backgroundColor: 'Transparent'}}><i style={styles.saveCompany} className="material-icons">done</i></button>
+            <button type='submit' style={{border: 'none', backgroundColor: 'Transparent'}}><i style={styles.saveCompany} className="small material-icons">done</i></button>
           </div>
         </form>
       )
