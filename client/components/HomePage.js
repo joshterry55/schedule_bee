@@ -17,7 +17,7 @@ class HomePage extends React.Component {
 	render() {
 		return(
 			<div className="row">
-				<div className="col s12" style={{height: '500px', padding:'30px 0', backgroundColor: 'rgba(0,0,0,0.65)', marginTop: '75px'}}>
+				<div className="col s12" style={{height: '500px', padding:'30px 0', backgroundColor: 'rgba(0,0,0,0.65)', marginTop: '0px'}}>
 					<div className="col s12 m10 offset-m1">
 						<div className="slider" style={{boxShadow: '0 0 25px rgba(0,0,0,0.60)'}}>
 					    <ul className="slides" onClick={this.nextSlide}>
@@ -52,16 +52,17 @@ class HomePage extends React.Component {
 					      </li>
 					    </ul>
 					  </div>
-					  <div className='col s12 m10 offset-m1 l6 offset-l3' style={{paddingTop:'35px'}}>
-	 						<div className="col s6 center">
+					  <div className='col s12 m10 offset-m1 l6 offset-l3' style={{padding:'35px 0px 0px 0px'}}>
+	 						<div className="col s6 center" style={{padding: '0px'}}>
 	 							<Link to='/signup' style={styles.button}>Sign Up</Link>
 	 						</div>
-	 						<div className="col s6 center">
+	 						<div className="col s6 center" style={{padding: '0px'}}>
 	 							<Link to='/signin' style={styles.button}>Sign In</Link>
 	 						</div>
 	 					</div>
 					 </div>
 				</div>
+				<div style={styles.footerText} className="hide-on-small-only">Copyright &copy; 2017 - ScheduleBee</div>
 			</div>
 		);
 	}
@@ -96,11 +97,12 @@ const styles = {
 		border: '1px solid #333',
 		background: "linear-gradient(#1c86ff, #1257a6)",
 		boxShadow: "inset 0 1px 0px  #fff, 0 0 15px rgba(0,0,0,0.60)",
-		fontSize: '25px',
+		fontSize: '20px',
 		fontWeight: 'bold',
 		lineHeight: '15px',
 		color: '#fff',
-		textShadow: '0 0 15px rgba(0,0,0,0.5), 0 1px #999'
+		textShadow: '0 0 15px rgba(0,0,0,0.5), 0 1px #999',
+		whiteSpace: 'nowrap'
 	},
 	homePage: {
 		backgroundColor: '#fff',
@@ -111,6 +113,16 @@ const styles = {
 	},
 	textGlow: {
 		textShadow: '0 0 10px rgba(0,0,0,0.9)'
+	},
+	footerText: {
+		position: 'fixed',
+		bottom: '10px',
+		width: '100%',
+		fontSize: '18px',
+		fontWeight: 'bold',
+		textAlign: 'center',
+		color: '#fff',
+		textShadow: '0 0 10px rgba(0,0,0,0.5)'
 	}
 
 }
