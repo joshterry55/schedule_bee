@@ -30,11 +30,31 @@ class SignUp extends React.Component {
       data: user,
       dataType: 'JSON'
     }).done( user => {
-      debugger
       this.props.dispatch(login(user))
       this.props.history.push('/dashboard')
     }).fail( err => {
-      let message = "Error Signing In";
+      
+      let message;
+      let emailTaken;
+      let passwordConfirmation;
+
+      let email = err.responseJSON.errors.email
+      if(email != undefined){
+        emailTaken = email[0]
+      }
+      let password = err.responseJSON.errors.password_confirmation
+      if(password != undefined) {
+        passwordConfirmation = password[0]
+      }
+      if(emailTaken == "has already been taken"){
+
+        message = "Email has already been taken"
+      } else if(passwordConfirmation == "doesn't match Password") {
+
+        message = "Passwords don't match"
+      } else {
+        message = "Error Occured"
+      }
       this.props.dispatch(setFlash(message, 'error'))
     })
   }
