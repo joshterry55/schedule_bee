@@ -24,7 +24,6 @@ class Api::CompaniesController < ApplicationController
       current_user.assigned_companies.each do |x|
         if x == 1
           current_user.assigned_companies.delete(x)
-          binding.pry
         end
       end
       current_user.save
