@@ -12,6 +12,7 @@ class About extends React.Component {
         <p style={styles.about}><strong style={styles.name}>ScheduleBee</strong> was created due to the lack of easy-to-use scheduling apps on the market currently.
           Cael Jensen thought of the idea, having mangaged and scheduled employees in the past. Cael wanted an easier way to
          create a schedule as well as to keep track of employee hours to ensure his employees were getting enough hours and not working overtime.</p>
+        <p><a style={styles.contact} href="mailto:schedulebee.utah@gmail.com?Subject=Hello%20Schedule%20Bee!" target="_top">Send us an Email!</a></p>
        </div>
        <div className="center row" style={styles.teamMain} >
          <h1>The Team</h1>
@@ -134,6 +135,10 @@ const styles = {
   },
   lang: {
     marginTop: '75px',
+  },
+  contact: {
+    color: '#FDCC0B',
+    fontSize: '18px',
   }
 }
 
