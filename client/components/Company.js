@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { currentemployee, setemployee } from '../actions/setemployee';
 import EmployeeView from './EmployeeView'
 import { seteditcompanystate, toggleedit } from '../actions/editcompany'
+import { browserHistory } from 'react-router'
 // let companyEdit = false
 
 class Company extends React.Component {
@@ -18,18 +19,19 @@ class Company extends React.Component {
 
   componentDidMount() {
     $('select').material_select();
-
-    let companyId = this.props.params.id
+    let companyId = parseInt(this.props.params.id)
+    let assigned_companies = this.props.user.assigned_companies
+    if (assigned_companies.indexOf(companyId) === -1) {
+      browserHistory.push('/companies');
+    }
 
     $.ajax({
       url: `/api/companies/${companyId}/users`,
       type: 'GET',
       dataType: 'JSON'
     }).done( companies => {
-
       this.props.dispatch(setemployee(companies));
       this.props.dispatch(seteditcompanystate())
-
     }).fail( data => {
       console.log(data);
     });
@@ -41,7 +43,6 @@ class Company extends React.Component {
 
   componentWillMount() {
     $('select').material_select();
-
     let company = this.props.params.id
 
     $.ajax({
@@ -147,8 +148,8 @@ const styles={
 }
 
 const mapStateToProps = (state) => {
-  let { setcompany, setemployee, currentemployee, editcompany } = state;
-  return { setcompany, setemployee, currentemployee, editcompany }
+  let { user, setcompany, setemployee, currentemployee, editcompany } = state;
+  return { user, setcompany, setemployee, currentemployee, editcompany }
 }
 
 export default connect(mapStateToProps)(Company)
