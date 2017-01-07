@@ -38,7 +38,7 @@ class SignUp extends React.Component {
   render() {
     return(
       <div className='container row'>
-        <div className='col s10 offset-s1 center' style={styles.signUpContainer}>
+        <div className='col s12 m10 offset-m1 center' style={styles.signUpContainer}>
           <h3>Admin Sign Up</h3>
           <h6>If you are an employee, request a login from your manager.</h6><br />
           <div className='center'>
