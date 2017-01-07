@@ -69,6 +69,9 @@ const styles = {
     boxShadow: '5px 5px 5px rgba(0,0,0,0.5)',
     padding: '5px 5px 35px 5px',
     marginTop: '25px',
+    backgroundImage: 'url("http://res.cloudinary.com/dupyswzaa7/image/upload/v1483750352/beeAccent_l5fh3h.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'bottom right'
   },
   button: {
     padding: '10px 25px',

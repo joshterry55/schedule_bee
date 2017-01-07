@@ -252,7 +252,7 @@ class ShiftBox extends React.Component {
 					let shiftEndHour = shifts[i].end.substr(0,2)
 					let shiftEndMinute = shifts[i].end.substr(3,2)
 					let endMeridiem = 'AM'
-					if (shiftEndHour > 12) {
+					if (shiftEndHour >= 12) {
 						shiftEndHour -= 12
 						endMeridiem = 'PM'
 					}
