@@ -10,6 +10,8 @@ class SideEmployees extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = { loading: false }
+
     this.employees = this.employees.bind(this)
     this.companiesList = this.companiesList.bind(this);
     this.displayEmployees = this.displayEmployees.bind(this)
@@ -50,7 +52,6 @@ class SideEmployees extends React.Component {
   }
 
   companiesList() {
-    let displayTimeout = this.displayTimeout
     return this.props.assigned.map( company => {
       return(<NavItem key={company.id} onClick={() => setTimeout(() => this.displayEmployees(company), 200)}>{company.name}</NavItem>);
     });
@@ -77,6 +78,7 @@ class SideEmployees extends React.Component {
 	}
 
   displayEmployees(companyDetails) {
+    this.setState({ loading: true })
     let companyId = companyDetails.id
     let company = companyDetails
     $.ajax({
@@ -88,10 +90,33 @@ class SideEmployees extends React.Component {
       let that = window.location.pathname.substr(10)
       this.props.dispatch(setemployee(companies))
       this.props.dispatch({type: 'SET_COMPANY', company})
+      this.setState({ loading: false })
     }).fail( data => {
       debugger
       console.log(data);
     });
+  }
+
+  loadingState() {
+    if (this.state.loading) {
+      return(
+        <div className="row">
+          <div className="col s12 center">
+            <div className="preloader-wrapper big active" style={{backgroundColor:'#aaa', borderRadius: '50%', marginTop: '25px'}}>
+              <div className="spinner-layer spinner-blue-only">
+                <div className="circle-clipper left">
+                  <div className="circle"></div>
+                </div><div className="gap-patch">
+                  <div className="circle"></div>
+                </div><div className="circle-clipper right">
+                  <div className="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
   }
 
   render() {
@@ -103,6 +128,7 @@ class SideEmployees extends React.Component {
         <div style={styles.employeeSideWindow} className="scrollLinkedY">
           <div style={styles.employeeSideContainer}>
             {this.employees()}
+            {this.loadingState()}
           </div>
         </div>
       </div>
