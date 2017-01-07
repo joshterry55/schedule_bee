@@ -14,7 +14,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    $('.button-collapse').sideNav()
+    $('.button-collapse').sideNav({closeOnClick: true})
     this.props.dispatch(login());
   }
 
