@@ -6,7 +6,6 @@ import { removecurrentemployee } from '../actions/setemployee'
 
 class AdminNav extends React.Component {
 
-
   onPage(tab) {
     switch(tab) {
       case "companies":

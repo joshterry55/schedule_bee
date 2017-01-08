@@ -70,7 +70,6 @@ class BottomEmployees extends React.Component {
       this.props.dispatch(setcompany(companyId))
 
     }).fail( data => {
-      debugger
       console.log(data);
     });
   }

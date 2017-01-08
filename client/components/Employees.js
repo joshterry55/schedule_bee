@@ -3,19 +3,14 @@ import AdminNav from './AdminNav'
 import { connect } from 'react-redux';
 import { setFlash } from '../actions/flash';
 
-
 class Employees extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = { companies: [] }
     this.inviteEmployee = this.inviteEmployee.bind(this);
     this.companiesOptions = this.companiesOptions.bind(this);
   }
 
   componentDidMount() {
-    // do the ajax call to grab all the companies that this admin owns
-    // set state of the companies
-    // use the companies state to loop over and create the options in the select
     $('select').material_select();
 
     $.ajax({
@@ -53,13 +48,8 @@ class Employees extends React.Component {
       dataType: 'JSON'
     }).done( data => {
       let messageSuccess = 'Invitation Sent'
-      // set success flash
-      // clear the form
-      // let message = data.responseJSON.success;
-      // this.props.dispatch(setFlash(message, 'success'))
       this.inviteForm.reset();
       this.props.dispatch(setFlash(messageSuccess, 'success'))
-      console.log('Invitation sent');
     }).fail( err => {
       let message = err.responseJSON.error;
       this.props.dispatch(setFlash(message, 'error'))

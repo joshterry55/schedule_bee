@@ -9,15 +9,11 @@ class Companies extends React.Component {
   constructor(props) {
     super(props)
 
-
     this.addCompany = this.addCompany.bind(this)
     this.setCompany = this.setCompany.bind(this)
   }
 
   componentDidMount() {
-    // do the ajax call to grab all the companies that this admin owns
-    // set state of the companies
-    // use the companies state to loop over and create the options in the select
     $('select').material_select();
 
     $.ajax({
@@ -29,10 +25,7 @@ class Companies extends React.Component {
     }).fail( data => {
       console.log(data);
     });
-
   }
-
-
 
   addCompany(e) {
     e.preventDefault();
@@ -46,19 +39,14 @@ class Companies extends React.Component {
         name: newCompany
       }}
     }).done( company => {
-      // assigned_companies.push(data.id)
-
       this.props.dispatch(addassigned(company))
       this.refs.companyForm.reset()
     }).fail( data => {
-
       console.log(data)
     })
   }
 
   setCompany(company) {
-
-    // this.props.dispatch({type: 'SET_COMPANY', company})
   }
 
   displayCompanies() {
@@ -68,8 +56,6 @@ class Companies extends React.Component {
       );
     });
   }
-
-  // <div key={company.id}>{company.name}</div>
 
   render() {
     return(

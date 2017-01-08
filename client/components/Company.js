@@ -5,12 +5,10 @@ import { currentemployee, setemployee } from '../actions/setemployee';
 import EmployeeView from './EmployeeView'
 import { seteditcompanystate, toggleedit } from '../actions/editcompany'
 import { browserHistory } from 'react-router'
-// let companyEdit = false
 
 class Company extends React.Component {
   constructor(props){
     super(props)
-
 
     this.editCompany = this.editCompany.bind(this)
     this.toggleEdit = this.toggleEdit.bind(this)
@@ -67,7 +65,6 @@ class Company extends React.Component {
     }
   }
 
-
   toggleEdit(e) {
     if(e != undefined) {
       e.preventDefault()
@@ -113,7 +110,6 @@ class Company extends React.Component {
       )
     }
   }
-
 
 
   render() {
