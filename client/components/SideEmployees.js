@@ -92,7 +92,6 @@ class SideEmployees extends React.Component {
       this.props.dispatch({type: 'SET_COMPANY', company})
       this.setState({ loading: false })
     }).fail( data => {
-      debugger
       console.log(data);
     });
   }

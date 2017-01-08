@@ -47,16 +47,6 @@ class Schedule extends Component {
 		weekOffset -= 1
 		this.props.dispatch(setweek(weekOffset));
 	}
-	// LINKS TO DRAG AND DROP UNFINISHED
-	// <div className="col l3 m4 s5">
-	// 	<div className="col s12 center grey-text text-darken-3">
-	// 	View Schedule By:
-	// 	</div>
-	// 	<div className="col s12 center">
-	// 		<Link style={styles.viewButton} to='/schedule'>Employees</Link> &ensp;
-	// 		<Link style={styles.viewButton} to='/shiftschedule'>Shifts</Link>
-	// 	</div>
-	// </div>
 
 	render() {
 		return(

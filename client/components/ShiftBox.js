@@ -21,13 +21,11 @@ class ShiftBox extends React.Component {
 		let shiftdate = `${this.props.month}, ${this.props.year}`
 	}
 
-
 	componentDidUpdate() {
 		$('.modal').modal();
 	}
 
 	shiftModal() {
-
 		let date = this.props.shiftdate
 		let employeeId = this.props.currentemployee
 		let company = this.props.setcompany
@@ -67,7 +65,7 @@ class ShiftBox extends React.Component {
 		let date = this.props.shiftdate
 		let employeeId = this.props.currentemployee
 		let shifts = this.props.shiftedit
-	
+
 		let company = this.props.setcompany
 		let employeeName;
 		this.props.setemployee.map( employee => {
@@ -139,7 +137,6 @@ class ShiftBox extends React.Component {
 		}).done( shift => {
 			this.props.dispatch({type: 'ADD_CURRENT_SHIFT', shift})
 		}).fail( data => {
-			debugger
 		})
 	}
 
@@ -166,7 +163,6 @@ class ShiftBox extends React.Component {
 				duration: editDuration
 			}}
 		}).done( shift => {
-			// let companyId = window.location.pathname.substr(10)
 			let companyId = shift.company_id
 			this.props.dispatch(currentshifts(companyId))
 		}).fail( data => {
@@ -207,7 +203,6 @@ class ShiftBox extends React.Component {
 		}).done( shift => {
 			this.props.dispatch({type: 'DELETE_CURRENT_SHIFT', shift})
 		}).fail( shift => {
-			debugger
 		})
 	}
 
@@ -331,7 +326,6 @@ class ShiftBox extends React.Component {
 			</div>
 		);
 	}
-
 }
 
 const styles = {

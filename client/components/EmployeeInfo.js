@@ -24,16 +24,10 @@ class EmployeeInfo extends React.Component {
   }
 
   componentDidMount() {
-    // $(body).css('background-color', 'black !important');
     let employee = this.props.user
     this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
 
   }
-
-  // componentWillMount() {
-  //   let user = this.props.user
-  //   this.props.dispatch({type: 'USER', ...user})
-  // }
 
   onDrop = (files) => {
     let id = this.props.currentemployee.id
@@ -68,20 +62,10 @@ class EmployeeInfo extends React.Component {
     })
   }
 
-  // <div>
-  //   <form onSubmit={this.employeeUpdate}>
-  //     <input type='text' ref='phoneNumber' placeholder='Phone Number' defaultValue={employee.phone}/>
-  //     <input type='submit' />
-  //   </form>
-  //   <DropZone multiple={false} onDrop={this.onDrop} />
-  // </div>
-
   display() {
     let employee = this.props.currentemployee
     if(this.state.edit) {
       return(
-
-
 
         <div>
           <div className="col s12 l5" style={{height: '300px', marginBottom: '15px', position: 'relative'}}>
@@ -186,7 +170,6 @@ class EmployeeInfo extends React.Component {
       </div>
     )
   }
-
 }
 
 const styles = {
@@ -213,7 +196,6 @@ const styles = {
     borderRadius: '5px'
   }
 }
-
 
 const mapStateToProps = (state) => {
   let { user, currentemployee, setemployee } = state;

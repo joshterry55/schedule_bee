@@ -99,9 +99,6 @@ class EmployeeView extends React.Component {
     })
   }
 
-  // company_id: this.props.setcompany.id
-
-
   toggleEdit(e) {
     if(e != undefined) {
       e.preventDefault()

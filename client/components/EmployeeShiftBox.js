@@ -6,14 +6,12 @@ import { currentshifts } from '../actions/currentshifts'
 class EmployeeShiftBox extends React.Component {
 	constructor(props) {
 		super(props)
-
 	}
 
 	componentDidMount() {
 		let employeeId = this.props.id
 		let shiftdate = `${this.props.month}, ${this.props.year}`
 	}
-
 
 	rowHighlight() {
 		if(this.props.highlight === 0) {
@@ -128,7 +126,6 @@ class EmployeeShiftBox extends React.Component {
 			</div>
 		);
 	}
-
 }
 
 const styles = {

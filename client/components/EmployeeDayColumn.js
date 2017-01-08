@@ -4,22 +4,17 @@ import EmployeeShiftBox from './EmployeeShiftBox';
 
 class EmployeeDayColumn extends Component {
 
-
 	myDate() {
 
 		let dayOffset = this.props.setdate - this.props.day;
 		let fullDate = new Date(Date.now()-((dayOffset * 24)*60*60*1000));
 		let myDate = []
-
-		// gets day as three-letter string (e.g. Mon, Tue...) and pushes to myDate[0]
 		myDate.push(fullDate.toDateString().substr(0, 3))
-		// gets month text and adds date number (e.g. January 12, ...) and pushes to myDate[1]
 		let monthNumber = fullDate.getMonth();
 		let monthNames = ["January", "February", "March", "April",
 											"May", "June", "July", "August", "September",
 											"October", "November", "December"]
 		myDate.push(monthNames[monthNumber] + ' ' + fullDate.getDate())
-		// gets year (e.g. 2016, 2017, etc.) and pushes to myDate[2]
 		myDate.push(fullDate.getFullYear())
 
 		return myDate
@@ -45,7 +40,6 @@ class EmployeeDayColumn extends Component {
 	render() {
 		let myDate = this.myDate();
 		return (
-
 			<div style={styles.leftFloat}>
 				{ this.addEmployeeRow(myDate) }
 			</div>
@@ -54,7 +48,6 @@ class EmployeeDayColumn extends Component {
 }
 
 const mapStateToProps = (state) => {
-	// return { setdate: state.setdate }
 	let { setdate, setemployee } = state;
   return { setdate, setemployee }
 }

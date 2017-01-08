@@ -41,8 +41,6 @@ const styles = {
 		bottom: '0px',
 		height: '3000px',
 		backgroundColor: '#fff',
-		// borderRight: 'inset 12px rgba(0,0,0,0.33)',
-		// borderLeft: 'inset 12px rgba(0,0,0,0.33)',
 		zIndex: '-1'
 	}
 }

@@ -9,7 +9,6 @@ class ScheduleShiftBox extends React.Component {
 		this.submitShift = this.submitShift.bind(this)
 	}
 
-
 	componentWillMount() {
 		$('.modal').modal();
 	}
@@ -50,8 +49,6 @@ class ScheduleShiftBox extends React.Component {
 		let start = this.refs.shiftStart.value
 		let end = this.refs.shiftEnd.value
 		let companyId = this.props.setcompany.id
-
-		debugger
 	}
 
 	rowHighlight() {
@@ -64,7 +61,6 @@ class ScheduleShiftBox extends React.Component {
 
 	display() {
 		let day = this.props.day
-
 		return(
 			<div style={this.rowHighlight()}>
 				<span style={styles.shiftDayText}>{day}</span>
@@ -82,7 +78,6 @@ class ScheduleShiftBox extends React.Component {
 			</div>
 		);
 	}
-
 }
 
 const styles = {
@@ -111,7 +106,7 @@ const styles = {
 		transform: "rotate(-35deg)"
 	},
 	addShiftButton: {
-		
+
 	}
 }
 

@@ -30,7 +30,6 @@ class EmployeeSideEmployees extends React.Component {
     }).done( companies => {
       this.props.dispatch(setemployee(companies))
     }).fail( data => {
-      debugger
       console.log(data);
     });
   }
@@ -44,13 +43,10 @@ class EmployeeSideEmployees extends React.Component {
     }).done( company => {
       browserHistory.push(`/employeescheduleview/${Id}`);
       this.props.dispatch({type: 'SET_COMPANY', company})
-
     }).fail( data => {
-      debugger
       console.log(data);
     });
   }
-
 
   displayCompanies() {
     return(
@@ -79,7 +75,6 @@ class EmployeeSideEmployees extends React.Component {
             </div>);
 		});
 	}
-
 
 
   render() {
