@@ -39,10 +39,8 @@ body {
 }
 
 .alert {
-  margin-bottom: 20px;
-  padding: 15px;
+  padding: 5px;
   border: 1px solid transparent;
-  border-radius: 4px;
 }
 
 .alert-error {
@@ -52,9 +50,9 @@ body {
 }
 
 .alert-success {
-  color: white;
-  background-color: green;
-  border-color: black;
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
 }
 
 .close {
@@ -88,7 +86,7 @@ body {
 
 .admin-tabs:hover {
   // background: linear-gradient(#C6CFD5, #56606F) !important;
-  background: linear-gradient(#1257a6, #1565C0)!important;
+  background: linear-gradient(#2267b6, #2575d0)!important;
   color: #0d3c73 !important;
   text-shadow: 0 0 10px rgba(255,255,255,0.5), 0 1px #8cb7e8 !important;
 }
