@@ -201,21 +201,6 @@ body {
   border: 1px solid #E9EAED;
 }
 
-.about-whole {
-  background-color: white !important;
-  padding: 30px;
-  margin-top: 15px;
-  // border-radius: 20px;
-}
-
-.main-about {
-  background-color: #1565C0 !important;
-  color: white;
-  padding: 15px;
-  // border-radius: 20px;
-  text-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
 .li-pic {
   background-image: url('li.png');
   background-size: cover;
@@ -256,4 +241,46 @@ input:focus + label {
 
 .collection a.collection-item {
   color: #1565C0 !important;
+}
+
+.about-banner {
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483914423/calendarBanner_f27sxs.jpg');
+  background-position: center center;
+  width: 100%;
+  height: 250px;
+  box-shadow: 0 0 30px rgba(0,0,0,.75);
+  position: relative;
+  z-index: 2;
+  // margin-top: -18px;
+}
+
+.team-photo-large {
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483919486/GroupFixed_ue83pr.jpg');
+  background-position: top center;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  text-shadow: 0 0 10px rgba(0,0,0,1);
+  margin-top: 25px;
+}
+.team-photo-med {
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483919486/GroupFixed_ue83pr.jpg');
+  background-position: top center;
+  height: 225px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  text-shadow: 0 0 10px rgba(0,0,0,1);
+  margin-top: 25px;
+}
+.team-photo-small {
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483919486/GroupFixed_ue83pr.jpg');
+  background-position: top center;
+  height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  text-shadow: 0 0 10px rgba(0,0,0,1);
+  margin-top: 25px;
 }
