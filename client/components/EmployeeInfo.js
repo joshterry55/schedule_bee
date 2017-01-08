@@ -100,12 +100,15 @@ class EmployeeInfo extends React.Component {
 
             }}>
             <DropZone style={{
+                backgroundColor: '#aaa',
                 backgroundImage: `url(${changeImage})`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center center',
                 width: '100%',
                 height: '100%',
                 maxWidth: '300px',
                 display: 'block',
-                backgroundSize: 'cover',
                 borderRadius: '10px',
                 margin: '0px auto',
                 position: 'relative',
