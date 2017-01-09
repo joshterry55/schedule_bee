@@ -75,7 +75,7 @@ class App extends React.Component {
             </ul>
           </div>
         </nav>
-        <div style={{position: 'fixed', top:'64px', width: '100%', opacity: '0.85', textAlign: 'center', zIndex:'999'}}>
+        <div id="flashContainer" style={{position: 'fixed', top:'64px', width: '100%', opacity: '0.85', textAlign: 'center', zIndex:'999'}}>
           <Flash />
         </div>
         { this.props.children }
