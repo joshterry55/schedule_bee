@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+
 
 class HomePage extends React.Component {
 
@@ -16,12 +17,11 @@ class HomePage extends React.Component {
 	}
 
 	loginCheck() {
-
 		if(this.props.user.id) {
 			return(
 				<div>
 					<div className="col s12 center" style={{padding: '0px', color: '#fff', fontSize: '15px'}}>
-						<p>Welcome {this.props.user.first_name}</p>
+						<p>Welcome {this.props.user.first_name}, <Link to='/schedule'>view your schedule.</Link></p>
 					</div>
 				</div>
 			)
@@ -82,7 +82,6 @@ class HomePage extends React.Component {
 	 					</div>
 					 </div>
 				</div>
-				<div style={styles.footerText} className="hide-on-small-only">Copyright &copy; 2017 - ScheduleBee</div>
 			</div>
 		);
 	}
