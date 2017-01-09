@@ -128,72 +128,120 @@ body {
 }
 
 .react-pic {
-  background-image: url('react.png');
-  background-size: cover;
-  width: 200px;
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483985554/reactjs_sregjo.jpg');
+  background-size: contain;
   height: 200px;
-  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .rails-pic {
-  background-image: url('rubyrails.png');
-  background-size: cover;
-  width: 230px;
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483985555/rubyonrails_uvny5t.jpg');
+  background-size: contain;
   height: 200px;
-  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .redux-pic {
-  background-image: url('reduxnew.png');
-  background-size: cover;
-  width: 220px;
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483985555/redux_shkjcm.jpg');
+  background-size: contain;
   height: 200px;
-  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .html-pic {
-  background-image: url('html.png');
-  background-size: cover;
-  width: 200px;
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483985554/html5_pbf3dl.jpg');
+  background-size: contain;
   height: 200px;
-  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .css3-pic {
-  background-image: url('css3.png');
-  background-size: cover;
-  width: 200px;
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483985554/css3_aybtrc.jpg');
+  background-size: contain;
   height: 200px;
-  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .jquery-pic {
-  background-image: url('jquery.gif');
-  background-size: cover;
-  width: 200px;
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483985555/jquery_ic4v9n.jpg');
+  background-size: contain;
   height: 200px;
-  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.js-pic {
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483985554/javascript_mez6uk.jpg');
+  background-size: contain;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cloudinary-pic {
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483985554/cloudinary_xqjx2t.jpg');
+  background-size: contain;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.rrouter-pic {
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483985555/reactrouter_mjkbdr.jpg');
+  background-size: contain;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.githubbig-pic {
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483986454/github_q9spi4.jpg');
+  background-size: contain;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .material-pic {
-  background-image: url('materializecss.png');
-  background-size: cover;
-  margin-top: -30px;
-  width: 220px;
-  height: 220px;
-  display: inline-block;
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483986454/materialize_tsarsu.jpg');
+  background-size: contain;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .devise-pic {
-  background-image: url('devise.png');
-  background-size: cover;
-  margin-left: -30px;
-  padding: none;
-  width: 280px;
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483986454/devise_duyehd.jpg');
+  background-size: contain;
   height: 200px;
-  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .ajax-pic {
-  background-image: url('ajax.png');
-  background-size: cover;
-  padding: none;
-  width: 280px;
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483985554/ajax_dfyqtn.jpg');
+  background-size: contain;
   height: 200px;
-  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.webpack-pic {
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483986454/webpack_n5ne0s.jpg');
+  background-size: contain;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.postgresql-pic {
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483986454/postgresql_sh7j25.jpg');
+  background-size: contain;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.heroku-pic {
+  background-image: url('http://res.cloudinary.com/dupyswzaa7/image/upload/v1483986454/heroku_mlxmwu.jpg');
+  background-size: contain;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .li-pic {
