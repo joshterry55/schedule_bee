@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addassigned } from '../actions/addassigned';
 import AdminNav from './AdminNav';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+import { setFlash } from '../actions/flash';
+
 
 
 class Companies extends React.Component {
@@ -41,6 +43,8 @@ class Companies extends React.Component {
     }).done( company => {
       this.props.dispatch(addassigned(company))
       this.refs.companyForm.reset()
+      let message = 'Company Created'
+      this.props.dispatch(setFlash(message, 'success'))
     }).fail( data => {
       console.log(data)
     })

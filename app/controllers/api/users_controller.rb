@@ -40,8 +40,7 @@ class Api::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.company_id = 1
-    @user.save
+    @user.destroy
     render json: @user
   end
 

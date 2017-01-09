@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { showshift } from '../actions/showshift'
 import { currentshifts } from '../actions/currentshifts'
+import { setFlash } from '../actions/flash';
 
 class ShiftBox extends React.Component {
 	constructor(props) {
@@ -121,6 +122,10 @@ class ShiftBox extends React.Component {
 		let end = this.refs.shiftEnd.value
 		let companyId = this.props.setcompany.id
 		let duration = this.calculateDuration(start, end)
+		if(duration < 0) {
+			let message = "Shift ends before it starts, Please revise."
+			this.props.dispatch(setFlash(message, 'error'))
+		}
 
 		$.ajax({
 			url: '/api/shifts',
@@ -150,6 +155,10 @@ class ShiftBox extends React.Component {
 		let editEnd = this.refs.editShiftEnd.value
 		let editCompanyId = this.props.setcompany.id
 		let editDuration = this.calculateDuration(editStart, editEnd)
+		if(editDuration < 0) {
+			let message = "Shift ends before it starts, Please revise."
+			this.props.dispatch(setFlash(message, 'error'))
+		}
 		$.ajax({
 			url: `/api/shifts/${editId}`,
 			type: 'PUT',
