@@ -112,16 +112,20 @@ class Company extends React.Component {
   }
 
   deleteCompany(id) {
-    $.ajax({
-      type: "DELETE",
-      url: `/api/companies/${id}`,
-      dataType: 'JSON'
-    }).success( company => {
-      browserHistory.push('/companies');
-      this.props.dispatch({type: 'REMOVE_SET_COMPANY'})
-    }).fail( data => {
-      console.log('failed')
-    })
+    let confirmed = confirm("Are you sure you want to delete this company? Doing so will delete all employees and shifts.")
+    if(confirmed) {
+      $.ajax({
+        type: "DELETE",
+        url: `/api/companies/${id}`,
+        dataType: 'JSON'
+      }).success( company => {
+        browserHistory.push('/companies');
+        this.props.dispatch({type: 'REMOVE_SET_COMPANY'})
+        this.props.dispatch({type: 'RESET_EMPLOYEE'})
+      }).fail( data => {
+        console.log('failed')
+      })
+    }
   }
 
 
