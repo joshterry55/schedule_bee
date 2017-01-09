@@ -129,37 +129,37 @@ class About extends React.Component {
              <br />
            </div>
            <div className="center">
-             <div className='col s12 m4 l3 rails-pic'></div>
+             <div className='col s6 m4 l3 rails-pic'></div>
 
-             <div className='col s12 m4 l3 react-pic'></div>
+             <div className='col s6 m4 l3 react-pic'></div>
 
-             <div className='col s12 m4 l3 redux-pic'></div>
+             <div className='col s6 m4 l3 redux-pic'></div>
 
-             <div className='col s12 m4 l3 html-pic'></div>
+             <div className='col s6 m4 l3 postgresql-pic'></div>
 
-             <div className='col s12 m4 l3 css3-pic'></div>
+             <div className='col s6 m4 l3 githubbig-pic'></div>
+             
+             <div className='col s6 m4 l3 heroku-pic'></div>
 
-             <div className='col s12 m4 l3 js-pic'></div>
+             <div className='col s6 m4 l3 webpack-pic'></div>
+             
+             <div className='col s6 m4 l3 devise-pic'></div>
 
-             <div className='col s12 m4 l3 jquery-pic'></div>
+             <div className='col s6 m4 l3 jquery-pic'></div>
 
-             <div className='col s12 m4 l3 material-pic'></div>
+             <div className='col s6 m4 l3 html-pic'></div>
 
-             <div className='col s12 m4 l3 cloudinary-pic'></div>
+             <div className='col s6 m4 l3 css3-pic'></div>
 
-             <div className='col s12 m4 l3 postgresql-pic'></div>
+             <div className='col s6 m4 l3 js-pic'></div>
 
-             <div className='col s12 m4 l3 devise-pic'></div>
+             <div className='col s6 m4 l3 ajax-pic'></div>
 
-             <div className='col s12 m4 l3 heroku-pic'></div>
+             <div className='col s6 m4 l3 rrouter-pic'></div>
 
-             <div className='col s12 m4 l3 webpack-pic'></div>
+             <div className='col s6 m4 l3 cloudinary-pic'></div>
 
-             <div className='col s12 m4 l3 githubbig-pic'></div>
-
-             <div className='col s12 m4 l3 rrouter-pic'></div>
-
-             <div className='col s12 m4 l3 ajax-pic'></div>
+             <div className='col s6 m4 l3 material-pic'></div>
            </div>
          </div>
        </div>
