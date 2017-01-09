@@ -70,6 +70,16 @@ body {
   opacity: .2;
 }
 
+.edit-icon:hover {
+  color: #FFD00B !important;
+  opacity: 1 !important;
+}
+
+.delete-icon:hover {
+  color: #990000 !important;
+  opacity: 1 !important;
+}
+
 #boxstyle {
   background-color: lightblue;
 }
