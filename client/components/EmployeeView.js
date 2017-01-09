@@ -53,12 +53,12 @@ class EmployeeView extends React.Component {
     } else {
       return(
         <div>
-          <p>Name: {employee.first_name} {employee.last_name}</p>
-          <p>Role: {employee.role}</p>
-          <p>Title: {employee.title}</p>
-          <p>Wage: {employee.wage} <small>per hour</small></p>
-          <p>Email: {employee.email}</p>
-          <p>Phone Number: {employee.phone}</p>
+          <p><b>Name:</b> {employee.first_name} {employee.last_name}</p>
+          <p><b>Role:</b> {employee.role}</p>
+          <p><b>Title:</b> {employee.title ? employee.title : 'none'}</p>
+          <p><b>Wage:</b> {employee.wage} <small>per hour</small></p>
+          <p><b>Email:</b> {employee.email}</p>
+          <p><b>Phone Number:</b> {employee.phone ? employee.phone : 'none'}</p>
           <p>
           <button style={styles.button} onClick={() => this.toggleEdit()}>Edit</button>
           <button style={styles.deleteButton} onClick={(e) => this.deleteEmployee(e)}>Delete</button>
