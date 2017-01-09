@@ -3,6 +3,11 @@ class Api::CompaniesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
+    current_user.assigned_companies.each do |x|
+      if x == 1
+        current_user.assigned_companies.delete(x)
+      end
+    end
     @companies = current_user.assigned_companies
 
   end
