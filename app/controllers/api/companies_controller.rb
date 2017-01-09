@@ -6,6 +6,7 @@ class Api::CompaniesController < ApplicationController
     current_user.assigned_companies.each do |x|
       if x == 1
         current_user.assigned_companies.delete(x)
+        current_user.save
       end
     end
     @companies = current_user.assigned_companies
@@ -18,7 +19,13 @@ class Api::CompaniesController < ApplicationController
   end
 
   def destroy
-    @company.destroy
+    if @company.id == 1
+      current_user.assigned_companies.delete(1)
+    else
+      current_user.assigned_companies.delete(@company.id)
+      current_user.save
+      @company.destroy
+    end
   end
 
   def create

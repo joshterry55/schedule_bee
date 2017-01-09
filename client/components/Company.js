@@ -105,10 +105,23 @@ class Company extends React.Component {
     } else {
       return(
         <div className='center'>
-          <h2 className='center'>{company.name}<i className="small material-icons" style={styles.editCompany} onClick={() => this.toggleEdit()}>mode_edit</i></h2>
+          <h2 className='center'>{company.name}<i className="small material-icons" style={styles.editCompany} onClick={() => this.toggleEdit()}>mode_edit</i><i style={styles.deleteCompanyLogo} className="small material-icons" onClick={() => this.deleteCompany(company.id)}>delete</i></h2>
         </div>
       )
     }
+  }
+
+  deleteCompany(id) {
+    $.ajax({
+      type: "DELETE",
+      url: `/api/companies/${id}`,
+      dataType: 'JSON'
+    }).success( company => {
+      browserHistory.push('/companies');
+      this.props.dispatch({type: 'REMOVE_SET_COMPANY'})
+    }).fail( data => {
+      console.log('failed')
+    })
   }
 
 
@@ -143,6 +156,10 @@ const styles={
     backgroundPosition: 'bottom right'
   },
   editCompany: {
+    cursor: 'pointer',
+    color: '#888'
+  },
+  deleteCompanyLogo: {
     cursor: 'pointer',
     color: '#888'
   },

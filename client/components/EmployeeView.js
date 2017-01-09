@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { seteditemployeestate, toggleemployeeedit } from '../actions/editemployee';
 import { updateemployees } from '../actions/updateemployeedropdown'
 import { currentemployee } from '../actions/setemployee';
-
+import { setFlash } from '../actions/flash';
 
 class EmployeeView extends React.Component {
   constructor(props) {
@@ -36,7 +36,6 @@ class EmployeeView extends React.Component {
             <label>Role</label>
             <select ref='employeeRole' defaultValue={employee.role}>
               <option value="employee">Employee</option>
-              <option value="manager">Manager</option>
               <option value="admin">Admin</option>
             </select>
             <br />
@@ -94,6 +93,8 @@ class EmployeeView extends React.Component {
       this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
       this.props.dispatch(updateemployees(companyID))
       this.toggleEdit()
+      let messageSuccess = "Employee Updated"
+      this.props.dispatch(setFlash(messageSuccess, 'success'))
     }).fail( data => {
       console.log('failed')
     })
@@ -126,6 +127,8 @@ class EmployeeView extends React.Component {
           let ID = this.props.setcompany.id
           this.props.dispatch(updateemployees(ID))
           this.props.dispatch({type: 'REMOVE_CURRENT_EMPLOYEE'})
+          let messageSuccess = "Employee Deleted"
+          this.props.dispatch(setFlash(messageSuccess, 'success'))
 
         }).fail(data => {
 
