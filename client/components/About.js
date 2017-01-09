@@ -132,6 +132,8 @@ const styles = {
   },
   teamMain: {
     backgroundColor: 'white',
+    position: 'relative',
+    zIndex: '-1',
   },
   about: {
     textShadow: '0 0 10px rgba(0,0,0,0.5)',
