@@ -46,7 +46,7 @@ class About extends React.Component {
          </div>
          <div className="col s12 hide-on-med-and-up center" style={{marginTop: '20px'}}>
            <span style={styles.pic} className="col s8 m5 offset-m1 offset-s2 cael-pic z-depth-4"></span>
-           <div className='col s12 m6' style={{paddingLeft: '35px'}}>
+           <div className='col s12 m6'>
              <h5 style={styles.team}>Cael Jensen</h5>
              <p className="center" style={styles.bio}>Cael is an entrepreneurial-minded web developer who has been tinkering
                 with computers all his life. Creativity and design are his driving passions,
@@ -68,7 +68,7 @@ class About extends React.Component {
          </div>
          <div className="col s12 hide-on-med-and-up center" style={{marginTop: '20px'}}>
            <span style={styles.pic} className="col s8 m5 offset-m1 offset-s2 josh-pic z-depth-4"></span>
-           <div className='col s12 m6' style={{paddingLeft: '35px'}}>
+           <div className='col s12 m6'>
              <h5 style={styles.team}>Josh Terry</h5>
              <p style={styles.bio}>Josh stuff here. Need more info! Waiting for more info Josh. You can do it! Blah blah Blah
                 Blah blah blah blah blaaaaaa.</p>
@@ -88,7 +88,7 @@ class About extends React.Component {
          </div>
          <div className="col s12 hide-on-med-and-up center" style={{marginTop: '20px'}}>
            <span style={styles.pic} className="col s8 m5 offset-m1 offset-s2 ali-pic z-depth-4"></span>
-           <div className='col s12 m6' style={{paddingLeft: '35px'}}>
+           <div className='col s12 m6'>
              <h5 style={styles.team}>Ali Jepsen</h5>
              <p style={styles.bio}>Ali has been working in the software industry for almost 20 years primarily in product management and QA testing.</p>
              <Link style ={styles.button} to='https://www.linkedin.com/in/ali-jepsen-879639' target='_blank'><img className="li-pic"/></Link>
@@ -110,7 +110,7 @@ class About extends React.Component {
          </div>
          <div className="col s12 hide-on-med-and-up center" style={{marginTop: '20px'}}>
            <span style={styles.pic} className="col s8 m5 offset-m1 offset-s2 marisa-pic z-depth-4"></span>
-           <div className='col s12 m6' style={{paddingLeft: '35px'}}>
+           <div className='col s12 m6'>
              <h5 style={styles.team}>Marisa Jense</h5>
              <p style={styles.bio}>Marisa's background is in behavioral science, but
                 her passion for creativity and desire to learn carried her into the tech world.
