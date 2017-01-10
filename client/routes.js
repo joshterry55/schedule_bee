@@ -26,6 +26,15 @@ const AdminAccess = UserAuthWrapper({
   wrapperDisplayName: 'UserIsAdmin'
 })
 
+const AuthenticatedAccess = UserAuthWrapper({
+  authSelector: state => state.user,
+  predicate: user => { return user.id },
+  FailureComponent: () => <SignIn />,
+  wrapperDisplayName: 'UserIsLoggedIn'
+})
+
+const AuthWrapper = AuthenticatedAccess( (props) => props.children )
+
 const AdminRoutes = AdminAccess( (props) => props.children )
 
 export default (
@@ -35,7 +44,7 @@ export default (
       <Route path='/signup' component={SignUp} />
       <Route path='/signin' component={SignIn} />
       <Route path='/about' component={About} />
-      <Route component={AuthenticatedRoutes}>
+      <Route component={AuthWrapper}>
         <Route path='/employeeinfo' component={EmployeeInfo} />
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/schedule' component={ScheduleView} />

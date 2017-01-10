@@ -5,6 +5,13 @@ import EmployeeContactList from './EmployeeContactList';
 
 class EmployeeScheduleView extends Component {
 
+	componentWillReceiveProps(nextProps){
+		if(window.location.pathname == "/employeescheduleview/1" ) {
+			this.props.history.push('/')
+			window.location.reload()
+		}
+	}
+
 	render() {
 		return(
 			<div style={styles.scheduleBox} className="row">

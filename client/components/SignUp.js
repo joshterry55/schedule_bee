@@ -31,7 +31,7 @@ class SignUp extends React.Component {
       dataType: 'JSON'
     }).done( user => {
       this.props.dispatch(login(user))
-      this.props.history.push('/dashboard')
+      this.props.history.push('/schedule')
     }).fail( err => {
 
       let message;
