@@ -53,11 +53,23 @@ class EmployeeContactList extends React.Component {
     }
   }
 
+  buttonText() {
+    if(this.props.setcompany.id) {
+      if(this.props.contactlist) {
+        return <button style={styles.button} onClick={this.toggleContacts}>Hide Contact Info</button>
+      } else {
+        return <button style={styles.button} onClick={this.toggleContacts}>Show Contact Info</button>
+      }
+    } else {
+      return(<h5 style={{color: '#aaa', marginBottom:'0'}}>Select a company to view employee information.</h5>)
+    }
+  }
+
   render() {
     return(
       <div style={styles.contactColumn} className='center' >
         <br />
-        <button style={styles.button} onClick={this.toggleContacts}>Show Contact Info</button>
+        {this.buttonText()}
         <br /><br />
         <div className='row'>
           {this.showContactList()}
@@ -73,8 +85,7 @@ const styles = {
     backgroundColor: '#fff',
     boxShadow: 'inset 0 25px 25px -25px rgba(0,0,0,1)',
     marginTop: '1px',
-    paddingTop: '10px',
-    borderBottom: '10px solid white'
+    paddingTop: '10px'
   },
   contactCard: {
     backgroundColor: '#ddd',
@@ -103,8 +114,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { contactlist, setemployee } = state;
-  return { contactlist, setemployee }
+  let { contactlist, setemployee, setcompany } = state;
+  return { contactlist, setemployee, setcompany }
 }
 
 
