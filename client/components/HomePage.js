@@ -18,13 +18,23 @@ class HomePage extends React.Component {
 
 	loginCheck() {
 		if(this.props.user.id) {
-			return(
-				<div>
-					<div className="col s12 center" style={{padding: '0px', color: '#fff', fontSize: '15px'}}>
-						<p>Welcome {this.props.user.first_name}, <Link to='/schedule'>view your schedule.</Link></p>
+			if(this.props.user.role == 'admin') {
+				return(
+					<div>
+						<div className="col s12 center" style={{padding: '0px', color: '#fff', fontSize: '15px'}}>
+							<p>Welcome {this.props.user.first_name}, <Link to='/schedule'>create a schedule.</Link></p>
+						</div>
 					</div>
-				</div>
-			)
+				)
+			} else {			
+				return(
+					<div>
+						<div className="col s12 center" style={{padding: '0px', color: '#fff', fontSize: '15px'}}>
+							<p>Welcome {this.props.user.first_name}, <Link to='/schedule'>view your schedule.</Link></p>
+						</div>
+					</div>
+				)
+			}
 		} else {
 			return(
 				<div>
