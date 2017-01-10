@@ -61,7 +61,7 @@ class HomePage extends React.Component {
 					        <div className="caption left-align">
 					          <h4 style={{marginBottom:'-15px', ...styles.textGlow}}>Welcome to</h4>
 					          <h3 style={styles.textGlow}>ScheduleBee</h3>
-					          <h5 style={styles.textGlow} className="light grey-text text-lighten-3">Scheduling made easy.</h5>
+					          <h5 style={styles.textGlow} className="light grey-text text-lighten-3">Simple. Straightforward. Scheduling.</h5>
 					        </div>
 					      </li>
 					      <li>
