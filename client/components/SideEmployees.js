@@ -86,11 +86,11 @@ class SideEmployees extends React.Component {
       type: 'GET',
       dataType: 'JSON'
     }).done( companies => {
+      this.setState({ loading: false })
       browserHistory.push(`/schedule/${companyId}`);
       let that = window.location.pathname.substr(10)
       this.props.dispatch(setemployee(companies))
       this.props.dispatch({type: 'SET_COMPANY', company})
-      this.setState({ loading: false })
     }).fail( data => {
       console.log(data);
     });
