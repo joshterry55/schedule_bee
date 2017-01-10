@@ -124,7 +124,7 @@ class ShiftBox extends React.Component {
 		let companyId = this.props.setcompany.id
 		let duration = this.calculateDuration(start, end)
 		if(duration < 0) {
-			let message = "Shift ends before it starts, Please revise."
+			let message = "Shifts cannot cross midnight. Split shift between days."
 			this.props.dispatch(setFlash(message, 'error'))
 		}
 
@@ -157,7 +157,7 @@ class ShiftBox extends React.Component {
 		let editCompanyId = this.props.setcompany.id
 		let editDuration = this.calculateDuration(editStart, editEnd)
 		if(editDuration < 0) {
-			let message = "Shift ends before it starts, Please revise."
+			let message = "Shifts cannot cross midnight. Split shift between days."
 			this.props.dispatch(setFlash(message, 'error'))
 		}
 		$.ajax({
