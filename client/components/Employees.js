@@ -6,6 +6,9 @@ import { setFlash } from '../actions/flash';
 class Employees extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = { loading: false }
+
     this.inviteEmployee = this.inviteEmployee.bind(this);
     this.companiesOptions = this.companiesOptions.bind(this);
   }
@@ -36,7 +39,7 @@ class Employees extends React.Component {
 
   inviteEmployee(e) {
     e.preventDefault();
-
+    this.setState({ loading: true })
     $.ajax({
       url: '/users/invitation',
       type: 'POST',
@@ -46,9 +49,9 @@ class Employees extends React.Component {
                 first_name: this.refs.firstName.value,
                 last_name: this.refs.lastName.value }},
       dataType: 'JSON'
-    }).done( data => {
-
-      let messageSuccess = 'Invitation Sent'
+    }).done( employee => {
+      this.setState({ loading: false })
+      let messageSuccess = `Invitation sent to ${employee.email}`
       this.inviteForm.reset();
       this.props.dispatch(setFlash(messageSuccess, 'success'))
     }).fail( err => {
@@ -57,6 +60,8 @@ class Employees extends React.Component {
       this.props.dispatch(setFlash(message, 'error'))
     })
   }
+
+
 
 
   display() {
@@ -72,12 +77,39 @@ class Employees extends React.Component {
             <input ref='firstName' type='text' required placeholder='Employee First Name' />
             <input ref='lastName' type='text' required placeholder='Employee Last Name' />
             <input ref='email' type='email' required placeholder='Employee Email' />
-            <input className='btn blue darken-3' type='submit' />
+              {this.loadingState()}
           </div>
         </form>
       );
     } else {
       return(<h3>Loading...</h3>);
+    }
+  }
+
+
+  loadingState() {
+    if (this.state.loading) {
+      return(
+        <div className="row">
+          <div className="col s12 center">
+            <div className="preloader-wrapper big active" style={{backgroundColor:'#aaa', borderRadius: '50%', marginTop: '25px'}}>
+              <div className="spinner-layer spinner-blue-only">
+                <div className="circle-clipper left">
+                  <div className="circle"></div>
+                </div><div className="gap-patch">
+                  <div className="circle"></div>
+                </div><div className="circle-clipper right">
+                  <div className="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    } else {
+      return(
+        <input className='btn blue darken-3' type='submit' />
+      )
     }
   }
 
