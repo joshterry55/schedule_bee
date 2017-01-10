@@ -43,7 +43,7 @@ class Companies extends React.Component {
     }).done( company => {
       this.props.dispatch(addassigned(company))
       this.refs.companyForm.reset()
-      let message = 'Company Created'
+      let message = `${company.name} created`
       this.props.dispatch(setFlash(message, 'success'))
     }).fail( data => {
       console.log(data)

@@ -55,7 +55,6 @@ class EmployeeView extends React.Component {
           <p><b>Name:</b> {employee.first_name} {employee.last_name}</p>
           <p><b>Role:</b> {employee.role}</p>
           <p><b>Title:</b> {employee.title ? employee.title : 'none'}</p>
-          <p><b>Wage:</b> {employee.wage} <small>per hour</small></p>
           <p><b>Email:</b> {employee.email}</p>
           <p><b>Phone Number:</b> {employee.phone ? employee.phone : 'none'}</p>
           <p>
@@ -93,7 +92,7 @@ class EmployeeView extends React.Component {
       this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
       this.props.dispatch(updateemployees(companyID))
       this.toggleEdit()
-      let messageSuccess = "Employee Updated"
+      let messageSuccess = `${employee.first_name} ${employee.last_name} updated`
       this.props.dispatch(setFlash(messageSuccess, 'success'))
     }).fail( data => {
       console.log('failed')
@@ -124,10 +123,11 @@ class EmployeeView extends React.Component {
           type: 'DELETE',
           dataType: 'JSON'
         }).done(employee => {
+          debugger
           let ID = this.props.setcompany.id
           this.props.dispatch(updateemployees(ID))
           this.props.dispatch({type: 'REMOVE_CURRENT_EMPLOYEE'})
-          let messageSuccess = "Employee Deleted"
+          let messageSuccess = `${employee.first_name} ${employee.last_name} deleted`
           this.props.dispatch(setFlash(messageSuccess, 'success'))
 
         }).fail(data => {

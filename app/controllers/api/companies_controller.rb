@@ -25,7 +25,9 @@ class Api::CompaniesController < ApplicationController
       current_user.assigned_companies.delete(@company.id)
       current_user.save
       @company.destroy
+      render json: @company
     end
+
   end
 
   def create

@@ -5,6 +5,7 @@ import { currentemployee, setemployee } from '../actions/setemployee';
 import EmployeeView from './EmployeeView'
 import { seteditcompanystate, toggleedit } from '../actions/editcompany'
 import { browserHistory } from 'react-router'
+import { setFlash } from '../actions/flash';
 
 class Company extends React.Component {
   constructor(props){
@@ -122,6 +123,8 @@ class Company extends React.Component {
         browserHistory.push('/companies');
         this.props.dispatch({type: 'REMOVE_SET_COMPANY'})
         this.props.dispatch({type: 'RESET_EMPLOYEE'})
+        let messageSuccess = `${company.name} deleted`
+        this.props.dispatch(setFlash(messageSuccess, 'success'))
       }).fail( data => {
         console.log('failed')
       })

@@ -1,4 +1,4 @@
-export const currentshifts = (companyId) => {
+export const currentshifts = (companyId, weekDates) => {
 	return(dispatch) => {
 		$.ajax({
 			context: this,
