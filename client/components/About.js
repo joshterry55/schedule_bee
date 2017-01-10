@@ -83,7 +83,7 @@ class About extends React.Component {
            <span style={styles.pic} className="col s12 m5 offset-m1 ali-pic z-depth-4"></span>
            <div className='col s12 m6' style={{paddingLeft: '35px'}}>
              <h5 style={styles.team}>Ali Jepsen</h5>
-             <p style={styles.bio}>Ali has been working in the software industry for almost 20 years primarily in product management and QA testing.</p>
+             <p style={styles.bio}>Ali has been working in the software industry for almost 20 years, primarily in Product Management and QA testing.  Frustrated by her inability to execute more directly on things that needed to be done (and being secretly jealous of the developers she worked with), she was inspired to attend DevPoint Labs and 'get her hands dirty.'  Ali has a love for RESTful APIs, data analysis and problem solving.</p>
              <Link style ={styles.button} to='https://www.linkedin.com/in/ali-jepsen-879639' target='_blank'><img className="li-pic"/></Link>
              <Link style ={styles.button} to='https://github.com/alijepsen' target='_blank'><img className="github-pic"/></Link>
            </div>
@@ -92,7 +92,7 @@ class About extends React.Component {
            <span style={styles.pic} className="col s8 m5 offset-m1 offset-s2 ali-pic z-depth-4"></span>
            <div className='col s12 m6'>
              <h5 style={styles.team}>Ali Jepsen</h5>
-             <p style={styles.bio}>Ali has been working in the software industry for almost 20 years primarily in product management and QA testing.</p>
+             <p style={styles.bio}>Ali has been working in the software industry for almost 20 years, primarily in Product Management and QA testing.  Frustrated by her inability to execute more directly on things that needed to be done (and being secretly jealous of the developers she worked with), she was inspired to attend DevPoint Labs and 'get her hands dirty.'  Ali has a love for RESTful APIs, data analysis and problem solving.</p>
              <Link style ={styles.button} to='https://www.linkedin.com/in/ali-jepsen-879639' target='_blank'><img className="li-pic"/></Link>
              <Link style ={styles.button} to='https://github.com/alijepsen' target='_blank'><img className="github-pic"/></Link>
            </div>
