@@ -60,8 +60,9 @@ class About extends React.Component {
            <span style={styles.pic} className="col s12 m5 offset-m1 josh-pic z-depth-4"></span>
            <div className='col s12 m6' style={{paddingLeft: '35px'}}>
              <h5 style={styles.team}>Josh Terry</h5>
-             <p style={styles.bio}>Josh stuff here. Need more info! Waiting for more info Josh. You can do it! Blah blah Blah
-                Blah blah blah blah blaaaaaa.</p>
+             <p style={styles.bio}>Josh has always had an analytical, detail-oriented mind. He excelled in mathematics while in school.
+               He has worked in multiple fields but always found his work to be mentally stagnant. Josh wanted something more challenging that would allow him to utilize his brain.
+               This led him to web development, where he finally feels intellectually fulfilled.</p>
               <Link style ={styles.button} to='https://www.linkedin.com/in/josh-terry-12b55311b' target='_blank'><img className="li-pic"/></Link>
               <Link style ={styles.button} to='https://github.com/joshterry55' target='_blank'><img className="github-pic"/></Link>
             </div>
@@ -70,8 +71,9 @@ class About extends React.Component {
            <span style={styles.pic} className="col s8 m5 offset-m1 offset-s2 josh-pic z-depth-4"></span>
            <div className='col s12 m6'>
              <h5 style={styles.team}>Josh Terry</h5>
-             <p style={styles.bio}>Josh stuff here. Need more info! Waiting for more info Josh. You can do it! Blah blah Blah
-                Blah blah blah blah blaaaaaa.</p>
+             <p style={styles.bio}>Josh has always had an analytical, detail-oriented mind. He excelled in mathematics while in school.
+               He has worked in multiple fields but always found his work to be mentally stagnant. Josh wanted something more challenging that would allow him to utilize his brain.
+               This led him to web development, where he finally feels intellectually fulfilled.</p>
               <Link style ={styles.button} to='https://www.linkedin.com/in/josh-terry-12b55311b' target='_blank'><img className="li-pic"/></Link>
               <Link style ={styles.button} to='https://github.com/joshterry55' target='_blank'><img className="github-pic"/></Link>
             </div>
@@ -138,11 +140,11 @@ class About extends React.Component {
              <div className='col s6 m4 l3 postgresql-pic'></div>
 
              <div className='col s6 m4 l3 githubbig-pic'></div>
-             
+
              <div className='col s6 m4 l3 heroku-pic'></div>
 
              <div className='col s6 m4 l3 webpack-pic'></div>
-             
+
              <div className='col s6 m4 l3 devise-pic'></div>
 
              <div className='col s6 m4 l3 jquery-pic'></div>
