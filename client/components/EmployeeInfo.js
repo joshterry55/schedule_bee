@@ -107,7 +107,7 @@ class EmployeeInfo extends React.Component {
             <div className='col s10 offset-s1'>
               <form onSubmit={this.employeeUpdate}>
                 <input type='text' ref='phoneNumber' placeholder='Phone Number' defaultValue={employee.phone} autoFocus />
-                <button style={styles.editButton} type='submit'><i className="material-icons">done</i>save</button>
+                <button className="confirm-icon" style={styles.editButton} type='submit'><i className="material-icons">done</i>save</button>
               </form>
             </div>
             <h5>Email</h5>
@@ -144,7 +144,7 @@ class EmployeeInfo extends React.Component {
             <p>{employee.title ? employee.title : 'N/A'}</p>
           </div>
           <div className="col s12 center">
-            <button style={styles.editButton} onClick={this.toggleEdit}><i className="material-icons">mode_edit</i>edit</button>
+            <button className="edit-icon" style={styles.editButton} onClick={this.toggleEdit}><i className="material-icons">mode_edit</i>edit</button>
           </div>
         </div>
       )

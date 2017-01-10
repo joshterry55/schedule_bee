@@ -98,14 +98,14 @@ class Company extends React.Component {
             <input ref='newCompanyName' type='text' defaultValue={company.name} required placeholder="Company Name" />
           </div>
           <div className='col s2'>
-            <button type='submit' style={{border: 'none', backgroundColor: 'Transparent'}}><i style={styles.saveCompany} className="small material-icons">done</i></button>
+            <button type='submit' style={{border: 'none', backgroundColor: 'Transparent'}}><i style={styles.saveCompany} className="small material-icons confirm-icon">done</i></button>
           </div>
         </form>
       )
     } else {
       return(
         <div className='center'>
-          <h2 className='center'>{company.name}<i className="small material-icons" style={styles.editCompany} onClick={() => this.toggleEdit()}>mode_edit</i><i style={styles.deleteCompanyLogo} className="small material-icons" onClick={() => this.deleteCompany(company.id)}>delete</i></h2>
+          <h2 className='center'>{company.name}<i className="small material-icons edit-icon" title="Edit Company Name" style={styles.editCompany} onClick={() => this.toggleEdit()}>mode_edit</i><i style={styles.deleteCompanyLogo} className="small material-icons delete-icon" title="Delete Company" onClick={() => this.deleteCompany(company.id)}>delete</i></h2>
         </div>
       )
     }

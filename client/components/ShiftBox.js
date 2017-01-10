@@ -23,7 +23,8 @@ class ShiftBox extends React.Component {
 	}
 
 	componentDidUpdate() {
-		$('.modal').modal();
+		this.refs.editShiftStart.value = this.props.shiftedit.start;
+		this.refs.editShiftEnd.value = this.props.shiftedit.end;
 	}
 
 	shiftModal() {
@@ -85,11 +86,11 @@ class ShiftBox extends React.Component {
 					<div className="modal-content">
 						<div className='col s6 m4 offset-m2'>
 							<label>Start</label>
-							<input type='time' ref='editShiftStart' defaultValue={shifts.start}/>
+							<input type='time' ref='editShiftStart'/>
 						</div>
 						<div className='col s6 m4'>
 							<label>End</label>
-							<input type='time' ref='editShiftEnd' defaultValue={shifts.end}/>
+							<input type='time' ref='editShiftEnd'/>
 						</div>
 					</div>
 					<div className="modal-footer" style={styles.modalFooter}>
@@ -222,7 +223,6 @@ class ShiftBox extends React.Component {
 		this.props.dispatch({type: 'SHIFT_DATE', date })
 		this.props.dispatch({type: 'CURRENT_EMPLOYEE', employee})
 		this.props.dispatch({type: 'EDITTING_SHIFT', shift})
-		$('.modal').modal();
 	}
 
 	durationCheck(duration) {
