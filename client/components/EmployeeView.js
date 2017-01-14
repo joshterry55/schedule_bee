@@ -9,6 +9,8 @@ class EmployeeView extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = { loading: false, selected: false }
+
     this.toggleEdit = this.toggleEdit.bind(this)
     this.submitEdittedEmployee = this.submitEdittedEmployee.bind(this)
     this.deleteEmployee = this.deleteEmployee.bind(this)
@@ -25,42 +27,50 @@ class EmployeeView extends React.Component {
 
   display() {
     let employee = this.props.currentemployee
-    if(this.props.editemployee) {
-      return(
-        <div>
-          <form className='center' ref='editEmployeeForm' onSubmit={this.submitEdittedEmployee}>
-            <label>First Name</label>
-            <input ref='employeeFirstName' type='text' defaultValue={employee.first_name} required placeholder="First Name" />
-            <label>Last Name</label>
-            <input ref='employeeLastName' type='text' defaultValue={employee.last_name} required placeholder="Last Name" />
-            <label>Role</label>
-            <select ref='employeeRole' defaultValue={employee.role}>
-              <option value="employee">Employee</option>
-              <option value="admin">Admin</option>
-            </select>
-            <br />
-            <label>Title</label>
-            <input ref='employeeTitle' type='text' defaultValue={employee.title} placeholder="Title" />
-            <label>Wage</label>
-            <input ref='employeeWage' type='text' defaultValue={employee.wage} placeholder="Wage" />
-            <label>Phone Number</label>
-            <input ref='employeePhone' type='text' defaultValue={employee.phone} placeholder="Phone Number" />
-            <input type='submit' className='btn blue darken-3' value='Update'/>
-          </form>
-        </div>
-      )
+    if(this.state.selected) {
+      if(this.props.editemployee) {
+        return(
+          <div>
+            <form className='center' ref='editEmployeeForm' onSubmit={this.submitEdittedEmployee}>
+              <label>First Name</label>
+              <input ref='employeeFirstName' type='text' defaultValue={employee.first_name} required placeholder="First Name" />
+              <label>Last Name</label>
+              <input ref='employeeLastName' type='text' defaultValue={employee.last_name} required placeholder="Last Name" />
+              <label>Role</label>
+              <select ref='employeeRole' defaultValue={employee.role}>
+                <option value="employee">Employee</option>
+                <option value="admin">Admin</option>
+              </select>
+              <br />
+              <label>Title</label>
+              <input ref='employeeTitle' type='text' defaultValue={employee.title} placeholder="Title" />
+              <label>Wage</label>
+              <input ref='employeeWage' type='text' defaultValue={employee.wage} placeholder="Wage" />
+              <label>Phone Number</label>
+              <input ref='employeePhone' type='text' defaultValue={employee.phone} placeholder="Phone Number" />
+              <input type='submit' className='btn blue darken-3' value='Update'/>
+            </form>
+          </div>
+        )
+      } else {
+        return(
+          <div>
+            <p><b>Name:</b> {employee.first_name} {employee.last_name}</p>
+            <p><b>Role:</b> {employee.role}</p>
+            <p><b>Title:</b> {employee.title ? employee.title : 'none'}</p>
+            <p><b>Email:</b> {employee.email}</p>
+            <p><b>Phone Number:</b> {employee.phone ? employee.phone : 'none'}</p>
+            <p>
+              <button style={styles.button} onClick={() => this.toggleEdit()}>Edit</button>
+              <button style={styles.deleteButton} onClick={(e) => this.deleteEmployee(e)}>Delete</button>
+            </p>
+          </div>
+        )
+      }
     } else {
-      return(
-        <div>
-          <p><b>Name:</b> {employee.first_name} {employee.last_name}</p>
-          <p><b>Role:</b> {employee.role}</p>
-          <p><b>Title:</b> {employee.title ? employee.title : 'none'}</p>
-          <p><b>Email:</b> {employee.email}</p>
-          <p><b>Phone Number:</b> {employee.phone ? employee.phone : 'none'}</p>
-          <p>
-          <button style={styles.button} onClick={() => this.toggleEdit()}>Edit</button>
-          <button style={styles.deleteButton} onClick={(e) => this.deleteEmployee(e)}>Delete</button>
-          </p>
+      return (
+        <div className='center'>
+          <h4 style={{color: '#ccc'}}>Select an employee.</h4>
         </div>
       )
     }
@@ -146,6 +156,7 @@ class EmployeeView extends React.Component {
 
   employeeInfo(e) {
     e.preventDefault()
+    this.setState({selected: true, loading: true})
     let id = this.refs.employee.value
     $.ajax({
       url: `/api/users/${id}`,
@@ -202,6 +213,10 @@ const styles = {
     textShadow: '0 0 10px rgba(0,0,0,0.5), 0 1px #c77'
   }
 }
+// TODO add loading bar
+// add react state on whether or not there has been a selection
+// if there has, show employee. if not show select employee message
+// add a few validations
 
 const mapStateToProps = (state) => {
   let { currentemployee, editemployee, setcompany, setemployee } = state;
