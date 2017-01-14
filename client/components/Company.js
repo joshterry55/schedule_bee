@@ -141,7 +141,6 @@ class Company extends React.Component {
             { this.editCompany() }
             <div className="col s10 offset-s1 m8 offset-m2 l6 offset-l3">
               <br />
-              <h4>Employees</h4>
               <EmployeeView />
             </div>
           </div>

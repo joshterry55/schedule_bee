@@ -4,6 +4,8 @@ import { seteditemployeestate, toggleemployeeedit } from '../actions/editemploye
 import { updateemployees } from '../actions/updateemployeedropdown'
 import { currentemployee } from '../actions/setemployee';
 import { setFlash } from '../actions/flash';
+import { Dropdown, Button, NavItem } from 'react-materialize';
+import { Link } from 'react-router';
 
 class EmployeeView extends React.Component {
   constructor(props) {
@@ -14,6 +16,8 @@ class EmployeeView extends React.Component {
     this.toggleEdit = this.toggleEdit.bind(this)
     this.submitEdittedEmployee = this.submitEdittedEmployee.bind(this)
     this.deleteEmployee = this.deleteEmployee.bind(this)
+    this.employeeDropdown = this.employeeDropdown.bind(this)
+    this.display = this.display.bind(this)
   }
 
   componentDidMount(){
@@ -150,14 +154,13 @@ class EmployeeView extends React.Component {
   showEmployees() {
 
     return this.props.setemployee.map( employee => {
-      return(<option key={employee.id} value={employee.id}>{employee.first_name} {employee.last_name}</option>);
+      return(<NavItem key={employee.id} value={employee.id} onClick={() => setTimeout(() => this.employeeInfo(employee), 200)}>{employee.first_name} {employee.last_name}</NavItem>);
     });
   }
 
-  employeeInfo(e) {
-    e.preventDefault()
+  employeeInfo(selectedEmployee) {
     this.setState({selected: true, loading: true})
-    let id = this.refs.employee.value
+    let id = selectedEmployee.id
     $.ajax({
       url: `/api/users/${id}`,
       type: 'GET',
@@ -169,21 +172,63 @@ class EmployeeView extends React.Component {
     });
   }
 
+  employeeDropdown() {
+    let employeeName
+    if (this.props.currentemployee.first_name) {
+      employeeName = `${this.props.currentemployee.first_name} ${this.props.currentemployee.last_name}`
+    } else {
+      employeeName = 'Select Employee'
+    }
+
+    if(this.props.setemployee.length) {
+      return(
+        <div className='col s12 m10 offset-m1 l8 offset-l2'>
+          <Dropdown  trigger={<Button style={styles.employeeButton}>{employeeName}</Button>}>
+            { this.showEmployees() }
+          </Dropdown>
+        </div>
+      );
+    } else {
+      return(<h5>No Employees</h5>);
+    }
+  }
+
+  employeeCheck() {
+    if(this.props.setemployee.length) {
+      return(
+        <div>
+          { this.employeeDropdown() }
+          <br />
+          <br />
+          { this.display() }
+        </div>
+      )
+    } else {
+      return(
+        <div className='center'>
+          <h5>No employees. <Link to='/employees'>add employee</Link></h5>
+        </div>
+      )
+    }
+  }
+
   render() {
     return(
       <div>
-        <form className='center' onSubmit={(e) => this.employeeInfo(e)}>
-          <select ref='employee'>
-            { this.showEmployees() }
-          </select>
-          <input style={styles.button} type='submit' value="View Details" />
-        </form>
-        <br />
-        { this.display() }
+        { this.employeeCheck() }
       </div>
     )
   }
 }
+
+// <form className='center' onSubmit={(e) => this.employeeInfo(e)}>
+//   <select ref='employee'>
+//     { this.showEmployees() }
+//   </select>
+//   <input style={styles.button} type='submit' value="View Details" />
+// </form>
+
+
 
 const styles = {
   button: {
@@ -211,6 +256,21 @@ const styles = {
     lineHeight: '25px',
     color: '#fff',
     textShadow: '0 0 10px rgba(0,0,0,0.5), 0 1px #c77'
+  },
+  employeeButton: {
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    textAlign: 'left',
+    lineHeight: '42px',
+    width: '100%',
+    height: '40px',
+    paddingLeft: '5px',
+    backgroundColor: '#fff',
+    color: '#1665C1',
+    borderRadius: '0',
+    backgroundImage: 'url("http://res.cloudinary.com/dupyswzaa7/image/upload/v1483816910/dropdown_mgcry5.png")',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'right center'
   }
 }
 // TODO add loading bar

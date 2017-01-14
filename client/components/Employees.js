@@ -71,7 +71,7 @@ class Employees extends React.Component {
           <br />
           <div className='col s6 offset-s3'>
             <label>Select A Company</label>
-            <select ref='company'>
+            <select ref='company' defaultValue={this.props.setcompany.id}>
               { this.companiesOptions() }
             </select>
             <input ref='firstName' type='text' required placeholder='Employee First Name' />
@@ -143,8 +143,8 @@ const styles={
 }
 
 const mapStateToProps = (state) => {
-  let { user, assigned } = state;
-  return { user, assigned }
+  let { user, assigned, setcompany } = state;
+  return { user, assigned, setcompany }
 }
 
 export default connect(mapStateToProps)(Employees)

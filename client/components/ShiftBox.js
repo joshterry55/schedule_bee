@@ -462,6 +462,16 @@ const styles = {
 	}
 }
 
+// TODO add alert to submit IF they dont fill out the form correctly
+// have it redirect them to the form and not close modal.
+// on both EDIT and NEW shift submit
+// add a few validations/flash messages to make sure the user
+// knows what is happening.
+// add a migration that allows shifts to have the details attribute
+// make details attribute a modal that can be updated on the admin side
+// turn to the employee shift box component and add a view shift details modal
+
+
 const mapStateToProps = (state) => {
   let { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit, setemployee } = state;
   return { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit, setemployee }
