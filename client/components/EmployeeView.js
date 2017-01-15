@@ -32,44 +32,64 @@ class EmployeeView extends React.Component {
   display() {
     let employee = this.props.currentemployee
     if(this.state.selected) {
-      if(this.props.editemployee) {
+      if(this.state.loading) {
         return(
-          <div>
-            <form className='center' ref='editEmployeeForm' onSubmit={this.submitEdittedEmployee}>
-              <label>First Name</label>
-              <input ref='employeeFirstName' type='text' defaultValue={employee.first_name} required placeholder="First Name" />
-              <label>Last Name</label>
-              <input ref='employeeLastName' type='text' defaultValue={employee.last_name} required placeholder="Last Name" />
-              <label>Role</label>
-              <select ref='employeeRole' defaultValue={employee.role}>
-                <option value="employee">Employee</option>
-                <option value="admin">Admin</option>
-              </select>
-              <br />
-              <label>Title</label>
-              <input ref='employeeTitle' type='text' defaultValue={employee.title} placeholder="Title" />
-              <label>Wage</label>
-              <input ref='employeeWage' type='text' defaultValue={employee.wage} placeholder="Wage" />
-              <label>Phone Number</label>
-              <input ref='employeePhone' type='text' defaultValue={employee.phone} placeholder="Phone Number" />
-              <input type='submit' className='btn blue darken-3' value='Update'/>
-            </form>
+          <div className="row">
+            <div className="col s12 center">
+              <div className="preloader-wrapper big active" style={{backgroundColor:'#aaa', borderRadius: '50%', marginTop: '50px', marginBottom: '115px'}}>
+                <div className="spinner-layer spinner-blue-only">
+                  <div className="circle-clipper left">
+                    <div className="circle"></div>
+                  </div><div className="gap-patch">
+                    <div className="circle"></div>
+                  </div><div className="circle-clipper right">
+                    <div className="circle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         )
       } else {
-        return(
-          <div>
-            <p><b>Name:</b> {employee.first_name} {employee.last_name}</p>
-            <p><b>Role:</b> {employee.role}</p>
-            <p><b>Title:</b> {employee.title ? employee.title : 'none'}</p>
-            <p><b>Email:</b> {employee.email}</p>
-            <p><b>Phone Number:</b> {employee.phone ? employee.phone : 'none'}</p>
-            <p>
-              <button style={styles.button} onClick={() => this.toggleEdit()}>Edit</button>
-              <button style={styles.deleteButton} onClick={(e) => this.deleteEmployee(e)}>Delete</button>
-            </p>
-          </div>
-        )
+        if(this.props.editemployee) {
+          return(
+            <div>
+              <form className='center' ref='editEmployeeForm' onSubmit={this.submitEdittedEmployee}>
+                <label>First Name</label>
+                <input ref='employeeFirstName' type='text' defaultValue={employee.first_name} required placeholder="First Name" />
+                <label>Last Name</label>
+                <input ref='employeeLastName' type='text' defaultValue={employee.last_name} required placeholder="Last Name" />
+                <label>Role</label>
+                <select ref='employeeRole' defaultValue={employee.role}>
+                  <option value="employee">Employee</option>
+                  <option value="admin">Admin</option>
+                </select>
+                <br />
+                <label>Title</label>
+                <input ref='employeeTitle' type='text' defaultValue={employee.title} placeholder="Title" />
+                <label>Wage</label>
+                <input ref='employeeWage' type='text' defaultValue={employee.wage} placeholder="Wage" />
+                <label>Phone Number</label>
+                <input ref='employeePhone' type='text' defaultValue={employee.phone} placeholder="Phone Number" />
+                <input type='submit' className='btn blue darken-3' value='Update'/>
+              </form>
+            </div>
+          )
+        } else {
+          return(
+            <div>
+              <p><b>Name:</b> {employee.first_name} {employee.last_name}</p>
+              <p><b>Role:</b> {employee.role}</p>
+              <p><b>Title:</b> {employee.title ? employee.title : 'none'}</p>
+              <p><b>Email:</b> {employee.email}</p>
+              <p><b>Phone Number:</b> {employee.phone ? employee.phone : 'none'}</p>
+              <p>
+                <button style={styles.button} onClick={() => this.toggleEdit()}>Edit</button>
+                <button style={styles.deleteButton} onClick={(e) => this.deleteEmployee(e)}>Delete</button>
+              </p>
+            </div>
+          )
+        }
       }
     } else {
       return (
@@ -137,7 +157,7 @@ class EmployeeView extends React.Component {
           type: 'DELETE',
           dataType: 'JSON'
         }).done(employee => {
-          debugger
+          this.setState({selected: false})
           let ID = this.props.setcompany.id
           this.props.dispatch(updateemployees(ID))
           this.props.dispatch({type: 'REMOVE_CURRENT_EMPLOYEE'})
@@ -166,6 +186,7 @@ class EmployeeView extends React.Component {
       type: 'GET',
       dataType: 'JSON'
     }).done( employee => {
+      this.setState({loading: false})
       this.props.dispatch(currentemployee(employee));
     }).fail( data => {
       console.log(data);
@@ -198,6 +219,7 @@ class EmployeeView extends React.Component {
       return(
         <div>
           { this.employeeDropdown() }
+          <br />
           <br />
           <br />
           { this.display() }
@@ -270,7 +292,7 @@ const styles = {
     borderRadius: '0',
     backgroundImage: 'url("http://res.cloudinary.com/dupyswzaa7/image/upload/v1483816910/dropdown_mgcry5.png")',
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right center'
+    backgroundPosition: 'right center',
   }
 }
 // TODO add loading bar

@@ -471,7 +471,6 @@ const styles = {
 // make details attribute a modal that can be updated on the admin side
 // turn to the employee shift box component and add a view shift details modal
 
-
 const mapStateToProps = (state) => {
   let { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit, setemployee } = state;
   return { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit, setemployee }
