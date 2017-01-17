@@ -48,15 +48,15 @@ class ShiftBox extends React.Component {
 					<div className="modal-content">
 							<div className='col s6 m4 offset-m2'>
 								<label>Start Time</label>
-								<input type='time' ref='shiftStart' />
+								<input type='time' ref='shiftStart' required />
 							</div>
 							<div className='col s6 m4'>
 								<label>End Time</label>
-								<input type='time' ref='shiftEnd' />
+								<input type='time' ref='shiftEnd' required/>
 							</div>
 					</div>
 					<div className="modal-footer" style={styles.modalFooter}>
-						<button type="submit" className=" modal-action modal-close waves-effect waves-green btn-flat">Add</button>
+						<button type="submit" className=" modal-action waves-effect waves-green btn-flat">Add</button>
 					</div>
 				</form>
 			</div>
@@ -86,15 +86,15 @@ class ShiftBox extends React.Component {
 					<div className="modal-content">
 						<div className='col s6 m4 offset-m2'>
 							<label>Start</label>
-							<input type='time' ref='editShiftStart'/>
+							<input type='time' ref='editShiftStart' required/>
 						</div>
 						<div className='col s6 m4'>
 							<label>End</label>
-							<input type='time' ref='editShiftEnd'/>
+							<input type='time' ref='editShiftEnd' required/>
 						</div>
 					</div>
 					<div className="modal-footer" style={styles.modalFooter}>
-						<button type="submit" className=" modal-action modal-close waves-effect waves-green btn-flat">Update</button>
+						<button type="submit" className=" modal-action waves-effect waves-green btn-flat">Update</button>
 					</div>
 				</form>
 			</div>
@@ -124,26 +124,48 @@ class ShiftBox extends React.Component {
 		let companyId = this.props.setcompany.id
 		let duration = this.calculateDuration(start, end)
 		if(duration < 0) {
-			let message = "Shifts cannot cross midnight. Split shift between days."
-			this.props.dispatch(setFlash(message, 'error'))
+			let confirmed = confirm('Shifts cannot cross midnight, it is recommended to split shift between days. continue anyway?')
+			if(confirmed) {
+				$('.modal').modal('close');
+				let message = "Shifts cannot cross midnight. Split shift between days."
+				this.props.dispatch(setFlash(message, 'error'))
+				$.ajax({
+					url: '/api/shifts',
+					type: 'POST',
+					dataType: 'JSON',
+					data: { shift: {
+						day: shiftDay,
+						start: start,
+						end: end,
+						user_id: id,
+						company_id: companyId,
+						duration: duration
+					}}
+				}).done( shift => {
+					this.props.dispatch({type: 'ADD_CURRENT_SHIFT', shift})
+				}).fail( data => {
+				})
+			}
+		} else {
+			$('.modal').modal('close');
+			$.ajax({
+				url: '/api/shifts',
+				type: 'POST',
+				dataType: 'JSON',
+				data: { shift: {
+					day: shiftDay,
+					start: start,
+					end: end,
+					user_id: id,
+					company_id: companyId,
+					duration: duration
+				}}
+			}).done( shift => {
+				this.props.dispatch({type: 'ADD_CURRENT_SHIFT', shift})
+			}).fail( data => {
+			})
 		}
 
-		$.ajax({
-			url: '/api/shifts',
-			type: 'POST',
-			dataType: 'JSON',
-			data: { shift: {
-        day: shiftDay,
-				start: start,
-				end: end,
-				user_id: id,
-				company_id: companyId,
-				duration: duration
-      }}
-		}).done( shift => {
-			this.props.dispatch({type: 'ADD_CURRENT_SHIFT', shift})
-		}).fail( data => {
-		})
 	}
 
 	submitEditShift(e) {
@@ -157,27 +179,49 @@ class ShiftBox extends React.Component {
 		let editCompanyId = this.props.setcompany.id
 		let editDuration = this.calculateDuration(editStart, editEnd)
 		if(editDuration < 0) {
-			let message = "Shifts cannot cross midnight. Split shift between days."
-			this.props.dispatch(setFlash(message, 'error'))
+			let confirmed = confirm('Shifts cannot cross midnight, it is recommended to split shift between days. continue anyway?')
+			if(confirmed) {
+				$('.modal').modal('close');
+				let message = "Shifts cannot cross midnight. Split shift between days."
+				this.props.dispatch(setFlash(message, 'error'))
+				$.ajax({
+					url: '/api/shifts',
+					type: 'POST',
+					dataType: 'JSON',
+					data: { shift: {
+						day: shiftDay,
+						start: start,
+						end: end,
+						user_id: id,
+						company_id: companyId,
+						duration: duration
+					}}
+				}).done( shift => {
+					this.props.dispatch({type: 'ADD_CURRENT_SHIFT', shift})
+				}).fail( data => {
+				})
+			}
+		} else {
+			$('.modal').modal('close');
+			$.ajax({
+				url: `/api/shifts/${editId}`,
+				type: 'PUT',
+				dataType: 'JSON',
+				data: { shift: {
+					day: editShiftDay,
+					start: editStart,
+					end: editEnd,
+					user_id: editEmployeeId,
+					company_id: editCompanyId,
+					duration: editDuration
+				}}
+			}).done( shift => {
+				let companyId = shift.company_id
+				this.props.dispatch(currentshifts(companyId))
+			}).fail( data => {
+				debugger
+			})
 		}
-		$.ajax({
-			url: `/api/shifts/${editId}`,
-			type: 'PUT',
-			dataType: 'JSON',
-			data: { shift: {
-				day: editShiftDay,
-				start: editStart,
-				end: editEnd,
-				user_id: editEmployeeId,
-				company_id: editCompanyId,
-				duration: editDuration
-			}}
-		}).done( shift => {
-			let companyId = shift.company_id
-			this.props.dispatch(currentshifts(companyId))
-		}).fail( data => {
-			debugger
-		})
 	}
 
 	addShift() {

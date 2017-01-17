@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170105014925) do
+ActiveRecord::Schema.define(version: 20170117034707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachinary_files", force: :cascade do |t|
+    t.string   "attachinariable_type"
+    t.integer  "attachinariable_id"
+    t.string   "scope"
+    t.string   "public_id"
+    t.string   "version"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "format"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string   "name",       null: false
@@ -48,6 +63,7 @@ ActiveRecord::Schema.define(version: 20170105014925) do
     t.integer  "user_id"
     t.integer  "company_id"
     t.integer  "duration"
+    t.text     "details"
     t.index ["company_id"], name: "index_shifts_on_company_id", using: :btree
     t.index ["schedule_templates_id"], name: "index_shifts_on_schedule_templates_id", using: :btree
     t.index ["user_id"], name: "index_shifts_on_user_id", using: :btree
