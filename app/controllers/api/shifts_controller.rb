@@ -35,6 +35,6 @@ class Api::ShiftsController < ApplicationController
   private
 
   def shift_params
-    params.require(:shift).permit(:day, :start, :end, :company_id, :user_id, :schedule_templates_id, :duration)
+    params.require(:shift).permit(:day, :start, :end, :company_id, :user_id, :schedule_templates_id, :duration, :details)
   end
 end

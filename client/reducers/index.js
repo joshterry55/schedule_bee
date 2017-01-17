@@ -14,6 +14,7 @@ import shiftdate from './shiftdate'
 import showshift from './showshift'
 import currentshifts from './currentshifts'
 import shiftedit from './shiftedit'
+import shiftdetails from './shiftdetails'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -30,7 +31,8 @@ const rootReducer = combineReducers({
   shiftdate,
   showshift,
   currentshifts,
-  shiftedit
+  shiftedit,
+  shiftdetails
  });
 
 export default rootReducer;

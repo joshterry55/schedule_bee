@@ -25,6 +25,7 @@ class ShiftBox extends React.Component {
 	componentDidUpdate() {
 		this.refs.editShiftStart.value = this.props.shiftedit.start;
 		this.refs.editShiftEnd.value = this.props.shiftedit.end;
+		this.refs.editShiftDetails.value = this.props.shiftedit.details;
 	}
 
 	shiftModal() {
@@ -53,6 +54,10 @@ class ShiftBox extends React.Component {
 							<div className='col s6 m4'>
 								<label>End Time</label>
 								<input type='time' ref='shiftEnd' required/>
+							</div>
+							<div className='col s12 m8 offset-m2'>
+								<label>Shift Details</label>
+								<textarea ref='shiftDetails'></textarea>
 							</div>
 					</div>
 					<div className="modal-footer" style={styles.modalFooter}>
@@ -92,6 +97,10 @@ class ShiftBox extends React.Component {
 							<label>End</label>
 							<input type='time' ref='editShiftEnd' required/>
 						</div>
+						<div className='col s12 m8 offset-m2'>
+							<label>Shift Details</label>
+							<textarea ref='editShiftDetails'></textarea>
+						</div>
 					</div>
 					<div className="modal-footer" style={styles.modalFooter}>
 						<button type="submit" className=" modal-action waves-effect waves-green btn-flat">Update</button>
@@ -122,6 +131,7 @@ class ShiftBox extends React.Component {
 		let start = this.refs.shiftStart.value
 		let end = this.refs.shiftEnd.value
 		let companyId = this.props.setcompany.id
+		let details = this.refs.shiftDetails.value
 		let duration = this.calculateDuration(start, end)
 		if(duration < 0) {
 			let confirmed = confirm('Shifts cannot cross midnight, it is recommended to split shift between days. continue anyway?')
@@ -139,7 +149,8 @@ class ShiftBox extends React.Component {
 						end: end,
 						user_id: id,
 						company_id: companyId,
-						duration: duration
+						duration: duration,
+						details: details
 					}}
 				}).done( shift => {
 					this.props.dispatch({type: 'ADD_CURRENT_SHIFT', shift})
@@ -158,7 +169,8 @@ class ShiftBox extends React.Component {
 					end: end,
 					user_id: id,
 					company_id: companyId,
-					duration: duration
+					duration: duration,
+					details: details
 				}}
 			}).done( shift => {
 				this.props.dispatch({type: 'ADD_CURRENT_SHIFT', shift})
@@ -177,6 +189,7 @@ class ShiftBox extends React.Component {
 		let editStart = this.refs.editShiftStart.value
 		let editEnd = this.refs.editShiftEnd.value
 		let editCompanyId = this.props.setcompany.id
+		let editDetails = this.refs.editShiftDetails.value
 		let editDuration = this.calculateDuration(editStart, editEnd)
 		if(editDuration < 0) {
 			let confirmed = confirm('Shifts cannot cross midnight, it is recommended to split shift between days. continue anyway?')
@@ -194,7 +207,8 @@ class ShiftBox extends React.Component {
 						end: end,
 						user_id: id,
 						company_id: companyId,
-						duration: duration
+						duration: duration,
+						details: editDetails
 					}}
 				}).done( shift => {
 					this.props.dispatch({type: 'ADD_CURRENT_SHIFT', shift})
@@ -213,7 +227,8 @@ class ShiftBox extends React.Component {
 					end: editEnd,
 					user_id: editEmployeeId,
 					company_id: editCompanyId,
-					duration: editDuration
+					duration: editDuration,
+					details: editDetails
 				}}
 			}).done( shift => {
 				let companyId = shift.company_id
@@ -471,7 +486,7 @@ const styles = {
 		right: "-5px",
 	},
 	modalStyling: {
-		height: '220px',
+		height: '300px',
 		width: '80%',
 		maxWidth: '500px',
 		border: '1px solid #333',

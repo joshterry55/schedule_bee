@@ -2,13 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { showshift } from '../actions/showshift'
 import { currentshifts } from '../actions/currentshifts'
+import { currentemployee } from '../actions/currentemployee'
 
 class EmployeeShiftBox extends React.Component {
 	constructor(props) {
 		super(props)
+
+		this.shiftDetails = this.shiftDetails.bind(this)
+		this.employeeShiftModal = this.employeeShiftModal.bind(this)
 	}
 
 	componentDidMount() {
+		$('.modal').modal();
 		let employeeId = this.props.id
 		let shiftdate = `${this.props.month}, ${this.props.year}`
 	}
@@ -35,6 +40,32 @@ class EmployeeShiftBox extends React.Component {
 		} else {
 			return styles.shiftDuration
 		}
+	}
+
+	shiftDetails(e, shift) {
+		e.preventDefault()
+		let id = this.props.id
+		this.props.dispatch(currentemployee(id))
+		this.props.dispatch({type: 'SHIFT_DETAILS', shift})
+	}
+
+	employeeShiftModal() {
+		let shift = this.props.shiftdetails
+		let employee = `${this.props.currentemployee.first_name} ${this.props.currentemployee.last_name}`
+		return(
+			<div className='row'>
+				<div style={styles.modalHeader}>
+					<span>Shift Details</span>
+					<span style={styles.modalHeaderInfo}>{shift.day}<br />{employee}</span>
+				</div>
+				<div className='col s12 m10 offset-m1'>
+					<p>{shift.details ? shift.details : 'None'}</p>
+				</div>
+				<div className="modal-footer" style={styles.modalFooter}>
+					<button className=" modal-action modal-close waves-effect waves-green btn-flat">Done</button>
+				</div>
+			</div>
+		)
 	}
 
 	display() {
@@ -85,6 +116,7 @@ class EmployeeShiftBox extends React.Component {
 								<br />
 								<span style={this.durationCheck(shifts[i].duration)}><i>{durationHours} hrs {durationMinutes} min</i></span>
 								<span style={styles.shiftDayText}>{day}</span>
+								<button className="details-icon" style={styles.shiftDetailsButton} title='Shift Details' data-target="employeeModal" onClick={(e) => this.shiftDetails(e, shifts[i])}> <i className="tiny material-icons">view_list</i> </button>
 							</div>
 						)
 					} else {
@@ -123,6 +155,9 @@ class EmployeeShiftBox extends React.Component {
 		return(
 			<div>
 				{this.display()}
+				<div id="employeeModal" className="modal" style={styles.modalStyling}>
+					{this.employeeShiftModal()}
+				</div>
 			</div>
 		);
 	}
@@ -198,12 +233,55 @@ const styles = {
 		position: 'absolute',
 		bottom: '0px',
 		left: '3px'
+	},
+	modalStyling: {
+		height: '250px',
+		width: '80%',
+		maxWidth: '500px',
+		border: '1px solid #333',
+		borderRadius: '10px'
+	},
+	modalFooter: {
+		position: 'absolute',
+		bottom: '0px',
+	},
+	modalHeader: {
+		width: '100%',
+		height: '60px',
+		lineHeight: '61px',
+		color: '#fff',
+		fontSize: '35px',
+		textShadow: '0 0 5px rgba(0,0,0,0.50)',
+		backgroundColor: "#66f",
+		background: "linear-gradient(#1b7ff2, #1257a6)",
+		borderBottom: '1px solid #333',
+		boxShadow: '0 0 6px #000',
+		position: 'relative',
+		paddingLeft: '10px'
+	},
+	modalHeaderInfo: {
+		color: '#fff',
+		fontSize: '20px',
+		lineHeight: '30px',
+		position: 'absolute',
+		right: '10px',
+		textAlign: 'right',
+		textShadow: '0 0 5px rgba(0,0,0,0.50)'
+	},
+	shiftDetailsButton: {
+		background: 'Transparent',
+		color: '#000',
+		opacity: "0.35",
+		border: 'none',
+		position: "absolute",
+		top: "-2px",
+		right: "2px",
 	}
 }
 
 const mapStateToProps = (state) => {
-  let { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit } = state;
-  return { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit }
+  let { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit, shiftdetails } = state;
+  return { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit, shiftdetails }
 }
 
 export default connect(mapStateToProps)(EmployeeShiftBox);
