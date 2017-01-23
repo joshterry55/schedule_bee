@@ -57,7 +57,7 @@ class ShiftBox extends React.Component {
 							</div>
 							<div className='col s12 m8 offset-m2'>
 								<label>Shift Details</label>
-								<textarea ref='shiftDetails'></textarea>
+								<textarea ref='shiftDetails' placeholder='Details, breaks, etc.'></textarea>
 							</div>
 					</div>
 					<div className="modal-footer" style={styles.modalFooter}>
@@ -99,7 +99,7 @@ class ShiftBox extends React.Component {
 						</div>
 						<div className='col s12 m8 offset-m2'>
 							<label>Shift Details</label>
-							<textarea ref='editShiftDetails'></textarea>
+							<textarea ref='editShiftDetails' placeholder='Details, breaks, etc.'></textarea>
 						</div>
 					</div>
 					<div className="modal-footer" style={styles.modalFooter}>
@@ -520,15 +520,6 @@ const styles = {
 		textShadow: '0 0 5px rgba(0,0,0,0.50)'
 	}
 }
-
-// TODO add alert to submit IF they dont fill out the form correctly
-// have it redirect them to the form and not close modal.
-// on both EDIT and NEW shift submit
-// add a few validations/flash messages to make sure the user
-// knows what is happening.
-// add a migration that allows shifts to have the details attribute
-// make details attribute a modal that can be updated on the admin side
-// turn to the employee shift box component and add a view shift details modal
 
 const mapStateToProps = (state) => {
   let { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit, setemployee } = state;
