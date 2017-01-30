@@ -10,6 +10,7 @@ class EmployeeShiftBox extends React.Component {
 
 		this.shiftDetails = this.shiftDetails.bind(this)
 		this.employeeShiftModal = this.employeeShiftModal.bind(this)
+		this.detailsCheck = this.detailsCheck.bind(this)
 	}
 
 	componentDidMount() {
@@ -68,6 +69,14 @@ class EmployeeShiftBox extends React.Component {
 		)
 	}
 
+	detailsCheck(shift) {
+		if(shift.user_id == this.props.user.id) {
+			return(
+				<button className="details-icon" style={styles.shiftDetailsButton} title='Shift Details' data-target="employeeModal" onClick={(e) => this.shiftDetails(e, shift)}> <i className="tiny material-icons">view_list</i> </button>
+			)
+		}
+	}
+
 	display() {
 		let day = this.props.day
 		let date = `${this.props.month}, ${this.props.year}`
@@ -116,7 +125,7 @@ class EmployeeShiftBox extends React.Component {
 								<br />
 								<span style={this.durationCheck(shifts[i].duration)}><i>{durationHours} hrs {durationMinutes} min</i></span>
 								<span style={styles.shiftDayText}>{day}</span>
-								<button className="details-icon" style={styles.shiftDetailsButton} title='Shift Details' data-target="employeeModal" onClick={(e) => this.shiftDetails(e, shifts[i])}> <i className="tiny material-icons">view_list</i> </button>
+								{this.detailsCheck(shifts[i])}
 							</div>
 						)
 					} else {
