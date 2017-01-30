@@ -80,7 +80,7 @@ class SideEmployees extends React.Component {
                }}></div>
               {employee.first_name} {employee.last_name}
               <div style={this.overtimeCheck(myTime)}>
-                {myHours}hrs {myMinutes}min
+                {myHours} hrs {myMinutes} min
               </div>
             </div>);
 		});
@@ -234,11 +234,11 @@ const styles = {
   },
   weeklyTotal: {
     position: 'absolute',
-    top: '-9px',
-    right: '0',
+    top: '-10px',
+    right: '-1',
     fontSize: '10px',
     height: '22px',
-    paddingLeft: '2px',
+    padding: '0 2px',
     backgroundColor: '#999',
     border: '1px solid #888',
     color: '#fff',
@@ -246,11 +246,11 @@ const styles = {
   },
   weeklyTotalOT: {
     position: 'absolute',
-    top: '-9px',
-    right: '0',
+    top: '-10px',
+    right: '-1',
     fontSize: '10px',
     height: '22px',
-    paddingLeft: '2px',
+    padding: '0 2px',
     backgroundColor: '#900',
     border: '1px solid #888',
     color: '#fff',
