@@ -51,7 +51,6 @@ class DateBar extends Component {
 			weekDates.push(todayDate)
 			let companyId = document.location.pathname.substr(10)
 			if(day === 6 && companyId != "" && weekDates[0] != "undefined NaN, NaN") {
-				this.props.dispatch({type: 'WEEK_DATES', weekDates})
 				this.props.dispatch(currentshifts(companyId, weekDates))
 			}
       return(

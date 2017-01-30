@@ -4,7 +4,14 @@ const currentshifts = (state = [], action) => {
     case "ALL_SHIFTS":
       return action.shifts
     case 'ADD_CURRENT_SHIFT':
-    	return [...state, action.shift] 
+    	return [...state, action.shift]
+    case 'UPDATE_CURRENT_SHIFT':
+			let indexUpdate = state.findIndex( s => s.id === action.shift.id)
+			return [
+				...state.slice(0, indexUpdate),
+				...state.slice(indexUpdate + 1),
+				action.shift
+			]
     case 'DELETE_CURRENT_SHIFT':
     	let index = state.findIndex( s => s.id === action.shift.id)
 			return [

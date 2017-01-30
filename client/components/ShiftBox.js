@@ -186,13 +186,14 @@ class ShiftBox extends React.Component {
 					details: editDetails
 				}}
 			}).done( shift => {
-				let companyId = shift.company_id
-				let weekDates = this.props.weekdates
-				this.props.dispatch(currentshifts(companyId, weekDates))
+				this.props.dispatch({type: 'UPDATE_CURRENT_SHIFT', shift})
 			}).fail( data => {
 			})
 		}
 	}
+
+	// let weekDates = this.props.weekdates
+	// this.props.dispatch(currentshifts(companyId, weekDates))
 
 	addShift() {
 		let date = `${this.props.month}, ${this.props.year}`
