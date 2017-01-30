@@ -59,6 +59,12 @@ class SideEmployees extends React.Component {
 
   employees() {
 		return this.props.setemployee.map( employee => {
+      let myTime = 0 
+      if(this.props.totalhours[employee.id]) {
+        myTime = this.props.totalhours[employee.id]
+      }
+        let myHours = Math.floor(myTime / 60);
+        let myMinutes = myTime % 60;
 			return(<div key={employee.id} style={styles.employeeSideBox}>
               <div style={{
                 height: '36px',
@@ -73,9 +79,20 @@ class SideEmployees extends React.Component {
                 backgroundSize: 'cover'
                }}></div>
               {employee.first_name} {employee.last_name}
+              <div style={this.overtimeCheck(myTime)}>
+                {myHours}hrs {myMinutes}min
+              </div>
             </div>);
 		});
 	}
+
+  overtimeCheck(time) {
+    if (time > 2400) {
+      return (styles.weeklyTotalOT)
+    } else {
+      return (styles.weeklyTotal)
+    }
+  }
 
   displayEmployees(companyDetails) {
     this.setState({ loading: true })
@@ -214,12 +231,36 @@ const styles = {
     top: '2px',
     boxShadow: '0 0 2px rgba(0,0,0,0.35)',
     border: '1px solid #000'
+  },
+  weeklyTotal: {
+    position: 'absolute',
+    top: '-9px',
+    right: '0',
+    fontSize: '10px',
+    height: '22px',
+    paddingLeft: '2px',
+    backgroundColor: '#999',
+    border: '1px solid #888',
+    color: '#fff',
+    textAlign: 'right',
+  },
+  weeklyTotalOT: {
+    position: 'absolute',
+    top: '-9px',
+    right: '0',
+    fontSize: '10px',
+    height: '22px',
+    paddingLeft: '2px',
+    backgroundColor: '#900',
+    border: '1px solid #888',
+    color: '#fff',
+    textAlign: 'right',
   }
 }
 
 const mapStateToProps = (state) => {
-  let { user, assigned, setemployee, setcompany } = state;
-  return { user, assigned, setemployee, setcompany }
+  let { user, assigned, setemployee, setcompany, totalhours } = state;
+  return { user, assigned, setemployee, setcompany, totalhours }
 }
 
 export default connect(mapStateToProps)(SideEmployees)

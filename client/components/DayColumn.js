@@ -2,8 +2,18 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import ShiftBox from './ShiftBox';
 import ScheduleShiftBox from './ScheduleShiftBox';
+import { totalhours } from '../actions/totalhours';
 
 class DayColumn extends Component {
+	constructor(props) {
+		super(props);
+		
+		this.columnCheck = this.columnCheck.bind(this);
+	}
+
+	componentDidUpdate() {
+		this.columnCheck();
+	}
 
 	myDate() {
 
@@ -49,6 +59,13 @@ class DayColumn extends Component {
 		}
 	}
 
+	columnCheck() {
+		if (this.props.day === "6") {
+			let currentShifts = this.props.currentshifts
+			this.props.dispatch(totalhours(currentShifts));
+		}
+	}
+
 	render() {
 		let myDate = this.myDate();
 		return (
@@ -61,8 +78,8 @@ class DayColumn extends Component {
 }
 
 const mapStateToProps = (state) => {
-	let { setdate, setemployee } = state;
-  return { setdate, setemployee }
+	let { setdate, setemployee, currentshifts } = state;
+  return { setdate, setemployee, currentshifts }
 }
 
 const styles = {
