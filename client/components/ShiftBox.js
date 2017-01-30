@@ -134,29 +134,7 @@ class ShiftBox extends React.Component {
 		let details = this.refs.shiftDetails.value
 		let duration = this.calculateDuration(start, end)
 		if(duration < 0) {
-			let confirmed = confirm('Shifts cannot cross midnight, it is recommended to split shift between days. continue anyway?')
-			if(confirmed) {
-				$('.modal').modal('close');
-				let message = "Shifts cannot cross midnight. Split shift between days."
-				this.props.dispatch(setFlash(message, 'error'))
-				$.ajax({
-					url: '/api/shifts',
-					type: 'POST',
-					dataType: 'JSON',
-					data: { shift: {
-						day: shiftDay,
-						start: start,
-						end: end,
-						user_id: id,
-						company_id: companyId,
-						duration: duration,
-						details: details
-					}}
-				}).done( shift => {
-					this.props.dispatch({type: 'ADD_CURRENT_SHIFT', shift})
-				}).fail( data => {
-				})
-			}
+			alert('Shifts cannot cross midnight, split shift between two days')
 		} else {
 			$('.modal').modal('close');
 			$.ajax({
@@ -181,7 +159,6 @@ class ShiftBox extends React.Component {
 	}
 
 	submitEditShift(e) {
-
 		e.preventDefault()
 		let editId = this.props.shiftedit.id
 		let editEmployeeId = this.props.currentemployee
@@ -192,29 +169,7 @@ class ShiftBox extends React.Component {
 		let editDetails = this.refs.editShiftDetails.value
 		let editDuration = this.calculateDuration(editStart, editEnd)
 		if(editDuration < 0) {
-			let confirmed = confirm('Shifts cannot cross midnight, it is recommended to split shift between days. continue anyway?')
-			if(confirmed) {
-				$('.modal').modal('close');
-				let message = "Shifts cannot cross midnight. Split shift between days."
-				this.props.dispatch(setFlash(message, 'error'))
-				$.ajax({
-					url: '/api/shifts',
-					type: 'POST',
-					dataType: 'JSON',
-					data: { shift: {
-						day: shiftDay,
-						start: start,
-						end: end,
-						user_id: id,
-						company_id: companyId,
-						duration: duration,
-						details: editDetails
-					}}
-				}).done( shift => {
-					this.props.dispatch({type: 'ADD_CURRENT_SHIFT', shift})
-				}).fail( data => {
-				})
-			}
+			alert('Shifts cannot cross midnight, split shift between two days')
 		} else {
 			$('.modal').modal('close');
 			$.ajax({
@@ -232,9 +187,9 @@ class ShiftBox extends React.Component {
 				}}
 			}).done( shift => {
 				let companyId = shift.company_id
-				this.props.dispatch(currentshifts(companyId))
+				let weekDates = this.props.weekdates
+				this.props.dispatch(currentshifts(companyId, weekDates))
 			}).fail( data => {
-				debugger
 			})
 		}
 	}
@@ -522,8 +477,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  let { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit, setemployee } = state;
-  return { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit, setemployee }
+  let { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit, setemployee, weekdates } = state;
+  return { user, assigned, setcompany, currentemployee, shiftdate, showshift, currentshifts, shiftedit, setemployee, weekdates }
 }
 
 export default connect(mapStateToProps)(ShiftBox);
