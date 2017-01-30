@@ -51,7 +51,7 @@ class EmployeeDateBar extends Component {
 			weekDates.push(todayDate)
 			let companyId = document.location.pathname.substr(22)
 			if(day === 6 && companyId != "" && weekDates[0] != "undefined NaN, NaN") {
-				this.props.dispatch(currentshifts(companyId))
+				this.props.dispatch(currentshifts(companyId, weekDates))
 			}
       return(
       	<div key={day} style={styles.leftFloat}>

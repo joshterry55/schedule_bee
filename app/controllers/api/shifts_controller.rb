@@ -3,7 +3,8 @@ class Api::ShiftsController < ApplicationController
 
   def index
     @company = Company.find(params[:id])
-    @shifts = @company.shifts
+    @week_dates = params[:startday]
+    @shifts = @company.shifts.where(day: @week_dates)
     render json: @shifts
   end
 
@@ -35,6 +36,6 @@ class Api::ShiftsController < ApplicationController
   private
 
   def shift_params
-    params.require(:shift).permit(:day, :start, :end, :company_id, :user_id, :schedule_templates_id, :duration, :details)
+    params.require(:shift).permit(:day, :start, :end, :company_id, :user_id, :schedule_templates_id, :duration, :details, :startday)
   end
 end
