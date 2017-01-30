@@ -228,7 +228,7 @@ class EmployeeView extends React.Component {
     } else {
       return(
         <div className='center'>
-          <h5>No employees. <Link to='/employees'>add employee</Link></h5>
+          <h5>No employees, <Link to='/employees'>add one</Link>.</h5>
         </div>
       )
     }

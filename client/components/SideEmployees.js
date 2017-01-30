@@ -79,6 +79,7 @@ class SideEmployees extends React.Component {
 
   displayEmployees(companyDetails) {
     this.setState({ loading: true })
+    this.props.dispatch({type: 'RESET_EMPLOYEE'})
     let companyId = companyDetails.id
     let company = companyDetails
     $.ajax({
