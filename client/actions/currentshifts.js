@@ -6,6 +6,7 @@ export const currentshifts = (companyId, weekDates) => {
 			dataType: 'JSON',
 			data: { startday: weekDates}
 		}).done( shifts => {
+			$('#shiftLoadBox').css("display", "none")
 			dispatch({ type: 'ALL_SHIFTS', shifts})
 		})
 	}

@@ -235,7 +235,7 @@ const styles = {
   weeklyTotal: {
     position: 'absolute',
     top: '-10px',
-    right: '-1',
+    right: '-1px',
     fontSize: '10px',
     height: '22px',
     padding: '0 2px',
@@ -247,7 +247,7 @@ const styles = {
   weeklyTotalOT: {
     position: 'absolute',
     top: '-10px',
-    right: '-1',
+    right: '-1px',
     fontSize: '10px',
     height: '22px',
     padding: '0 2px',

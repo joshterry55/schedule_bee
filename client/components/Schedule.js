@@ -48,11 +48,30 @@ class Schedule extends Component {
 		this.props.dispatch(setweek(weekOffset));
 	}
 
+	loadingShiftsBox() {
+		return(
+			<div id='shiftLoadBox' style={styles.shiftsLoading}>
+				<div className="preloader-wrapper active">
+		      <div className="spinner-layer spinner-blue-only" style={{backgroundColor: "#888", borderRadius: "50%", border: "#666"}}>
+		        <div className="circle-clipper left">
+		          <div className="circle"></div>
+		        </div><div className="gap-patch">
+		          <div className="circle"></div>
+		        </div><div className="circle-clipper right">
+		          <div className="circle"></div>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+    )
+	}
+
 	render() {
 		return(
 			<div>
 				<div style={styles.topBarContainer}>
 					<div className="col s12 center">
+						{ this.loadingShiftsBox() }
 						<button type='button' style={styles.button} onClick={this.setWeekBack}>&lt;&lt;</button>&nbsp;
 						<button type='button' style={{...styles.button, ...styles.buttonCurrent}} onClick={this.setCurrent}>Current</button>&nbsp;
 						<button type='button' style={styles.button} onClick={this.setWeekForward}>&gt;&gt;</button>
@@ -80,7 +99,8 @@ class Schedule extends Component {
 
 const styles = {
 	topBarContainer: {
-		height: '45px'
+		height: '45px',
+		position: 'relative'
 	},
 	calendarWindow: {
 		height: '454px',
@@ -129,6 +149,15 @@ const styles = {
     textShadow: '0 1px #ddd',
     position: 'relative',
     top: '-1px'
+  },
+  shiftsLoading: {
+  	position: 'absolute',
+  	top: '115px',
+  	left: '50%',
+  	marginLeft: '-23px',
+  	zIndex: '999',
+  	opacity: '0.75',
+  	display: 'none'
   },
 	noPadding: {
 		paddingLeft: '0px'
